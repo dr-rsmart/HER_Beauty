@@ -9,7 +9,7 @@ import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, ArrowLeft, Loader2, KeyRound, Building2, User } from 'lucide-react';
 import { authApi } from '../services/api';
-import { Button, Input, Label, BookItLogo } from '../components/ui';
+import { Button, Input, Label } from '../components/ui';
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
@@ -35,9 +35,9 @@ export default function ForgotPassword() {
     } catch {
       setResult({
         message: 'Please reach out to your business administrator to reset your password.',
-        adminEmail: 'admin@bookit.com',
+        adminEmail: 'admin@bookingtrack.com',
         adminName: 'Business Administrator',
-        providerName: 'BookIt!',
+        providerName: 'BookingTrack',
       });
     } finally {
       setSubmitting(false);
@@ -45,16 +45,12 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="safe-top safe-bottom flex min-h-[100dvh] items-center justify-center bg-background px-4 py-8 sm:py-10">
+    <div className="flex min-h-screen items-center justify-center bg-background px-4 py-10">
       <div className="w-full max-w-md">
-        <div className="mb-8 text-center sm:mb-10">
-          <Link
-            to="/"
-            aria-label="BookIt! Home"
-            className="mb-5 inline-flex items-center justify-center transition-opacity hover:opacity-90"
-          >
-            <BookItLogo size="lg" />
-          </Link>
+        <div className="mb-10 text-center">
+          <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-sm">
+            <KeyRound className="h-7 w-7" aria-hidden="true" />
+          </div>
           <h1 className="font-display text-3xl font-bold tracking-tight text-foreground">
             Forgot Password
           </h1>
@@ -74,7 +70,7 @@ export default function ForgotPassword() {
                   Contact Your Business Administrator
                 </h3>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  {result.providerName ? `For business: ${result.providerName}` : 'BookIt! Workspace'}
+                  {result.providerName ? `For business: ${result.providerName}` : 'BookingTrack Workspace'}
                 </p>
 
                 {result.adminEmail && (
@@ -85,7 +81,7 @@ export default function ForgotPassword() {
                       </p>
                     )}
                     <a
-                      href={`mailto:${result.adminEmail}?subject=BookIt!%20Password%20Reset%20Request%20(${encodeURIComponent(email)})`}
+                      href={`mailto:${result.adminEmail}?subject=BookingTrack%20Password%20Reset%20Request%20(${encodeURIComponent(email)})`}
                       className="mt-1 block font-semibold text-primary underline hover:text-primary/80 break-all"
                     >
                       {result.adminEmail}

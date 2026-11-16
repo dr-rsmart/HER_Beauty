@@ -6,16 +6,15 @@
 
 import { useState, type FormEvent } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { Mail, Lock, User, Loader2, ArrowLeft, Moon, Sun } from 'lucide-react';
+import { UserPlus, Mail, Lock, User, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useAuth } from '../context/AuthContext';
-import { useTheme } from '../context/ThemeContext';
-import { Button, Input, Label, BookItLogo } from '../components/ui';
+import { Button, Input, Label, BrandLogo } from '../components/ui';
 import { ApiError } from '../services/api';
+import { BRAND } from '../lib/brand';
 
 export default function Register() {
   const { register } = useAuth();
-  const { resolvedTheme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
@@ -41,7 +40,7 @@ export default function Register() {
     setSubmitting(true);
     try {
       await register({ email, password: effectivePassword, fullName: fullName.trim() || undefined });
-      toast.success('Welcome to BookIt!');
+      toast.success(`Welcome to ${BRAND.name}!`);
       navigate(returnTo);
     } catch (err) {
       setError(err instanceof ApiError ? err.message : 'Registration failed');
@@ -51,38 +50,16 @@ export default function Register() {
   };
 
   return (
-    <div className="safe-top safe-bottom flex min-h-[100dvh] flex-col bg-background px-4 py-6 sm:py-10">
-      <div className="mx-auto flex w-full max-w-md items-center justify-between">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" /> Browse businesses
-        </Link>
-        <Button
-          variant="ghost"
-          size="icon"
-          aria-label="Toggle theme"
-          onClick={toggleTheme}
-          title={resolvedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-        >
-          {resolvedTheme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-        </Button>
-      </div>
-
-      <div className="m-auto w-full max-w-md py-6">
-        <div className="mb-8 text-center sm:mb-10">
-          <Link
-            to="/"
-            aria-label="BookIt! Home"
-            className="mb-5 inline-flex items-center justify-center transition-opacity hover:opacity-90"
-          >
-            <BookItLogo size="lg" />
+    <div className="flex min-h-screen items-center justify-center bg-background px-4 py-10">
+      <div className="w-full max-w-md">
+        <div className="mb-10 text-center">
+          <Link to="/" className="mb-4 inline-flex">
+            <BrandLogo className="h-16 w-16" chip />
           </Link>
           <h1 className="font-display text-3xl font-bold tracking-tight text-foreground">
-            Create your account
+            Join {BRAND.name} Circle
           </h1>
-          <p className="mt-2 text-muted-foreground">Sign up to get started</p>
+          <p className="mt-2 text-muted-foreground">{BRAND.slogan}</p>
         </div>
 
         <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-sm">

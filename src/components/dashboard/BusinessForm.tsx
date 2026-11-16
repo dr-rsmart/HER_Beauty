@@ -10,7 +10,6 @@ import { Loader2 } from 'lucide-react';
 import {
   Button,
   Input,
-  Select,
   Textarea,
   Label,
   WorkingHoursEditor,
@@ -80,8 +79,8 @@ export default function BusinessForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
-      <section className="space-y-4 rounded-3xl border border-border bg-card p-5 sm:p-6">
+    <form onSubmit={handleSubmit} className="space-y-8">
+      <section className="space-y-4 rounded-3xl border border-border bg-card p-6">
         <h2 className="font-display text-lg text-foreground">The basics</h2>
         <div>
           <Label htmlFor="name">Business name</Label>
@@ -96,18 +95,18 @@ export default function BusinessForm({
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <Label htmlFor="category">Category</Label>
-            <Select
+            <select
               id="category"
               value={fields.category}
               onChange={(e) => setField('category', e.target.value)}
-              className="mt-2"
+              className="mt-2 flex h-9 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-ring"
             >
               {CATEGORIES.map((cat) => (
                 <option key={cat.value} value={cat.value}>
                   {cat.label}
                 </option>
               ))}
-            </Select>
+            </select>
           </div>
           <div>
             <Label htmlFor="phone">Phone</Label>
@@ -146,7 +145,7 @@ export default function BusinessForm({
         />
       </section>
 
-      <section className="space-y-4 rounded-3xl border border-border bg-card p-5 sm:p-6">
+      <section className="space-y-4 rounded-3xl border border-border bg-card p-6">
         <h2 className="font-display text-lg text-foreground">Where to find you</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="sm:col-span-2">
@@ -206,13 +205,13 @@ export default function BusinessForm({
         </div>
       </section>
 
-      <section className="space-y-4 rounded-3xl border border-border bg-card p-5 sm:p-6">
+      <section className="space-y-4 rounded-3xl border border-border bg-card p-6">
         <h2 className="font-display text-lg text-foreground">Working hours</h2>
         <WorkingHoursEditor value={workingHours} onChange={setWorkingHours} />
       </section>
 
       <div className="flex justify-end">
-        <Button type="submit" size="lg" className="w-full rounded-full sm:w-auto" disabled={saving}>
+        <Button type="submit" size="lg" className="rounded-full" disabled={saving}>
           {saving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           {submitLabel}
         </Button>

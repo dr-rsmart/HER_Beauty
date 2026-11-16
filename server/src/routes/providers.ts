@@ -71,7 +71,7 @@ router.get('/', optionalAuth, async (req, res) => {
     const [providers, total] = await Promise.all([
       prisma.provider.findMany({
         where,
-        orderBy: { createdAt: 'desc' },
+        orderBy: { createdAt: 'asc' },
         take: meta.limit,
         skip: meta.offset,
       }),

@@ -26,8 +26,22 @@ import {
   DialogModal,
   ConfirmDialog,
   Spinner,
+  Badge,
 } from '../../components/ui';
 import { cn, formatDuration, formatZAR } from '../../lib/utils';
+import { REVENUE_STREAMS } from '../../lib/brand';
+
+const SERVICE_CATEGORIES = [
+  'Natural Hair & Treatments',
+  'Braiding & Protective Styles',
+  'General Hair Care & Styling',
+  'Nails & Hand Care',
+  'Beauty & Skin',
+  'Packages & Bundles',
+  'Retail & Product Bar',
+  'Training & Masterclasses',
+  'Events & Activations',
+];
 
 function ServiceModal({
   providerId,
@@ -46,10 +60,13 @@ function ServiceModal({
   const [saving, setSaving] = useState(false);
   const [form, setForm] = useState({
     name: service?.name || '',
+    category_name: service?.category_name || 'Natural Hair & Treatments',
+    stream: service?.stream || 'salon',
     description: service?.description || '',
     duration_minutes: service?.duration_minutes || 30,
     price: service?.price ?? ('' as string | number),
     price_note: service?.price_note || '',
+    popular: Boolean(service?.popular),
     professional_ids: service?.professional_ids || ([] as string[]),
     active: service?.active !== false,
   });
@@ -58,10 +75,13 @@ function ServiceModal({
     if (open) {
       setForm({
         name: service?.name || '',
+        category_name: service?.category_name || 'Natural Hair & Treatments',
+        stream: service?.stream || 'salon',
         description: service?.description || '',
         duration_minutes: service?.duration_minutes || 30,
         price: service?.price ?? '',
         price_note: service?.price_note || '',
+        popular: Boolean(service?.popular),
         professional_ids: service?.professional_ids || [],
         active: service?.active !== false,
       });
@@ -131,6 +151,38 @@ function ServiceModal({
             onChange={(e) => setForm({ ...form, name: e.target.value })}
             className="mt-2"
           />
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <Label htmlFor="service-category">HER Menu Category</Label>
+            <select
+              id="service-category"
+              value={form.category_name}
+              onChange={(e) => setForm({ ...form, category_name: e.target.value })}
+              className="mt-2 flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm"
+            >
+              {SERVICE_CATEGORIES.map((cat) => (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <Label htmlFor="service-stream">Revenue Stream</Label>
+            <select
+              id="service-stream"
+              value={form.stream}
+              onChange={(e) => setForm({ ...form, stream: e.target.value })}
+              className="mt-2 flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm"
+            >
+              {REVENUE_STREAMS.map((st) => (
+                <option key={st.id} value={st.id}>
+                  {st.title} — {st.description}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <div>
           <Label htmlFor="service-description">Description</Label>
@@ -206,13 +258,22 @@ function ServiceModal({
           </div>
         )}
 
-        <label className="flex items-center gap-3 text-sm text-muted-foreground">
-          <Switch
-            checked={form.active}
-            onCheckedChange={(active) => setForm({ ...form, active })}
-          />
-          Bookable by customers
-        </label>
+        <div className="flex flex-wrap items-center gap-6">
+          <label className="flex items-center gap-3 text-sm text-muted-foreground">
+            <Switch
+              checked={form.active}
+              onCheckedChange={(active) => setForm({ ...form, active })}
+            />
+            Bookable by customers
+          </label>
+          <label className="flex items-center gap-3 text-sm text-muted-foreground">
+            <Switch
+              checked={form.popular}
+              onCheckedChange={(popular) => setForm({ ...form, popular })}
+            />
+            Highlight as Popular
+          </label>
+        </div>
       </DialogModal>
     </>
   );
@@ -255,11 +316,11 @@ export default function DashboardServices() {
   return (
     <div>
       <DashboardSubNav />
-      <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-5 sm:py-10">
+      <div className="mx-auto w-full max-w-4xl px-5 py-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="font-display text-2xl text-foreground sm:text-3xl">Services & rates</h1>
-            <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+            <h1 className="font-display text-3xl text-foreground">Services & rates</h1>
+            <p className="mt-2 text-muted-foreground">
               What customers can book, how long it takes, and who can deliver it.
             </p>
           </div>
@@ -275,7 +336,7 @@ export default function DashboardServices() {
           />
         </div>
 
-        <div className="mt-6 space-y-4 sm:mt-8">
+        <div className="mt-8 space-y-4">
           {services.length === 0 && (
             <p className="rounded-2xl border border-dashed border-border px-4 py-12 text-center text-sm text-muted-foreground">
               No services yet — add your first one so customers know what they can book.
@@ -284,10 +345,25 @@ export default function DashboardServices() {
           {services.map((svc) => {
             const assignedPros = team.filter((p) => svc.professional_ids?.includes(p.id));
             return (
-              <div key={svc.id} className="rounded-2xl border border-border bg-card p-4 sm:p-5">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-                  <div className="min-w-0 flex-1">
-                    <p className="font-medium text-foreground">{svc.name}</p>
+              <div key={svc.id} className="rounded-2xl border border-border bg-card p-5">
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <p className="font-medium text-foreground">{svc.name}</p>
+                      {svc.popular && (
+                        <Badge variant="default" className="rounded-full text-[10px]">
+                          Popular
+                        </Badge>
+                      )}
+                      {svc.stream && (
+                        <Badge variant="outline" className="rounded-full font-mono text-[10px] uppercase">
+                          {svc.stream}
+                        </Badge>
+                      )}
+                      {svc.category_name && (
+                        <span className="text-xs text-muted-foreground">· {svc.category_name}</span>
+                      )}
+                    </div>
                     {svc.description && (
                       <p className="mt-1 text-sm text-muted-foreground">{svc.description}</p>
                     )}
@@ -303,7 +379,7 @@ export default function DashboardServices() {
                     </p>
                   </div>
 
-                  <div className="flex w-full items-center justify-between gap-3 border-t border-border/60 pt-3 sm:w-auto sm:justify-end sm:border-0 sm:pt-0">
+                  <div className="flex items-center gap-3">
                     <label className="flex items-center gap-2 text-xs text-muted-foreground">
                       Bookable
                       <Switch
@@ -314,33 +390,31 @@ export default function DashboardServices() {
                         }}
                       />
                     </label>
-                    <div className="flex items-center gap-1">
-                      <ServiceModal
-                        providerId={provider.id}
-                        team={team}
-                        service={svc}
-                        onSaved={refresh}
-                        trigger={
-                          <Button variant="ghost" size="icon" aria-label="Edit service">
-                            <Pencil className="h-4 w-4" />
-                          </Button>
-                        }
-                      />
-                      <ConfirmDialog
-                        title={`Delete ${svc.name}?`}
-                        description="Existing appointments stay, but customers can no longer book it."
-                        confirmLabel="Delete"
-                        onConfirm={async () => {
-                          await servicesApi.delete(svc.id);
-                          refresh();
-                        }}
-                        trigger={
-                          <Button variant="ghost" size="icon" aria-label="Delete service">
-                            <Trash2 className="h-4 w-4 text-muted-foreground" />
-                          </Button>
-                        }
-                      />
-                    </div>
+                    <ServiceModal
+                      providerId={provider.id}
+                      team={team}
+                      service={svc}
+                      onSaved={refresh}
+                      trigger={
+                        <Button variant="ghost" size="icon" aria-label="Edit service">
+                          <Pencil className="h-4 w-4" />
+                        </Button>
+                      }
+                    />
+                    <ConfirmDialog
+                      title={`Delete ${svc.name}?`}
+                      description="Existing appointments stay, but customers can no longer book it."
+                      confirmLabel="Delete"
+                      onConfirm={async () => {
+                        await servicesApi.delete(svc.id);
+                        refresh();
+                      }}
+                      trigger={
+                        <Button variant="ghost" size="icon" aria-label="Delete service">
+                          <Trash2 className="h-4 w-4 text-muted-foreground" />
+                        </Button>
+                      }
+                    />
                   </div>
                 </div>
               </div>

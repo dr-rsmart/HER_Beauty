@@ -1,6 +1,6 @@
-# BookIt! Stress Testing Suite & Performance Verification Primitives
+# BookingTrack Stress Testing Suite & Performance Verification Primitives
 
-Production-grade stress testing primitives built on **k6**, **k6-operator**, and **Prometheus/Grafana** for validating BookIt!'s multi-tenant architecture under high-concurrency loads (Phase A: 1,000 VUs, Phase B: 3,000 VUs, Phase C: 5,000 VUs).
+Production-grade stress testing primitives built on **k6**, **k6-operator**, and **Prometheus/Grafana** for validating BookingTrack's multi-tenant architecture under high-concurrency loads (Phase A: 1,000 VUs, Phase B: 3,000 VUs, Phase C: 5,000 VUs).
 
 ---
 

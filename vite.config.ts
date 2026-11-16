@@ -7,14 +7,14 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     server: {
-      port: 5175,
+      port: 5176,
       proxy: {
         '/api': {
-          target: 'http://localhost:4005',
+          target: 'http://localhost:4006',
           changeOrigin: true,
         },
         '/health': {
-          target: 'http://localhost:4005',
+          target: 'http://localhost:4006',
           changeOrigin: true,
         },
       },

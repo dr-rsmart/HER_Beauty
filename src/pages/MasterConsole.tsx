@@ -17,12 +17,15 @@ import {
   ExternalLink,
   Copy,
   Sparkles,
+  GraduationCap,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import {
   masterApi,
+  herApi,
   type MasterStats,
   type MasterProviderItem,
+  type PathwayMetricsResponse,
 } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import {
@@ -30,12 +33,12 @@ import {
   Button,
   DialogModal,
   Input,
-  Select,
   Label,
   Spinner,
   Switch,
 } from '../components/ui';
 import { CATEGORIES, formatZAR } from '../lib/utils';
+import { BRAND, FOUNDER, PATHWAY_STAGES } from '../lib/brand';
 
 export default function MasterConsole() {
   const { refresh: refreshAuth } = useAuth();
@@ -43,6 +46,7 @@ export default function MasterConsole() {
 
   const [stats, setStats] = useState<MasterStats | null>(null);
   const [providers, setProviders] = useState<MasterProviderItem[]>([]);
+  const [pathway, setPathway] = useState<PathwayMetricsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
 
@@ -56,10 +60,10 @@ export default function MasterConsole() {
   const [form, setForm] = useState({
     name: '',
     category: 'Salon',
-    city: 'Johannesburg',
+    city: 'Jamestown',
     phone: '',
     street: '',
-    billingTier: 'standard',
+    billingTier: 'campus',
     vatNumber: '',
     registrationNumber: '',
     adminFirstName: '',
@@ -70,9 +74,14 @@ export default function MasterConsole() {
   const loadAll = useCallback(async () => {
     setLoading(true);
     try {
-      const [s, p] = await Promise.all([masterApi.stats(), masterApi.listProviders()]);
+      const [s, p, pw] = await Promise.all([
+        masterApi.stats(),
+        masterApi.listProviders(),
+        herApi.getPathwayMetrics(),
+      ]);
       setStats(s);
       setProviders(p.items);
+      setPathway(pw);
     } catch (err: any) {
       toast.error(err.message || 'Failed to load Master Console');
     } finally {
@@ -144,107 +153,162 @@ export default function MasterConsole() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-6xl space-y-8 px-4 py-8 sm:space-y-10 sm:px-5 sm:py-10">
+    <div className="mx-auto w-full max-w-6xl space-y-10 px-5 py-10">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-primary">
             <ShieldCheck className="h-5 w-5" />
             <span className="text-xs font-semibold uppercase tracking-widest">
-              Platform Master Governance
+              {FOUNDER.name} · Executive & Platform Governance
             </span>
           </div>
-          <h1 className="mt-2 font-display text-2xl text-foreground sm:text-4xl">
-            BookIt! Control Center
+          <h1 className="mt-2 font-display text-3xl text-foreground sm:text-4xl">
+            {BRAND.name} Master Control Center
           </h1>
-          <p className="mt-1 text-sm text-muted-foreground sm:text-base">
-            Cross-tenant oversight, business onboarding, tenant suspension & live impersonation.
+          <p className="mt-1 text-muted-foreground">
+            Cross-studio oversight, campus hub onboarding, social-impact governance & live studio impersonation.
           </p>
         </div>
 
-        <div className="flex w-full flex-wrap gap-2 sm:w-auto">
+        <div className="flex flex-wrap gap-2">
           <Button
             variant="outline"
-            className="flex-1 rounded-full sm:flex-none"
+            className="rounded-full"
             onClick={() => navigate('/demo')}
           >
             <Sparkles className="mr-2 h-4 w-4" /> Open Simulator
           </Button>
-          <Button className="flex-1 rounded-full sm:flex-none" onClick={() => setOnboardOpen(true)}>
-            <Plus className="mr-2 h-4 w-4" /> Onboard Business
+          <Button className="rounded-full" onClick={() => setOnboardOpen(true)}>
+            <Plus className="mr-2 h-4 w-4" /> Onboard Studio Hub
           </Button>
         </div>
       </div>
 
+      {/* Floor 1: The HER Pathway Social Impact & Youth Development Spine */}
+      {pathway && (
+        <div className="luxury-gradient rounded-3xl border border-brand-copper/40 p-6 text-brand-linen space-y-5">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-brand-copperPale">
+                <GraduationCap className="h-4 w-4" /> Social Impact Governance · The HER Pathway
+              </p>
+              <h2 className="mt-1 font-display text-xl text-brand-linen">
+                LEARN → PRACTISE → EARN → GROW → EMPOWER
+              </h2>
+            </div>
+            <span className="rounded-full border border-brand-copper/40 bg-brand-dark2 px-3.5 py-1 font-mono text-xs text-brand-copperPale">
+              SA Higher Education & Services SETA Accredited #HER-7600
+            </span>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {PATHWAY_STAGES.map((st) => (
+              <div
+                key={st.stage}
+                className="rounded-2xl border border-brand-copper/30 bg-brand-dark2/85 p-3.5"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-brand-copperLight">
+                    {st.stage}
+                  </span>
+                  <span className="rounded-full bg-brand-copper/25 px-2 py-0.5 font-mono text-[10px] text-brand-linen">
+                    {pathway.stageCounts[st.stage] ?? 0}
+                  </span>
+                </div>
+                <p className="mt-1.5 text-[11px] text-brand-mutedLight">{st.blurb}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 border-t border-brand-copper/25 pt-4 text-xs sm:grid-cols-4">
+            <div>
+              <span className="block text-brand-mutedLight">Fellows in Training</span>
+              <strong className="font-display text-lg text-brand-linen">
+                {pathway.youngStylistsInTraining}
+              </strong>
+            </div>
+            <div>
+              <span className="block text-brand-mutedLight">Mentorship Delivered</span>
+              <strong className="font-display text-lg text-brand-linen">
+                {pathway.mentorshipHoursCompleted} hrs
+              </strong>
+            </div>
+            <div>
+              <span className="block text-brand-mutedLight">Student Discount Sessions</span>
+              <strong className="font-display text-lg text-brand-linen">
+                {pathway.studentDiscountSessions}
+              </strong>
+            </div>
+            <div>
+              <span className="block text-brand-mutedLight">Progressed to Income</span>
+              <strong className="font-display text-lg text-brand-linen">
+                {pathway.stylistsProgressedToIncome} Artisans
+              </strong>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Platform KPI Grid */}
       {stats && (
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-          <div className="rounded-2xl border border-border bg-card p-4 sm:p-5">
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-xs text-muted-foreground sm:text-sm">Active Businesses</span>
-              <Building2 className="h-4 w-4 shrink-0 text-primary" />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-2xl border border-border bg-card p-5">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Active Businesses</span>
+              <Building2 className="h-4 w-4 text-primary" />
             </div>
-            <p className="mt-2 font-display text-2xl text-foreground sm:mt-3 sm:text-3xl">
+            <p className="mt-3 font-display text-3xl text-foreground">
               {stats.activeProviders} / {stats.totalProviders}
             </p>
-            <p className="mt-1 text-[11px] text-muted-foreground sm:text-xs">
+            <p className="mt-1 text-xs text-muted-foreground">
               {stats.publishedProviders} published in directory
             </p>
           </div>
 
-          <div className="rounded-2xl border border-border bg-card p-4 sm:p-5">
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-xs text-muted-foreground sm:text-sm">Platform Users & Team</span>
-              <Users className="h-4 w-4 shrink-0 text-primary" />
+          <div className="rounded-2xl border border-border bg-card p-5">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Platform Users & Team</span>
+              <Users className="h-4 w-4 text-primary" />
             </div>
-            <p className="mt-2 font-display text-2xl text-foreground sm:mt-3 sm:text-3xl">
-              {stats.totalUsers}
-            </p>
-            <p className="mt-1 text-[11px] text-muted-foreground sm:text-xs">
+            <p className="mt-3 font-display text-3xl text-foreground">{stats.totalUsers}</p>
+            <p className="mt-1 text-xs text-muted-foreground">
               {stats.totalProfessionals} professionals · {stats.totalServices} services
             </p>
           </div>
 
-          <div className="rounded-2xl border border-border bg-card p-4 sm:p-5">
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-xs text-muted-foreground sm:text-sm">Total Bookings</span>
-              <CalendarCheck className="h-4 w-4 shrink-0 text-primary" />
+          <div className="rounded-2xl border border-border bg-card p-5">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Total Bookings</span>
+              <CalendarCheck className="h-4 w-4 text-primary" />
             </div>
-            <p className="mt-2 font-display text-2xl text-foreground sm:mt-3 sm:text-3xl">
-              {stats.totalBookings}
-            </p>
-            <p className="mt-1 text-[11px] text-muted-foreground sm:text-xs">
+            <p className="mt-3 font-display text-3xl text-foreground">{stats.totalBookings}</p>
+            <p className="mt-1 text-xs text-muted-foreground">
               {stats.todayBookings} today · {stats.openSlots} open slots
             </p>
           </div>
 
-          <div className="rounded-2xl border border-border bg-card p-4 sm:p-5">
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-xs text-muted-foreground sm:text-sm">
-                Platform Completed GMV
-              </span>
-              <Banknote className="h-4 w-4 shrink-0 text-primary" />
+          <div className="rounded-2xl border border-border bg-card p-5">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Platform Completed GMV</span>
+              <Banknote className="h-4 w-4 text-primary" />
             </div>
-            <p className="mt-2 font-display text-2xl text-foreground sm:mt-3 sm:text-3xl">
+            <p className="mt-3 font-display text-3xl text-foreground">
               {formatZAR(stats.completedRevenue) || 'R0'}
             </p>
-            <p className="mt-1 text-[11px] text-muted-foreground sm:text-xs">
-              completed appointments
-            </p>
+            <p className="mt-1 text-xs text-muted-foreground">completed appointments</p>
           </div>
         </div>
       )}
 
       {/* Tenant Directory */}
       <section className="space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4">
-          <h2 className="font-display text-xl text-foreground sm:text-2xl">
-            Registered Business Tenants
-          </h2>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <h2 className="font-display text-2xl text-foreground">Registered Business Tenants</h2>
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search business, city or owner email…"
-            className="h-11 w-full rounded-full bg-card sm:h-10 sm:max-w-xs"
+            className="h-10 max-w-xs rounded-full bg-card"
           />
         </div>
 
@@ -252,9 +316,9 @@ export default function MasterConsole() {
           {filtered.map((item) => (
             <div
               key={item.id}
-              className="flex flex-col gap-3 rounded-2xl border border-border bg-card p-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-4 sm:p-5"
+              className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-border bg-card p-5"
             >
-              <div className="min-w-0 flex-1 sm:min-w-[240px]">
+              <div className="min-w-[240px] flex-1">
                 <div className="flex flex-wrap items-center gap-2">
                   <p className="font-display text-lg text-foreground">{item.name}</p>
                   <Badge variant="outline">{item.category}</Badge>
@@ -269,7 +333,7 @@ export default function MasterConsole() {
                     {item.isActive ? 'Active' : 'Suspended'}
                   </Badge>
                 </div>
-                <p className="mt-1 break-words text-sm text-muted-foreground">
+                <p className="mt-1 text-sm text-muted-foreground">
                   {item.city} · Owner: <span className="text-foreground">{item.ownerFullName}</span>{' '}
                   ({item.ownerEmail})
                 </p>
@@ -279,7 +343,7 @@ export default function MasterConsole() {
                 </p>
               </div>
 
-              <div className="flex w-full flex-wrap items-center justify-between gap-2 border-t border-border/60 pt-3 sm:w-auto sm:justify-end sm:gap-3 sm:border-0 sm:pt-0">
+              <div className="flex flex-wrap items-center gap-3">
                 <label className="flex items-center gap-2 text-xs text-muted-foreground">
                   Active
                   <Switch
@@ -292,24 +356,22 @@ export default function MasterConsole() {
                   />
                 </label>
 
-                <div className="flex items-center gap-2">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="rounded-full"
-                    onClick={() => navigate(`/providers/${item.id}`)}
-                  >
-                    Public Page
-                  </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="rounded-full"
+                  onClick={() => navigate(`/providers/${item.id}`)}
+                >
+                  Public Page
+                </Button>
 
-                  <Button
-                    size="sm"
-                    className="rounded-full"
-                    onClick={() => handleImpersonate(item.id)}
-                  >
-                    <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> Impersonate
-                  </Button>
-                </div>
+                <Button
+                  size="sm"
+                  className="rounded-full"
+                  onClick={() => handleImpersonate(item.id)}
+                >
+                  <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> Impersonate
+                </Button>
               </div>
             </div>
           ))}
@@ -336,18 +398,18 @@ export default function MasterConsole() {
           <div className="grid gap-3 sm:grid-cols-2">
             <div>
               <Label htmlFor="ob-cat">Category</Label>
-              <Select
+              <select
                 id="ob-cat"
                 value={form.category}
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
-                className="mt-1.5"
+                className="mt-1.5 flex h-9 w-full rounded-md border border-input bg-background px-3 py-1.5 text-sm"
               >
                 {CATEGORIES.map((c) => (
                   <option key={c.value} value={c.value}>
                     {c.label}
                   </option>
                 ))}
-              </Select>
+              </select>
             </div>
             <div>
               <Label htmlFor="ob-city">City</Label>

@@ -4,62 +4,60 @@
 
 @layer base {
   :root {
-    --background: 225 33% 98%;
-    --foreground: 228 39% 16%;
-    --card: 0 0% 100%;
-    --card-foreground: 228 39% 16%;
+    /* HER Beauty Warm Linen / Copper / Deep Espresso Design System */
+    --background: 36 50% 96%;          /* #FAF6F0 brand-linen */
+    --foreground: 15 20% 12%;          /* #241B18 brand-textDark */
+    --card: 0 0% 100%;                 /* #FFFFFF brand-card */
+    --card-foreground: 15 20% 12%;     /* #241B18 */
     --popover: 0 0% 100%;
-    --popover-foreground: 228 39% 16%;
-    --primary: 7 86% 52%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 226 28% 94%;
-    --secondary-foreground: 228 39% 18%;
-    --muted: 225 24% 95%;
-    --muted-foreground: 226 16% 42%;
-    --accent: 7 85% 95%;
-    --accent-foreground: 7 86% 38%;
-    --destructive: 0 74% 48%;
+    --popover-foreground: 15 20% 12%;
+    --primary: 13 42% 44%;             /* #9E5540 brand-copper */
+    --primary-foreground: 36 50% 96%;  /* #FAF6F0 brand-linen */
+    --secondary: 32 38% 93%;           /* #F5EEE6 brand-100 */
+    --secondary-foreground: 15 20% 12%;
+    --muted: 32 38% 93%;               /* #F5EEE6 */
+    --muted-foreground: 16 8% 45%;     /* #7D6F6A brand-muted */
+    --accent: 14 44% 91%;              /* #F4E2DC soft rose-copper */
+    --accent-foreground: 13 42% 34%;   /* #7A3E2D */
+    --destructive: 0 70% 46%;
     --destructive-foreground: 0 0% 100%;
-    --border: 225 20% 89%;
-    --input: 225 20% 89%;
-    --ring: 7 86% 52%;
+    --border: 29 31% 86%;              /* #E8DACD brand-200 */
+    --input: 29 31% 86%;
+    --ring: 13 42% 44%;                /* #9E5540 brand-copper */
     --radius: 1rem;
-    --font-heading: "Google Sans", "DM Sans", ui-sans-serif, system-ui, sans-serif;
-    --font-display: "Google Sans", "DM Sans", ui-sans-serif, system-ui, sans-serif;
-    --font-body: "Google Sans", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-playfair: "Playfair Display", Georgia, ui-serif, serif;
+    --font-sans: "Plus Jakarta Sans", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-heading: "Playfair Display", Georgia, ui-serif, serif;
+    --font-display: "Playfair Display", Georgia, ui-serif, serif;
+    --font-body: "Plus Jakarta Sans", "DM Sans", ui-sans-serif, system-ui, sans-serif;
   }
 
   .dark {
-    --background: 228 35% 8%;
-    --foreground: 225 30% 96%;
-    --card: 228 30% 11%;
-    --card-foreground: 225 30% 96%;
-    --popover: 228 30% 11%;
-    --popover-foreground: 225 30% 96%;
-    --primary: 7 88% 58%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 228 24% 17%;
-    --secondary-foreground: 225 30% 96%;
-    --muted: 228 22% 16%;
-    --muted-foreground: 225 14% 66%;
-    --accent: 7 45% 20%;
-    --accent-foreground: 7 85% 90%;
-    --destructive: 0 62% 46%;
+    /* HER Beauty Deep Espresso Dark Surface (#1F1614 / #2C1E1B) */
+    --background: 11 22% 10%;          /* #1F1614 brand-dark */
+    --foreground: 36 50% 96%;          /* #FAF6F0 brand-linen */
+    --card: 11 24% 14%;                /* #2C1E1B brand-dark2 */
+    --card-foreground: 36 50% 96%;
+    --popover: 11 24% 14%;
+    --popover-foreground: 36 50% 96%;
+    --primary: 15 47% 68%;             /* #D49B88 brand-copperLight */
+    --primary-foreground: 11 22% 10%;  /* #1F1614 */
+    --secondary: 11 22% 18%;
+    --secondary-foreground: 36 50% 96%;
+    --muted: 11 22% 18%;
+    --muted-foreground: 18 14% 66%;    /* #B5A59E brand-mutedLight */
+    --accent: 13 32% 22%;
+    --accent-foreground: 14 47% 78%;   /* #E2B8AB brand-copperPale */
+    --destructive: 0 58% 42%;
     --destructive-foreground: 0 0% 98%;
-    --border: 228 20% 20%;
-    --input: 228 20% 20%;
-    --ring: 7 88% 58%;
+    --border: 13 20% 22%;
+    --input: 13 20% 22%;
+    --ring: 15 47% 68%;
   }
 
   * {
     border-color: hsl(var(--border));
     outline-color: hsl(var(--ring) / 0.5);
-  }
-
-  html,
-  body {
-    max-width: 100vw;
-    overflow-x: clip;
   }
 
   body {
@@ -68,19 +66,42 @@
     color: hsl(var(--foreground));
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: transparent;
-    text-rendering: optimizeLegibility;
   }
 
-  a,
-  button,
-  input,
-  select,
-  textarea,
-  label,
-  [role="button"],
-  [role="switch"] {
-    touch-action: manipulation;
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-playfair);
   }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #faf6f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #d49b88;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9e5540;
+}
+
+.luxury-gradient {
+  background: linear-gradient(135deg, #1f1614 0%, #2c1e1b 50%, #3a221b 100%);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #9e5540 0%, #d49b88 50%, #e2b8ab 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rose-gold-gradient-text {
+  background: linear-gradient(135deg, #9e5540 0%, #e2b8ab 50%, #d49b88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @layer utilities {
@@ -91,19 +112,5 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-  }
-
-  /* Safe-area padding for notched mobile devices (iOS / Android) */
-  .safe-top {
-    padding-top: env(safe-area-inset-top, 0px);
-  }
-  .safe-bottom {
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-  .safe-left {
-    padding-left: env(safe-area-inset-left, 0px);
-  }
-  .safe-right {
-    padding-right: env(safe-area-inset-right, 0px);
   }
 }

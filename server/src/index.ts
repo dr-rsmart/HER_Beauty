@@ -1,6 +1,6 @@
 /**
- * BookIt! API Server
- * ------------------
+ * BookingTrack API Server
+ * -----------------------
  * Express 5 + Prisma + PostgreSQL + Server-Sent Events Real-time
  * Built on the TimeTrack enterprise foundation.
  */
@@ -37,6 +37,7 @@ import masterRoutes from './routes/master.js';
 import uploadRoutes from './routes/uploads.js';
 import healthRoutes from './routes/health.js';
 import metricsRoutes from './routes/metrics.js';
+import herRoutes from './routes/her.js';
 
 const app = express();
 app.set('trust proxy', 1);
@@ -159,6 +160,7 @@ apiRouter.use('/bookings', bookingRoutes);
 apiRouter.use('/audit', auditRoutes);
 apiRouter.use('/master', masterRoutes);
 apiRouter.use('/uploads', uploadRoutes);
+apiRouter.use('/her', herRoutes);
 
 app.use('/api', apiLimiter, apiRouter);
 app.use('/api/v1', apiLimiter, apiRouter);
@@ -207,7 +209,7 @@ export async function startServer() {
   startCron();
 
   server.listen(PORT, () => {
-    logger.info(`[server] BookIt! API listening on http://localhost:${PORT}`);
+    logger.info(`[server] BookingTrack API listening on http://localhost:${PORT}`);
   });
 }
 

@@ -1,9 +1,9 @@
 {
-  "name": "BookIt",
+  "name": "BookingTrack",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "BookIt! — multi-tenant appointment booking, professional scheduling, and business management platform across South Africa",
+  "description": "BookingTrack — multi-tenant appointment booking, professional scheduling, and business management platform across South Africa",
   "engines": {
     "node": "22.x"
   },
@@ -20,9 +20,7 @@
     "dev:web": "vite",
     "build": "vite build && cd server && npm run build",
     "start": "node scripts/production-start.mjs",
-    "postinstall": "cd server && npm install --include=dev",
     "predeploy": "node scripts/predeploy-check.mjs",
-    "screenshots:store": "node scripts/capture-store-screenshots.mjs",
     "setup": "npm install && cd server && npm install && npm run db:setup",
     "seed": "cd server && npm run seed",
     "stress:seed": "node stress/seed-stress-data.mjs",

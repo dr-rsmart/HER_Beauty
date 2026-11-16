@@ -1,0 +1,1022 @@
+{
+  "01_login_master": {
+    "id": "01_login_master",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\01_login_master.png",
+    "url": "http://localhost:5176/login",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Enter founder@herbeauty.co.za",
+        "shape": "rect",
+        "x": 1046,
+        "y": 824,
+        "w": 788,
+        "h": 120
+      },
+      {
+        "num": 2,
+        "label": "Enter Password",
+        "shape": "rect",
+        "x": 1046,
+        "y": 1000,
+        "w": 788,
+        "h": 120
+      },
+      {
+        "num": 3,
+        "label": "Click \"Log in\"",
+        "shape": "rect",
+        "x": 1046,
+        "y": 1128,
+        "w": 788,
+        "h": 120
+      }
+    ]
+  },
+  "02_master_console": {
+    "id": "02_master_console",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\02_master_console.png",
+    "url": "http://localhost:5176/master",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Click \"+ Onboard Studio Hub\"",
+        "shape": "rect",
+        "x": 673,
+        "y": 488,
+        "w": 429,
+        "h": 96
+      },
+      {
+        "num": 2,
+        "label": "5-Stage HER Pathway Metrics",
+        "shape": "rect",
+        "x": 316,
+        "y": 640,
+        "w": 2248,
+        "h": 614
+      },
+      {
+        "num": 3,
+        "label": "6 Active Studios & KPI Cards",
+        "shape": "rect",
+        "x": 316,
+        "y": 1310,
+        "w": 556,
+        "h": 284
+      }
+    ]
+  },
+  "03_create_studio_modal": {
+    "id": "03_create_studio_modal",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\03_create_studio_modal.png",
+    "url": "http://localhost:5176/master",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Enter New Studio Name",
+        "shape": "rect",
+        "x": 966,
+        "y": 610,
+        "w": 948,
+        "h": 96
+      },
+      {
+        "num": 2,
+        "label": "Assign Studio Admin Email",
+        "shape": "rect",
+        "x": 966,
+        "y": 1102,
+        "w": 948,
+        "h": 96
+      },
+      {
+        "num": 3,
+        "label": "Click \"Onboard Business\"",
+        "shape": "rect",
+        "x": 1580,
+        "y": 1222,
+        "w": 334,
+        "h": 96
+      }
+    ]
+  },
+  "04_master_impersonate_list": {
+    "id": "04_master_impersonate_list",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\04_master_impersonate_list.png",
+    "url": "http://localhost:5176/master",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Flagship Studio Hub",
+        "shape": "rect",
+        "x": 358,
+        "y": 1056,
+        "w": 518,
+        "h": 80
+      },
+      {
+        "num": 2,
+        "label": "Active / Suspend Switch",
+        "shape": "rect",
+        "x": 1854,
+        "y": 1108,
+        "w": 183,
+        "h": 64
+      },
+      {
+        "num": 3,
+        "label": "Click \"Impersonate\"",
+        "shape": "rect",
+        "x": 2247,
+        "y": 1096,
+        "w": 275,
+        "h": 88
+      }
+    ]
+  },
+  "05_impersonation_active": {
+    "id": "05_impersonation_active",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\05_impersonation_active.png",
+    "url": "http://localhost:5176/dashboard",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Active Impersonation Banner",
+        "shape": "rect",
+        "x": 52,
+        "y": 14,
+        "w": 553,
+        "h": 56
+      },
+      {
+        "num": 2,
+        "label": "Return to Master Console",
+        "shape": "rect",
+        "x": 2490,
+        "y": 12,
+        "w": 370,
+        "h": 68
+      },
+      {
+        "num": 3,
+        "label": "Live Studio KPIs",
+        "shape": "rect",
+        "x": 316,
+        "y": 718,
+        "w": 556,
+        "h": 284
+      }
+    ]
+  },
+  "06_platform_simulator": {
+    "id": "06_platform_simulator",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\06_platform_simulator.png",
+    "url": "http://localhost:5176/demo",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Click \"Simulator\" in Top Menu",
+        "shape": "rect",
+        "x": 1817,
+        "y": 97,
+        "w": 189,
+        "h": 66
+      },
+      {
+        "num": 2,
+        "label": "Review Role Persona Card",
+        "shape": "rect",
+        "x": 1498,
+        "y": 858,
+        "w": 892,
+        "h": 128
+      },
+      {
+        "num": 3,
+        "label": "Click \"Launch Persona\" Button",
+        "shape": "rect",
+        "x": 1502,
+        "y": 1166,
+        "w": 884,
+        "h": 112
+      }
+    ]
+  },
+  "07_audit_trail": {
+    "id": "07_audit_trail",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\07_audit_trail.png",
+    "url": "http://localhost:5176/audit",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Audit Menu",
+        "shape": "rect",
+        "x": 1355,
+        "y": 97,
+        "w": 132,
+        "h": 66
+      },
+      {
+        "num": 2,
+        "label": "Search Actor or Action",
+        "shape": "rect",
+        "x": 316,
+        "y": 512,
+        "w": 1950,
+        "h": 104
+      },
+      {
+        "num": 3,
+        "label": "Recorded Activity Entry",
+        "shape": "rect",
+        "x": 316,
+        "y": 656,
+        "w": 2248,
+        "h": 208
+      }
+    ]
+  },
+  "08_ricardo_master_profile": {
+    "id": "08_ricardo_master_profile",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\08_ricardo_master_profile.png",
+    "url": "http://localhost:5176/profile",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "MASTER Governance Role",
+        "shape": "rect",
+        "x": 1517,
+        "y": 97,
+        "w": 268,
+        "h": 64
+      },
+      {
+        "num": 2,
+        "label": "founder@herbeauty.co.za",
+        "shape": "rect",
+        "x": 1444,
+        "y": 674,
+        "w": 686,
+        "h": 96
+      },
+      {
+        "num": 3,
+        "label": "Save Account Details",
+        "shape": "rect",
+        "x": 1881,
+        "y": 946,
+        "w": 249,
+        "h": 96
+      }
+    ]
+  },
+  "09_login_director": {
+    "id": "09_login_director",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\09_login_director.png",
+    "url": "http://localhost:5176/login",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Enter admin@herbeauty.co.za",
+        "shape": "rect",
+        "x": 1046,
+        "y": 824,
+        "w": 788,
+        "h": 120
+      },
+      {
+        "num": 2,
+        "label": "Enter Password",
+        "shape": "rect",
+        "x": 1046,
+        "y": 1000,
+        "w": 788,
+        "h": 120
+      },
+      {
+        "num": 3,
+        "label": "Click \"Log in\"",
+        "shape": "rect",
+        "x": 1046,
+        "y": 1128,
+        "w": 788,
+        "h": 120
+      }
+    ]
+  },
+  "10_studio_dashboard_overview": {
+    "id": "10_studio_dashboard_overview",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\10_studio_dashboard_overview.png",
+    "url": "http://localhost:5176/dashboard",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Overview Tab",
+        "shape": "rect",
+        "x": 316,
+        "y": 208,
+        "w": 214,
+        "h": 96
+      },
+      {
+        "num": 2,
+        "label": "Studio KPI Cards",
+        "shape": "rect",
+        "x": 316,
+        "y": 634,
+        "w": 556,
+        "h": 284
+      },
+      {
+        "num": 3,
+        "label": "Today's Client Schedule",
+        "shape": "rect",
+        "x": 316,
+        "y": 1078,
+        "w": 2248,
+        "h": 472
+      }
+    ]
+  },
+  "11_studio_bookings": {
+    "id": "11_studio_bookings",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\11_studio_bookings.png",
+    "url": "http://localhost:5176/dashboard/bookings",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Bookings Tab",
+        "shape": "rect",
+        "x": 518,
+        "y": 208,
+        "w": 215,
+        "h": 96
+      },
+      {
+        "num": 2,
+        "label": "Filter by Status",
+        "shape": "rect",
+        "x": 796,
+        "y": 570,
+        "w": 202,
+        "h": 100
+      },
+      {
+        "num": 3,
+        "label": "Confirm / Complete Appointment",
+        "shape": "rect",
+        "x": 572,
+        "y": 718,
+        "w": 1736,
+        "h": 472
+      }
+    ]
+  },
+  "12_studio_services": {
+    "id": "12_studio_services",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\12_studio_services.png",
+    "url": "http://localhost:5176/dashboard/services",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Click \"Services & Streams\" Tab",
+        "shape": "rect",
+        "x": 937,
+        "y": 208,
+        "w": 343,
+        "h": 96
+      },
+      {
+        "num": 2,
+        "label": "Click \"+ Add service\"",
+        "shape": "rect",
+        "x": 1999,
+        "y": 450,
+        "w": 310,
+        "h": 96
+      },
+      {
+        "num": 3,
+        "label": "Verify ZAR Rates & Bookable Switch",
+        "shape": "rect",
+        "x": 572,
+        "y": 586,
+        "w": 1736,
+        "h": 404
+      }
+    ]
+  },
+  "13_studio_artisans_pathway": {
+    "id": "13_studio_artisans_pathway",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\13_studio_artisans_pathway.png",
+    "url": "http://localhost:5176/dashboard/team",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Click \"Artisans & Pathway\" Tab",
+        "shape": "rect",
+        "x": 1268,
+        "y": 208,
+        "w": 336,
+        "h": 96
+      },
+      {
+        "num": 2,
+        "label": "Click \"+ Add professional\"",
+        "shape": "rect",
+        "x": 1929,
+        "y": 450,
+        "w": 379,
+        "h": 96
+      },
+      {
+        "num": 3,
+        "label": "Check Pathway Stage & Commission",
+        "shape": "rect",
+        "x": 572,
+        "y": 586,
+        "w": 1736,
+        "h": 244
+      }
+    ]
+  },
+  "14_studio_availability": {
+    "id": "14_studio_availability",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\14_studio_availability.png",
+    "url": "http://localhost:5176/dashboard/availability",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Click \"Availability\" Tab",
+        "shape": "rect",
+        "x": 721,
+        "y": 208,
+        "w": 228,
+        "h": 96
+      },
+      {
+        "num": 2,
+        "label": "Choose Artisan, Date & Time Range",
+        "shape": "rect",
+        "x": 622,
+        "y": 844,
+        "w": 540,
+        "h": 96
+      },
+      {
+        "num": 3,
+        "label": "Click \"Add slots\"",
+        "shape": "rect",
+        "x": 622,
+        "y": 1292,
+        "w": 277,
+        "h": 96
+      }
+    ]
+  },
+  "15_studio_specials_comms": {
+    "id": "15_studio_specials_comms",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\15_studio_specials_comms.png",
+    "url": "http://localhost:5176/dashboard/specials",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Click \"Specials & Comms\" Tab",
+        "shape": "rect",
+        "x": 1592,
+        "y": 208,
+        "w": 337,
+        "h": 96
+      },
+      {
+        "num": 2,
+        "label": "Click \"New Campus Special\"",
+        "shape": "rect",
+        "x": 2001,
+        "y": 490,
+        "w": 435,
+        "h": 96
+      },
+      {
+        "num": 3,
+        "label": "Verify CAMPUS20 Offer Card",
+        "shape": "rect",
+        "x": 444,
+        "y": 610,
+        "w": 992,
+        "h": 412
+      }
+    ]
+  },
+  "16_studio_contracts_popia": {
+    "id": "16_studio_contracts_popia",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\16_studio_contracts_popia.png",
+    "url": "http://localhost:5176/dashboard/contracts",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Click \"Contracts & POPIA\" Tab",
+        "shape": "rect",
+        "x": 1917,
+        "y": 208,
+        "w": 338,
+        "h": 96
+      },
+      {
+        "num": 2,
+        "label": "Click \"Issue Artisan Contract\"",
+        "shape": "rect",
+        "x": 444,
+        "y": 594,
+        "w": 445,
+        "h": 96
+      },
+      {
+        "num": 3,
+        "label": "Review Artisan Contract & 50% Commission",
+        "shape": "rect",
+        "x": 444,
+        "y": 850,
+        "w": 992,
+        "h": 380
+      }
+    ]
+  },
+  "17_studio_brand_profile": {
+    "id": "17_studio_brand_profile",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\17_studio_brand_profile.png",
+    "url": "http://localhost:5176/dashboard/profile",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Studio & Brand Tab",
+        "shape": "rect",
+        "x": 2243,
+        "y": 208,
+        "w": 286,
+        "h": 96
+      },
+      {
+        "num": 2,
+        "label": "Public Search Visibility",
+        "shape": "rect",
+        "x": 700,
+        "y": 690,
+        "w": 1480,
+        "h": 220
+      },
+      {
+        "num": 3,
+        "label": "Preview Public Studio Page",
+        "shape": "rect",
+        "x": 700,
+        "y": 554,
+        "w": 363,
+        "h": 96
+      }
+    ]
+  },
+  "18_login_artisan": {
+    "id": "18_login_artisan",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\18_login_artisan.png",
+    "url": "http://localhost:5176/login",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Enter nomvula@herbeauty.co.za",
+        "shape": "rect",
+        "x": 1046,
+        "y": 824,
+        "w": 788,
+        "h": 120
+      },
+      {
+        "num": 2,
+        "label": "Enter Password",
+        "shape": "rect",
+        "x": 1046,
+        "y": 1000,
+        "w": 788,
+        "h": 120
+      },
+      {
+        "num": 3,
+        "label": "Click \"Log in\"",
+        "shape": "rect",
+        "x": 1046,
+        "y": 1128,
+        "w": 788,
+        "h": 120
+      }
+    ]
+  },
+  "19_artisan_schedule_view": {
+    "id": "19_artisan_schedule_view",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\19_artisan_schedule_view.png",
+    "url": "http://localhost:5176/dashboard",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Signed In as Nomvula Dlamini",
+        "shape": "rect",
+        "x": 2153,
+        "y": 90,
+        "w": 323,
+        "h": 80
+      },
+      {
+        "num": 2,
+        "label": "Green Live Updates Badge",
+        "shape": "circle",
+        "x": 1927,
+        "y": 92,
+        "w": 146,
+        "h": 77
+      },
+      {
+        "num": 3,
+        "label": "Assigned Client Appointment (HER-84920)",
+        "shape": "rect",
+        "x": 316,
+        "y": 1078,
+        "w": 2248,
+        "h": 472
+      }
+    ]
+  },
+  "20_artisan_public_showcase": {
+    "id": "20_artisan_public_showcase",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\20_artisan_public_showcase.png",
+    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Amahle \u00b7 LEARN Apprentice",
+        "shape": "rect",
+        "x": 316,
+        "y": 246,
+        "w": 723,
+        "h": 666
+      },
+      {
+        "num": 2,
+        "label": "Keisha \u00b7 EARN Fellow",
+        "shape": "rect",
+        "x": 1047,
+        "y": 246,
+        "w": 723,
+        "h": 666
+      },
+      {
+        "num": 3,
+        "label": "Nomvula \u00b7 EMPOWER Mentor",
+        "shape": "rect",
+        "x": 316,
+        "y": 920,
+        "w": 723,
+        "h": 666
+      }
+    ]
+  },
+  "21_home_browse": {
+    "id": "21_home_browse",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\21_home_browse.png",
+    "url": "http://localhost:5176/",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Check GLOW20 Privilege Banner",
+        "shape": "rect",
+        "x": 983,
+        "y": 12,
+        "w": 913,
+        "h": 46
+      },
+      {
+        "num": 2,
+        "label": "Search Studios or Treatments",
+        "shape": "rect",
+        "x": 316,
+        "y": 1116,
+        "w": 1176,
+        "h": 136
+      },
+      {
+        "num": 3,
+        "label": "Filter by Beauty Category",
+        "shape": "rect",
+        "x": 599,
+        "y": 1268,
+        "w": 484,
+        "h": 100
+      }
+    ]
+  },
+  "22_studio_public_page": {
+    "id": "22_studio_public_page",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\22_studio_public_page.png",
+    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Flagship Studio & Location",
+        "shape": "rect",
+        "x": 316,
+        "y": 1024,
+        "w": 1013,
+        "h": 104
+      },
+      {
+        "num": 2,
+        "label": "Click \"Book an appointment\"",
+        "shape": "rect",
+        "x": 2058,
+        "y": 952,
+        "w": 506,
+        "h": 104
+      },
+      {
+        "num": 3,
+        "label": "Jamestown Address & Hours",
+        "shape": "rect",
+        "x": 1867,
+        "y": 1378,
+        "w": 655,
+        "h": 120
+      }
+    ]
+  },
+  "23_login_client": {
+    "id": "23_login_client",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\23_login_client.png",
+    "url": "http://localhost:5176/login",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Enter thandiwe@herbeauty.co.za",
+        "shape": "rect",
+        "x": 1046,
+        "y": 824,
+        "w": 788,
+        "h": 120
+      },
+      {
+        "num": 2,
+        "label": "Enter Password",
+        "shape": "rect",
+        "x": 1046,
+        "y": 1000,
+        "w": 788,
+        "h": 120
+      },
+      {
+        "num": 3,
+        "label": "Click \"Log in\"",
+        "shape": "rect",
+        "x": 1046,
+        "y": 1128,
+        "w": 788,
+        "h": 120
+      }
+    ]
+  },
+  "24_book_step1_service": {
+    "id": "24_book_step1_service",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\24_book_step1_service.png",
+    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae/book",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Select Silk Blowout (R 320)",
+        "shape": "rect",
+        "x": 700,
+        "y": 742,
+        "w": 1480,
+        "h": 236
+      },
+      {
+        "num": 2,
+        "label": "Compare Services & ZAR Rates",
+        "shape": "rect",
+        "x": 700,
+        "y": 978,
+        "w": 1480,
+        "h": 236
+      },
+      {
+        "num": 3,
+        "label": "Click \"Continue\"",
+        "shape": "rect",
+        "x": 1969,
+        "y": 1506,
+        "w": 212,
+        "h": 96
+      }
+    ]
+  },
+  "25_book_step2_artisan": {
+    "id": "25_book_step2_artisan",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\25_book_step2_artisan.png",
+    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae/book",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Select Nomvula Dlamini (EMPOWER)",
+        "shape": "rect",
+        "x": 700,
+        "y": 12,
+        "w": 1480,
+        "h": 164
+      },
+      {
+        "num": 2,
+        "label": "Compare Pathway Stage Badges",
+        "shape": "rect",
+        "x": 700,
+        "y": 524,
+        "w": 1480,
+        "h": 276
+      },
+      {
+        "num": 3,
+        "label": "Click \"Continue\"",
+        "shape": "rect",
+        "x": 1969,
+        "y": 816,
+        "w": 212,
+        "h": 96
+      }
+    ]
+  },
+  "26_book_step3_slot": {
+    "id": "26_book_step3_slot",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\26_book_step3_slot.png",
+    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae/book",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Pick Preferred Date",
+        "shape": "rect",
+        "x": 1180,
+        "y": 584,
+        "w": 168,
+        "h": 178
+      },
+      {
+        "num": 2,
+        "label": "Select Open Chair Slot",
+        "shape": "rect",
+        "x": 700,
+        "y": 786,
+        "w": 376,
+        "h": 108
+      },
+      {
+        "num": 3,
+        "label": "Click \"Continue\"",
+        "shape": "rect",
+        "x": 1969,
+        "y": 1134,
+        "w": 212,
+        "h": 96
+      }
+    ]
+  },
+  "27_book_step4_promo_popia": {
+    "id": "27_book_step4_promo_popia",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\27_book_step4_promo_popia.png",
+    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae/book",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Enter Promo Code \"CAMPUS20\" & Apply",
+        "shape": "rect",
+        "x": 700,
+        "y": 158,
+        "w": 1480,
+        "h": 228
+      },
+      {
+        "num": 2,
+        "label": "Tick 20% Deposit Policy & POPIA Boxes",
+        "shape": "rect",
+        "x": 700,
+        "y": 962,
+        "w": 1480,
+        "h": 240
+      },
+      {
+        "num": 3,
+        "label": "Click \"Confirm booking\"",
+        "shape": "rect",
+        "x": 1867,
+        "y": 1242,
+        "w": 313,
+        "h": 96
+      }
+    ]
+  },
+  "28_book_confirmed_receipt": {
+    "id": "28_book_confirmed_receipt",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\28_book_confirmed_receipt.png",
+    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae/book",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "Unique HER Reference Code",
+        "shape": "rect",
+        "x": 1209,
+        "y": 738,
+        "w": 462,
+        "h": 76
+      },
+      {
+        "num": 2,
+        "label": "20% Deposit & Discount Summary",
+        "shape": "rect",
+        "x": 902,
+        "y": 1150,
+        "w": 1076,
+        "h": 82
+      },
+      {
+        "num": 3,
+        "label": "Click \"View my bookings\"",
+        "shape": "rect",
+        "x": 976,
+        "y": 1384,
+        "w": 331,
+        "h": 96
+      }
+    ]
+  },
+  "29_client_my_bookings": {
+    "id": "29_client_my_bookings",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\29_client_my_bookings.png",
+    "url": "http://localhost:5176/my-bookings",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "My bookings Menu",
+        "shape": "rect",
+        "x": 1277,
+        "y": 98,
+        "w": 196,
+        "h": 64
+      },
+      {
+        "num": 2,
+        "label": "Confirmed Appointment & Deposit",
+        "shape": "rect",
+        "x": 700,
+        "y": 892,
+        "w": 1480,
+        "h": 444
+      },
+      {
+        "num": 3,
+        "label": "Self-Service Cancel Option",
+        "shape": "rect",
+        "x": 1885,
+        "y": 1206,
+        "w": 254,
+        "h": 88
+      }
+    ]
+  },
+  "30_client_loyalty_profile": {
+    "id": "30_client_loyalty_profile",
+    "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\30_client_loyalty_profile.png",
+    "url": "http://localhost:5176/profile",
+    "callouts": [
+      {
+        "num": 1,
+        "label": "HER Circle VIP \u00b7 4,850 Beauty Pts",
+        "shape": "rect",
+        "x": 750,
+        "y": 340,
+        "w": 769,
+        "h": 68
+      },
+      {
+        "num": 2,
+        "label": "Hair Texture & Porosity Profile",
+        "shape": "rect",
+        "x": 1444,
+        "y": 688,
+        "w": 686,
+        "h": 96
+      },
+      {
+        "num": 3,
+        "label": "Click \"Save Care Preferences\"",
+        "shape": "rect",
+        "x": 1734,
+        "y": 964,
+        "w": 396,
+        "h": 96
+      }
+    ]
+  }
+}

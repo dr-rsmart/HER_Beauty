@@ -57,7 +57,7 @@ export function setup() {
 
 export default function (data) {
   const vuId = __VU;
-  const email = `perf_user_${vuId}@stress.bookit.internal`;
+  const email = `perf_user_${vuId}@stress.bookingtrack.internal`;
   const slots = data.slots;
 
   if (!slots || slots.length === 0) {

@@ -55,12 +55,24 @@ export default function BookingRow({
   const isActive = booking.status === 'pending' || booking.status === 'confirmed';
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-4 sm:p-5">
+    <div className="rounded-2xl border border-border bg-card p-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
-        <div className="min-w-0 flex-1">
-          <p className="truncate font-medium text-foreground">
-            {booking.customer_name || booking.customer_email}
-          </p>
+        <div>
+          <div className="flex flex-wrap items-center gap-2">
+            <p className="font-medium text-foreground">
+              {booking.customer_name || booking.customer_email}
+            </p>
+            {booking.reference_code && (
+              <Badge variant="outline" className="font-mono text-[11px]">
+                {booking.reference_code}
+              </Badge>
+            )}
+            {booking.promo_code && (
+              <Badge variant="outline" className="border-primary/30 bg-primary/10 font-mono text-[11px] text-primary">
+                {booking.promo_code}
+              </Badge>
+            )}
+          </div>
           <p className="mt-0.5 text-sm text-muted-foreground">
             {booking.service_name}
             {booking.professional_name ? ` · ${booking.professional_name}` : ''}
@@ -79,6 +91,11 @@ export default function BookingRow({
         {booking.customer_phone && <span>{booking.customer_phone}</span>}
         {formatZAR(booking.price) && (
           <span className="font-medium text-foreground">{formatZAR(booking.price)}</span>
+        )}
+        {formatZAR(booking.deposit_amount) && (
+          <span className="text-xs text-primary">
+            (20% deposit: {formatZAR(booking.deposit_amount)})
+          </span>
         )}
         {booking.reminder_sent_at && <span className="text-primary/80">Reminder sent</span>}
       </div>

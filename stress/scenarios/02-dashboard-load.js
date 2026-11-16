@@ -54,7 +54,7 @@ export function setup() {
   const loginRes = http.post(
     `${BASE_URL}/api/auth/login`,
     JSON.stringify({
-      email: 'admin@bookit.com',
+      email: 'admin@bookingtrack.com',
       password: 'Password123',
     }),
     {

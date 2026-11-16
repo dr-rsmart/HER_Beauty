@@ -54,9 +54,8 @@ export default function ChangePasswordModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 p-0 backdrop-blur-xs sm:items-center sm:p-4">
-      <div className="safe-bottom max-h-[90dvh] w-full max-w-md overflow-y-auto rounded-t-3xl border border-border bg-card p-6 shadow-xl sm:rounded-3xl sm:p-8">
-        <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-border sm:hidden" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-xs">
+      <div className="w-full max-w-md rounded-3xl border border-border bg-card p-8 shadow-xl">
         <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
           <KeyRound className="h-6 w-6" />
         </div>

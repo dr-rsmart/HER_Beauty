@@ -1,7 +1,7 @@
 /**
  * Reusable UI Primitives
  * ----------------------
- * Matches the exact styling and interaction patterns of BookIt! (Base44)
+ * Matches the exact styling and interaction patterns of BookingTrack (Base44)
  * and TimeTrack.
  */
 
@@ -9,10 +9,8 @@ import {
   forwardRef,
   useState,
   useRef,
-  useEffect,
   type ButtonHTMLAttributes,
   type InputHTMLAttributes,
-  type SelectHTMLAttributes,
   type TextareaHTMLAttributes,
   type LabelHTMLAttributes,
   type HTMLAttributes,
@@ -22,12 +20,6 @@ import { Loader2, Upload, X } from 'lucide-react';
 import { cn, DAYS_OF_WEEK } from '../../lib/utils';
 import { uploadsApi } from '../../services/api';
 import type { WorkingHoursDay } from '../../../contracts';
-
-export { BookItIcon, BookItLogo } from './BookItLogo';
-export type {
-  BookItIconProps,
-  BookItLogoProps,
-} from './BookItLogo';
 
 // ── Button ──
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -48,17 +40,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     const sizeClasses: Record<NonNullable<ButtonProps['size']>, string> = {
-      default: 'h-10 sm:h-9 px-4 py-2',
-      sm: 'h-9 sm:h-8 rounded-md px-3 text-xs',
-      lg: 'h-11 sm:h-10 rounded-md px-6 sm:px-8',
-      icon: 'h-10 w-10 sm:h-9 sm:w-9 shrink-0',
+      default: 'h-9 px-4 py-2',
+      sm: 'h-8 rounded-md px-3 text-xs',
+      lg: 'h-10 rounded-md px-8',
+      icon: 'h-9 w-9',
     };
 
     return (
       <button
         ref={ref}
         className={cn(
-          'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all active:scale-[0.98] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
+          'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
           variantClasses[variant],
           sizeClasses[size],
           className,
@@ -77,7 +69,7 @@ export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputE
       ref={ref}
       type={type}
       className={cn(
-        'flex h-11 sm:h-9 w-full rounded-md border border-input bg-transparent px-3 py-1.5 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
+        'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
         className,
       )}
       {...props}
@@ -85,23 +77,6 @@ export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputE
   ),
 );
 Input.displayName = 'Input';
-
-// ── Select ──
-export const Select = forwardRef<HTMLSelectElement, SelectHTMLAttributes<HTMLSelectElement>>(
-  ({ className, children, ...props }, ref) => (
-    <select
-      ref={ref}
-      className={cn(
-        'flex h-11 sm:h-9 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-1.5 text-base text-foreground shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </select>
-  ),
-);
-Select.displayName = 'Select';
 
 // ── Textarea ──
 export const Textarea = forwardRef<
@@ -223,29 +198,14 @@ export function ConfirmDialog({
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
 
-  useEffect(() => {
-    if (!open) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && !busy) setOpen(false);
-    };
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  }, [open, busy]);
-
   return (
     <>
       <span onClick={() => setOpen(true)} className="inline-flex">
         {trigger}
       </span>
       {open && (
-        <div
-          className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 p-0 backdrop-blur-xs sm:items-center sm:p-4"
-          onClick={(e) => {
-            if (e.target === e.currentTarget && !busy) setOpen(false);
-          }}
-        >
-          <div className="safe-bottom w-full max-w-md rounded-t-3xl border border-border bg-background p-6 shadow-xl sm:rounded-2xl">
-            <div className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-border sm:hidden" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs">
+          <div className="w-full max-w-md rounded-2xl border border-border bg-background p-6 shadow-xl">
             <div className="space-y-2 text-center sm:text-left">
               <h3 className="font-display text-lg font-semibold text-foreground">{title}</h3>
               {description && <p className="text-sm text-muted-foreground">{description}</p>}
@@ -290,25 +250,10 @@ export function DialogModal({
   children: ReactNode;
   footer?: ReactNode;
 }) {
-  useEffect(() => {
-    if (!open) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onOpenChange(false);
-    };
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  }, [open, onOpenChange]);
-
   if (!open) return null;
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 p-0 backdrop-blur-xs sm:items-center sm:p-4"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onOpenChange(false);
-      }}
-    >
-      <div className="safe-bottom relative max-h-[90dvh] w-full max-w-lg overflow-y-auto rounded-t-3xl border border-border bg-background p-5 shadow-xl sm:rounded-2xl sm:p-6">
-        <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-border sm:hidden" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-xs">
+      <div className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-border bg-background p-6 shadow-xl">
         <div className="flex items-center justify-between pb-4">
           <h3 className="font-display text-lg font-semibold leading-none tracking-tight text-foreground">
             {title}
@@ -316,7 +261,7 @@ export function DialogModal({
           <button
             type="button"
             onClick={() => onOpenChange(false)}
-            className="flex h-8 w-8 items-center justify-center rounded-full opacity-70 transition-opacity hover:bg-secondary hover:opacity-100"
+            className="rounded-sm opacity-70 transition-opacity hover:opacity-100"
             aria-label="Close"
           >
             <X className="h-4 w-4" />
@@ -358,38 +303,26 @@ export function WorkingHoursEditor({
   return (
     <div className="divide-y divide-border rounded-2xl border border-border">
       {rows.map((row) => (
-        <div
-          key={row.day}
-          className="flex flex-col gap-2.5 px-4 py-3 sm:flex-row sm:items-center sm:gap-3"
-        >
-          <div className="flex items-center justify-between sm:w-28 sm:shrink-0">
-            <span className="text-sm font-medium text-foreground">{row.day}</span>
-            <label className="flex items-center gap-2 text-xs text-muted-foreground sm:hidden">
-              Closed
-              <Switch
-                checked={Boolean(row.closed)}
-                onCheckedChange={(closed) => updateDay(row.day, { closed })}
-              />
-            </label>
-          </div>
+        <div key={row.day} className="flex flex-wrap items-center gap-3 px-4 py-3">
+          <span className="w-28 text-sm font-medium text-foreground">{row.day}</span>
           <div className="flex flex-1 items-center gap-2">
             <Input
               type="time"
               value={row.open}
               disabled={row.closed}
               onChange={(e) => updateDay(row.day, { open: e.target.value })}
-              className="min-w-0 flex-1 sm:w-32 sm:flex-none"
+              className="w-32"
             />
-            <span className="shrink-0 text-sm text-muted-foreground">to</span>
+            <span className="text-sm text-muted-foreground">to</span>
             <Input
               type="time"
               value={row.close}
               disabled={row.closed}
               onChange={(e) => updateDay(row.day, { close: e.target.value })}
-              className="min-w-0 flex-1 sm:w-32 sm:flex-none"
+              className="w-32"
             />
           </div>
-          <label className="hidden items-center gap-2 text-sm text-muted-foreground sm:flex">
+          <label className="flex items-center gap-2 text-sm text-muted-foreground">
             Closed
             <Switch
               checked={Boolean(row.closed)}
@@ -418,8 +351,8 @@ export function ImageUpload({
   return (
     <div>
       {label && <Label>{label}</Label>}
-      <div className="mt-2 flex flex-wrap items-center gap-4">
-        <div className="h-20 w-32 shrink-0 overflow-hidden rounded-xl border border-border bg-secondary">
+      <div className="mt-2 flex items-center gap-4">
+        <div className="h-20 w-32 overflow-hidden rounded-xl border border-border bg-secondary">
           {value ? (
             <img src={value} alt="" className="h-full w-full object-cover" />
           ) : (
@@ -476,3 +409,6 @@ export function ImageUpload({
     </div>
   );
 }
+
+export { BrandLogo } from './BrandLogo';
+export { PathwayBadge } from './PathwayBadge';

@@ -79,10 +79,14 @@ router.post('/', requireAuth, async (req, res) => {
       data: {
         providerId,
         name,
+        categoryName: String(body.category_name ?? body.categoryName ?? 'Natural Hair & Treatments'),
+        stream: String(body.stream || 'salon'),
         description: String(body.description || ''),
         durationMinutes: Math.max(5, Number(body.duration_minutes ?? body.durationMinutes ?? 30) || 30),
         price,
         priceNote: String(body.price_note ?? body.priceNote ?? ''),
+        imageUrl: String(body.image_url ?? body.imageUrl ?? ''),
+        popular: Boolean(body.popular),
         professionalIds: Array.isArray(body.professional_ids)
           ? body.professional_ids.map(String)
           : Array.isArray(body.professionalIds)
@@ -91,23 +95,6 @@ router.post('/', requireAuth, async (req, res) => {
         active: body.active !== false,
       },
     });
-
-    // ── Bidirectional Professional Synchronization ──
-    const assignedProIds = created.professionalIds;
-    if (assignedProIds && assignedProIds.length > 0) {
-      const allPros = await prisma.professional.findMany({ where: { providerId } });
-      for (const p of allPros) {
-        const shouldHave = assignedProIds.includes(p.id);
-        const currentServices = p.serviceIds || [];
-        const hasNow = currentServices.includes(created.id);
-        if (shouldHave && !hasNow) {
-          await prisma.professional.update({
-            where: { id: p.id },
-            data: { serviceIds: [...currentServices, created.id] },
-          });
-        }
-      }
-    }
 
     const serialized = serializeService(created);
 
@@ -147,7 +134,15 @@ async function handleUpdateService(req: Request, res: Response) {
     const data: Prisma.ServiceUpdateInput = {};
 
     if (body.name !== undefined) data.name = String(body.name).trim();
+    if (body.category_name !== undefined || body.categoryName !== undefined) {
+      data.categoryName = String(body.category_name ?? body.categoryName ?? 'Natural Hair & Treatments');
+    }
+    if (body.stream !== undefined) data.stream = String(body.stream);
     if (body.description !== undefined) data.description = String(body.description);
+    if (body.image_url !== undefined || body.imageUrl !== undefined) {
+      data.imageUrl = String(body.image_url ?? body.imageUrl ?? '');
+    }
+    if (body.popular !== undefined) data.popular = Boolean(body.popular);
     if (body.duration_minutes !== undefined || body.durationMinutes !== undefined) {
       data.durationMinutes = Math.max(
         5,
@@ -175,28 +170,6 @@ async function handleUpdateService(req: Request, res: Response) {
       where: { id },
       data,
     });
-
-    // ── Bidirectional Professional Synchronization ──
-    if (data.professionalIds !== undefined) {
-      const assignedProIds = Array.isArray(data.professionalIds) ? data.professionalIds : [];
-      const allPros = await prisma.professional.findMany({ where: { providerId: updated.providerId } });
-      for (const p of allPros) {
-        const shouldHave = assignedProIds.includes(p.id);
-        const currentServices = p.serviceIds || [];
-        const hasNow = currentServices.includes(updated.id);
-        if (shouldHave && !hasNow) {
-          await prisma.professional.update({
-            where: { id: p.id },
-            data: { serviceIds: [...currentServices, updated.id] },
-          });
-        } else if (!shouldHave && hasNow) {
-          await prisma.professional.update({
-            where: { id: p.id },
-            data: { serviceIds: currentServices.filter((sid) => sid !== updated.id) },
-          });
-        }
-      }
-    }
 
     const beforeObj = serializeService(existing) as unknown as Record<string, unknown>;
     const afterObj = serializeService(updated) as unknown as Record<string, unknown>;

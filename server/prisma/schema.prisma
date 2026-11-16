@@ -1,5 +1,5 @@
-// BookIt! — Prisma Schema
-// Combines the Base44 BookIt! domain (Provider, Service, Professional, Slot, Booking)
+// BookingTrack — Prisma Schema
+// Combines the Base44 BookingTrack domain (Provider, Service, Professional, Slot, Booking)
 // with TimeTrack's enterprise multi-tenant identity, RBAC, audit trail, and cron locks.
 
 generator client {
@@ -117,10 +117,14 @@ model Service {
   id              String   @id @default(cuid())
   providerId      String
   name            String
+  categoryName    String   @default("Natural Hair & Treatments")
+  stream          String   @default("salon")
   description     String?  @default("")
   durationMinutes Int      @default(30)
   price           Decimal? @db.Decimal(10, 2)
   priceNote       String?  @default("")
+  imageUrl        String?  @default("")
+  popular         Boolean  @default(false)
   professionalIds String[] @default([])
   active          Boolean  @default(true)
   createdAt       DateTime @default(now())
@@ -135,17 +139,25 @@ model Service {
 }
 
 model Professional {
-  id         String   @id @default(cuid())
-  providerId String
-  name       String
-  email      String?
-  title      String?  @default("")
-  bio        String?  @default("")
-  photoUrl   String?  @default("")
-  serviceIds String[] @default([])
-  active     Boolean  @default(true)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id              String   @id @default(cuid())
+  providerId      String
+  name            String
+  email           String?
+  title           String?  @default("")
+  bio             String?  @default("")
+  photoUrl        String?  @default("")
+  pathwayStage    String   @default("GROW")
+  pathwayRole     String   @default("Senior Stylist")
+  specialties     String[] @default([])
+  rating          Float    @default(4.95)
+  reviewCount     Int      @default(48)
+  experienceYears Int      @default(4)
+  commissionRate  Float    @default(0.45)
+  leaves          Json     @default("[]")
+  serviceIds      String[] @default([])
+  active          Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 
   provider Provider  @relation(fields: [providerId], references: [id], onDelete: Cascade)
   slots    Slot[]
@@ -185,6 +197,7 @@ model Slot {
 
 model Booking {
   id               String        @id @default(cuid())
+  referenceCode    String        @default("")
   providerId       String
   providerName     String
   serviceId        String?
@@ -200,6 +213,10 @@ model Booking {
   startTime        String // "HH:mm"
   endTime          String // "HH:mm"
   price            Decimal?      @db.Decimal(10, 2)
+  depositAmount    Decimal?      @db.Decimal(10, 2)
+  promoCode        String?       @default("")
+  discountPercent  Int           @default(0)
+  popiaConsent     Boolean       @default(true)
   notes            String?       @default("")
   status           BookingStatus @default(confirmed)
   reminderSentAt   DateTime?
@@ -216,6 +233,117 @@ model Booking {
   @@index([customerId, date])
   @@index([customerEmail, date])
   @@index([slotId])
+}
+
+// ─────────────────────────────────────────────────────────────
+// Floor 1 — HER Beauty Domain (Specials, Broadcasts, Contracts, Loyalty)
+// ─────────────────────────────────────────────────────────────
+
+model SpecialOffer {
+  id                   String   @id @default(cuid())
+  providerId           String?
+  title                String
+  code                 String   @unique
+  discountPercentage   Int      @default(15)
+  description          String   @default("")
+  validFrom            String   @default("2026-01-01")
+  validUntil           String   @default("2026-12-31")
+  bannerImage          String   @default("")
+  featuredOnLanding    Boolean  @default(true)
+  targetAudience       String   @default("all")
+  applicableServiceIds String[] @default([])
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@index([providerId])
+}
+
+model BroadcastMessage {
+  id          String   @id @default(cuid())
+  providerId  String?
+  senderId    String
+  senderRole  String   @default("admin")
+  targetGroup String   @default("all_customers")
+  subject     String
+  body        String
+  channel     String   @default("in_app")
+  sentAt      DateTime @default(now())
+
+  @@index([providerId, sentAt])
+}
+
+model StylistContract {
+  id                      String   @id @default(cuid())
+  providerId              String?
+  professionalId          String?
+  stylistName             String
+  contractType            String   @default("permanent")
+  startDate               String
+  endDate                 String?
+  commissionRate          Float    @default(0.45)
+  pathwayStage            String   @default("GROW")
+  mentorshipHoursPerMonth Int      @default(15)
+  probationEndsAt         String?
+  status                  String   @default("active")
+  signedAt                String?
+  documentRef             String   @default("")
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  @@index([providerId])
+  @@index([professionalId])
+}
+
+model ProgrammeAgreement {
+  id                String   @id @default(cuid())
+  providerId        String?
+  cohort            String
+  name              String
+  startDate         String
+  endDate           String
+  capacity          Int      @default(6)
+  enrolledNames     String[] @default([])
+  mentorNames       String[] @default([])
+  curriculumModules String[] @default([])
+  stipendAmount     Float    @default(2500)
+  status            String   @default("active")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([providerId])
+}
+
+model ConsentRecord {
+  id            String   @id @default(cuid())
+  providerId    String?
+  customerId    String?
+  customerEmail String
+  customerName  String   @default("")
+  type          String   @default("special_info")
+  granted       Boolean  @default(true)
+  version       String   @default("1.2")
+  grantedAt     DateTime @default(now())
+  revokedAt     DateTime?
+
+  @@index([customerEmail])
+  @@index([providerId])
+}
+
+model CustomerLoyalty {
+  id                    String   @id @default(cuid())
+  email                 String   @unique
+  customerName          String
+  tier                  String   @default("HER Circle")
+  preferredStylist      String   @default("Nomvula Dlamini (Master Texture Specialist)")
+  hairType              String   @default("Type 4C Coily Texture, High Porosity")
+  skinConcerns          String   @default("Hydration Focus, Gentle Botanical Care")
+  allergies             String   @default("Sulfates & Mineral Oils (Prefers Shea, Argan & Jojoba botanicals)")
+  beautyPoints          Int      @default(4850)
+  referralCode          String   @default("HER-CIRCLE")
+  birthdayOfferEligible Boolean  @default(true)
+  savedCardLast4        String   @default("4921 (Standard Bank Student Debit)")
+  memberSince           String   @default("January 2024")
+  updatedAt             DateTime @updatedAt
 }
 
 // ─────────────────────────────────────────────────────────────

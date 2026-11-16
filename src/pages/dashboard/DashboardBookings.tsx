@@ -62,20 +62,20 @@ export default function DashboardBookings() {
   return (
     <div>
       <DashboardSubNav />
-      <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-5 sm:py-10">
-        <h1 className="font-display text-2xl text-foreground sm:text-3xl">Bookings</h1>
-        <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+      <div className="mx-auto w-full max-w-4xl px-5 py-10">
+        <h1 className="font-display text-3xl text-foreground">Bookings</h1>
+        <p className="mt-2 text-muted-foreground">
           Confirm, complete, remind or cancel — all from here.
         </p>
 
-        <div className="no-scrollbar mt-5 flex snap-x gap-2 overflow-x-auto pb-1 sm:mt-6 sm:flex-wrap">
+        <div className="no-scrollbar mt-6 flex gap-2 overflow-x-auto pb-1 sm:flex-wrap">
           {TABS.map((t) => (
             <button
               key={t.key}
               type="button"
               onClick={() => setTab(t.key)}
               className={cn(
-                'shrink-0 snap-start whitespace-nowrap rounded-full border px-4 py-2 text-sm transition',
+                'whitespace-nowrap shrink-0 rounded-full border px-4 py-2 text-sm transition',
                 tab === t.key
                   ? 'border-primary bg-primary text-primary-foreground'
                   : 'border-border bg-card text-muted-foreground hover:text-foreground',

@@ -4,6 +4,7 @@
 
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Shield } from 'lucide-react';
+import { BRAND, FOUNDER, CONTACT } from '../lib/brand';
 
 export default function Privacy() {
   return (
@@ -12,23 +13,30 @@ export default function Privacy() {
         to="/"
         className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
       >
-        <ArrowLeft className="h-4 w-4" /> Back to BookIt!
+        <ArrowLeft className="h-4 w-4" /> Back to {BRAND.name}
       </Link>
       <div className="flex items-center gap-2 text-primary">
         <Shield className="h-5 w-5" />
-        <span className="text-xs font-semibold uppercase tracking-widest">POPIA & GDPR</span>
+        <span className="text-xs font-semibold uppercase tracking-widest">
+          POPIA (Act 4 of 2013) & Booking Policy Governance
+        </span>
       </div>
-      <h1 className="font-display text-3xl text-foreground">Privacy Policy</h1>
+      <h1 className="font-display text-3xl text-foreground">
+        {BRAND.enterpriseName} — Privacy & POPIA Policy
+      </h1>
       <div className="space-y-4 rounded-3xl border border-border bg-card p-6 text-sm leading-relaxed text-muted-foreground">
         <p>
-          BookIt! processes personal information (name, contact email, phone number, and
-          appointment history) strictly for scheduling appointments between customers and listed
-          service providers across South Africa in accordance with the Protection of Personal
-          Information Act (POPIA).
+          <strong className="text-foreground">{BRAND.enterpriseName}</strong> (founded by{' '}
+          {FOUNDER.name}, headquartered at {CONTACT.address}) processes personal information
+          (name, contact email, phone number, appointment history, and voluntary hair texture,
+          skin & allergy care notes) strictly for scheduling studio appointments and delivering
+          culturally responsive care in accordance with the Protection of Personal Information
+          Act (POPIA), 2013.
         </p>
         <p>
-          Session tokens are stored in httpOnly cookies, passwords are hashed with bcrypt, and
-          audit logs redact client IP addresses for non-administrative viewers.
+          Session tokens are stored in httpOnly cookies, passwords are hashed with bcrypt,
+          special personal information consent is versioned and revocable, and immutable audit
+          logs automatically redact client IP addresses.
         </p>
       </div>
     </div>

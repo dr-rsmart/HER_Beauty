@@ -39,7 +39,7 @@ function CustomerBookingCard({
       className={cn(
         'rounded-2xl border bg-card p-5 transition',
         highlighted
-          ? 'border-primary/50 shadow-[0_18px_50px_-40px_rgba(225,0,100,0.65)]'
+          ? 'border-primary/50 shadow-[0_18px_50px_-40px_rgba(12,58,52,0.9)]'
           : 'border-border',
       )}
     >
@@ -54,6 +54,11 @@ function CustomerBookingCard({
           <p className="mt-1 text-sm text-muted-foreground">{booking.service_name}</p>
         </div>
         <div className="flex items-center gap-2">
+          {booking.reference_code && (
+            <Badge variant="outline" className="font-mono text-[11px]">
+              {booking.reference_code}
+            </Badge>
+          )}
           {rel && booking.status !== 'cancelled' && (
             <Badge variant="outline" className="border-primary/30 bg-primary/5 text-primary">
               {rel}
@@ -85,6 +90,16 @@ function CustomerBookingCard({
         )}
         {formatZAR(booking.price) && (
           <span className="font-medium text-foreground">{formatZAR(booking.price)}</span>
+        )}
+        {formatZAR(booking.deposit_amount) && (
+          <span className="text-xs text-primary">
+            (20% deposit: {formatZAR(booking.deposit_amount)})
+          </span>
+        )}
+        {booking.promo_code && (
+          <span className="rounded-full bg-primary/10 px-2 py-0.5 font-mono text-[11px] font-semibold text-primary">
+            {booking.promo_code}
+          </span>
         )}
       </div>
 
@@ -162,9 +177,9 @@ export default function MyBookings() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:px-5 sm:py-12">
-      <h1 className="font-display text-2xl text-foreground sm:text-3xl">My bookings</h1>
-      <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+    <div className="mx-auto w-full max-w-3xl px-5 py-12">
+      <h1 className="font-display text-3xl text-foreground">My bookings</h1>
+      <p className="mt-2 text-muted-foreground">
         Everything you’ve booked, and your upcoming reminders.
       </p>
 

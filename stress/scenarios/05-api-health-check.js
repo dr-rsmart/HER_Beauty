@@ -79,7 +79,7 @@ export default function () {
   metricsScrapeLatency.add(Date.now() - metricsStart);
   const metricsOk = check(metricsRes, {
     'metrics status 200': (r) => r.status === 200,
-    'contains bookit counters': (r) => r.body.includes('bookit_http_requests_total'),
+    'contains bookingtrack counters': (r) => r.body.includes('bookingtrack_http_requests_total'),
   });
 
   const allPassed = readyOk && healthOk && metricsOk;

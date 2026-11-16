@@ -104,6 +104,14 @@ router.post('/', requireAuth, async (req, res) => {
         title: String(body.title || ''),
         bio: String(body.bio || ''),
         photoUrl: String(body.photo_url ?? body.photoUrl ?? ''),
+        pathwayStage: String(body.pathway_stage ?? body.pathwayStage ?? 'GROW'),
+        pathwayRole: String(body.pathway_role ?? body.pathwayRole ?? body.title ?? 'Senior Stylist'),
+        specialties: Array.isArray(body.specialties) ? body.specialties.map(String) : [],
+        rating: body.rating != null ? Number(body.rating) : 4.95,
+        reviewCount: body.review_count != null ? Number(body.review_count) : 32,
+        experienceYears: body.experience_years != null ? Number(body.experience_years) : 3,
+        commissionRate: body.commission_rate != null ? Number(body.commission_rate) : 0.45,
+        leaves: Array.isArray(body.leaves) ? (body.leaves as Prisma.InputJsonValue) : [],
         serviceIds: Array.isArray(body.service_ids)
           ? body.service_ids.map(String)
           : Array.isArray(body.serviceIds)
@@ -158,23 +166,6 @@ router.post('/', requireAuth, async (req, res) => {
       });
     }
 
-    // ── Bidirectional Service Synchronization ──
-    const assignedServiceIds = created.serviceIds;
-    if (assignedServiceIds && assignedServiceIds.length > 0) {
-      const allServices = await prisma.service.findMany({ where: { providerId } });
-      for (const s of allServices) {
-        const shouldHave = assignedServiceIds.includes(s.id);
-        const currentPros = s.professionalIds || [];
-        const hasNow = currentPros.includes(created.id);
-        if (shouldHave && !hasNow) {
-          await prisma.service.update({
-            where: { id: s.id },
-            data: { professionalIds: [...currentPros, created.id] },
-          });
-        }
-      }
-    }
-
     const serialized = serializeProfessional(created, {
       has_login: Boolean(userRole),
       login_role: userRole,
@@ -223,6 +214,24 @@ async function handleUpdateProfessional(req: Request, res: Response) {
     if (body.bio !== undefined) data.bio = String(body.bio);
     if (body.photo_url !== undefined || body.photoUrl !== undefined) {
       data.photoUrl = String(body.photo_url ?? body.photoUrl ?? '');
+    }
+    if (body.pathway_stage !== undefined || body.pathwayStage !== undefined) {
+      data.pathwayStage = String(body.pathway_stage ?? body.pathwayStage ?? 'GROW');
+    }
+    if (body.pathway_role !== undefined || body.pathwayRole !== undefined) {
+      data.pathwayRole = String(body.pathway_role ?? body.pathwayRole ?? '');
+    }
+    if (body.specialties !== undefined) {
+      data.specialties = Array.isArray(body.specialties) ? body.specialties.map(String) : [];
+    }
+    if (body.commission_rate !== undefined || body.commissionRate !== undefined) {
+      data.commissionRate = Number(body.commission_rate ?? body.commissionRate ?? 0.45);
+    }
+    if (body.experience_years !== undefined || body.experienceYears !== undefined) {
+      data.experienceYears = Number(body.experience_years ?? body.experienceYears ?? 3);
+    }
+    if (body.leaves !== undefined) {
+      data.leaves = (Array.isArray(body.leaves) ? body.leaves : []) as Prisma.InputJsonValue;
     }
     if (body.service_ids !== undefined || body.serviceIds !== undefined) {
       const ids = body.service_ids ?? body.serviceIds;
@@ -283,28 +292,6 @@ async function handleUpdateProfessional(req: Request, res: Response) {
         providerId: updated.providerId,
         justification: `Updated staff login account for ${updated.name} (${userRole})`,
       });
-    }
-
-    // ── Bidirectional Service Synchronization ──
-    if (data.serviceIds !== undefined) {
-      const assignedServiceIds = Array.isArray(data.serviceIds) ? data.serviceIds : [];
-      const allServices = await prisma.service.findMany({ where: { providerId: updated.providerId } });
-      for (const s of allServices) {
-        const shouldHave = assignedServiceIds.includes(s.id);
-        const currentPros = s.professionalIds || [];
-        const hasNow = currentPros.includes(updated.id);
-        if (shouldHave && !hasNow) {
-          await prisma.service.update({
-            where: { id: s.id },
-            data: { professionalIds: [...currentPros, updated.id] },
-          });
-        } else if (!shouldHave && hasNow) {
-          await prisma.service.update({
-            where: { id: s.id },
-            data: { professionalIds: currentPros.filter((pid) => pid !== updated.id) },
-          });
-        }
-      }
     }
 
     const beforeObj = serializeProfessional(existing) as unknown as Record<string, unknown>;

@@ -108,7 +108,7 @@ export function startCron(): void {
     void runBookingMaintenanceTick();
   }, 60_000);
   cronTimer.unref?.();
-  logger.info('[cron] BookIt! maintenance cron started (60s interval).');
+  logger.info('[cron] BookingTrack maintenance cron started (60s interval).');
 }
 
 export function stopCron(): void {

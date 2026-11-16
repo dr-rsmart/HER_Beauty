@@ -46,7 +46,7 @@ const PERF_SECRET = __ENV.PERF_TEST_SECRET || 'tt_perf_bench_2026';
 
 export default function () {
   const vuId = __VU;
-  const email = `perf_user_${vuId}@stress.bookit.internal`;
+  const email = `perf_user_${vuId}@stress.bookingtrack.internal`;
 
   // 1. Authenticate virtual user to obtain valid session cookie
   const loginRes = http.post(

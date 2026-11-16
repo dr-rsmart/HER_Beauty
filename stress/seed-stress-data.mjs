@@ -28,10 +28,10 @@ const STRESS_TAG = 'stress-test';
 export async function cleanStressData() {
   console.log('🧹 Purging previous stress test partitions...');
   await prisma.auditLog.deleteMany({
-    where: { actorEmail: { contains: '@stress.bookit.internal' } },
+    where: { actorEmail: { contains: '@stress.bookingtrack.internal' } },
   });
   await prisma.booking.deleteMany({
-    where: { customerEmail: { contains: '@stress.bookit.internal' } },
+    where: { customerEmail: { contains: '@stress.bookingtrack.internal' } },
   });
   await prisma.slot.deleteMany({
     where: { provider: { tagline: { contains: STRESS_TAG } } },
@@ -43,7 +43,7 @@ export async function cleanStressData() {
     where: { provider: { tagline: { contains: STRESS_TAG } } },
   });
   await prisma.user.deleteMany({
-    where: { email: { contains: '@stress.bookit.internal' } },
+    where: { email: { contains: '@stress.bookingtrack.internal' } },
   });
   await prisma.provider.deleteMany({
     where: { tagline: { contains: STRESS_TAG } },
@@ -66,7 +66,7 @@ export async function seedStressPartition(targetVUs = 5000) {
       category: i % 3 === 0 ? 'Medical' : i % 2 === 0 ? 'Salon' : 'Automotive',
       tagline: `${STRESS_TAG}-tier-${i}`,
       city: i % 2 === 0 ? 'Johannesburg' : 'Cape Town',
-      ownerEmail: `owner_${i}@stress.bookit.internal`,
+      ownerEmail: `owner_${i}@stress.bookingtrack.internal`,
       status: 'published',
       isActive: true,
       billingTier: 'enterprise',
@@ -151,7 +151,7 @@ export async function seedStressPartition(targetVUs = 5000) {
   const userBatches = [];
   for (let i = 1; i <= userCount; i++) {
     userBatches.push({
-      email: `perf_user_${i}@stress.bookit.internal`,
+      email: `perf_user_${i}@stress.bookingtrack.internal`,
       fullName: `Virtual User ${i}`,
       phone: `+27 82 ${String(i).padStart(7, '0')}`,
       role: 'customer',

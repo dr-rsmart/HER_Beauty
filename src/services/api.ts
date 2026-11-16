@@ -1,6 +1,6 @@
 /**
- * BookIt! API Client
- * ------------------
+ * BookingTrack API Client
+ * -----------------------
  * Centralized fetch wrapper with credentials, session error interception,
  * and typed endpoints for Auth, Providers, Services, Professionals, Slots,
  * Bookings, Audit Logs, and Platform Master operations.
@@ -14,6 +14,13 @@ import type {
   SlotRecord,
   BookingRecord,
   AuditLogRecord,
+  SpecialOfferRecord,
+  BroadcastMessageRecord,
+  StylistContractRecord,
+  ProgrammeAgreementRecord,
+  ConsentRecordItem,
+  BookingPolicyRecord,
+  CustomerLoyaltyRecord,
   SessionErrorCode,
 } from '../../contracts';
 
@@ -25,6 +32,13 @@ export type {
   SlotRecord,
   BookingRecord,
   AuditLogRecord,
+  SpecialOfferRecord,
+  BroadcastMessageRecord,
+  StylistContractRecord,
+  ProgrammeAgreementRecord,
+  ConsentRecordItem,
+  BookingPolicyRecord,
+  CustomerLoyaltyRecord,
   SessionErrorCode,
 };
 
@@ -441,4 +455,81 @@ export const uploadsApi = {
       body: JSON.stringify({ dataUrl }),
     });
   },
+};
+
+// ── HER Beauty Floor 1 Domain API (/api/her) ──
+export interface PathwayMetricsResponse {
+  stageCounts: Record<string, number>;
+  youngStylistsInTraining: number;
+  mentorshipHoursCompleted: number;
+  studentDiscountSessions: number;
+  stylistsTrainedTotal: number;
+  employmentOpportunitiesCreated: number;
+  entrepreneurshipWorkshopsDelivered: number;
+  communityPartnerships: number;
+  stylistsProgressedToIncome: number;
+  independentBusinessesLaunched: number;
+  activeCohorts: number;
+  streamServiceCounts: Record<string, number>;
+}
+
+export const herApi = {
+  listSpecials: (providerId?: string) =>
+    request<{ items: SpecialOfferRecord[] }>(
+      `/her/specials${providerId ? `?provider_id=${encodeURIComponent(providerId)}` : ''}`,
+    ),
+  validatePromoCode: (code: string) =>
+    request<{
+      valid: boolean;
+      offer: {
+        id: string;
+        title: string;
+        code: string;
+        discountPercentage: number;
+        description: string;
+      };
+    }>(`/her/specials/validate?code=${encodeURIComponent(code)}`),
+  createSpecial: (data: Partial<SpecialOfferRecord> & { title: string; code: string }) =>
+    request<SpecialOfferRecord>('/her/specials', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  deleteSpecial: (id: string) =>
+    request<{ success: boolean }>(`/her/specials/${encodeURIComponent(id)}`, {
+      method: 'DELETE',
+    }),
+  listBroadcasts: (providerId?: string) =>
+    request<{ items: BroadcastMessageRecord[] }>(
+      `/her/broadcasts${providerId ? `?provider_id=${encodeURIComponent(providerId)}` : ''}`,
+    ),
+  sendBroadcast: (data: {
+    provider_id?: string;
+    targetGroup: string;
+    subject: string;
+    body: string;
+    channel: string;
+  }) =>
+    request<BroadcastMessageRecord>('/her/broadcasts', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  getContracts: (providerId?: string) =>
+    request<{
+      bookingPolicy: BookingPolicyRecord;
+      stylistContracts: StylistContractRecord[];
+      programmeAgreements: ProgrammeAgreementRecord[];
+      consentRecords: ConsentRecordItem[];
+    }>(`/her/contracts${providerId ? `?provider_id=${encodeURIComponent(providerId)}` : ''}`),
+  createContract: (data: Record<string, unknown>) =>
+    request<StylistContractRecord>('/her/contracts', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  getLoyalty: () => request<CustomerLoyaltyRecord>('/her/loyalty'),
+  updateLoyalty: (data: Partial<CustomerLoyaltyRecord>) =>
+    request<CustomerLoyaltyRecord>('/her/loyalty', {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    }),
+  getPathwayMetrics: () => request<PathwayMetricsResponse>('/her/pathway-metrics'),
 };

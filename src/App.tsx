@@ -1,6 +1,6 @@
 /**
- * BookIt! Application Router
- * --------------------------
+ * BookingTrack Application Router
+ * -------------------------------
  * Combines all Base44 public/customer/provider routes with TimeTrack's
  * auth guards, forced password change modal, Master Console, Simulator, and Audit Log.
  */
@@ -29,6 +29,8 @@ import DashboardBookings from './pages/dashboard/DashboardBookings';
 import DashboardAvailability from './pages/dashboard/DashboardAvailability';
 import DashboardServices from './pages/dashboard/DashboardServices';
 import DashboardTeam from './pages/dashboard/DashboardTeam';
+import DashboardSpecials from './pages/dashboard/DashboardSpecials';
+import DashboardContracts from './pages/dashboard/DashboardContracts';
 import DashboardProfile from './pages/dashboard/DashboardProfile';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -157,6 +159,22 @@ export default function App() {
                 element={
                   <RequireAuth>
                     <DashboardTeam />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/dashboard/specials"
+                element={
+                  <RequireAuth>
+                    <DashboardSpecials />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/dashboard/contracts"
+                element={
+                  <RequireAuth>
+                    <DashboardContracts />
                   </RequireAuth>
                 }
               />

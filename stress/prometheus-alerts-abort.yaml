@@ -8,13 +8,13 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: bookit-stress-abort-rules
+  name: bookingtrack-stress-abort-rules
   namespace: monitoring
   labels:
     role: alert-rules
 spec:
   groups:
-    - name: bookit_stress_kill_switches
+    - name: bookingtrack_stress_kill_switches
       rules:
         # 1. RAM / Swap Usage Tripwire (> 90%)
         - alert: StressTripwireMemoryExhaustion
@@ -54,7 +54,7 @@ spec:
 
         # 4. Error Rate Tripwire (> 5%)
         - alert: StressTripwireHighErrorRate
-          expr: (sum(rate(bookit_http_responses_5xx_total[15s])) / sum(rate(bookit_http_requests_total[15s]))) * 100 > 5
+          expr: (sum(rate(bookingtrack_http_responses_5xx_total[15s])) / sum(rate(bookingtrack_http_requests_total[15s]))) * 100 > 5
           for: 5s
           labels:
             severity: critical

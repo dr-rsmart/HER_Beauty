@@ -15,7 +15,7 @@ import {
   formatZAR,
 } from '../src/lib/utils';
 
-describe('BookIt! Frontend Utilities & Formatters', () => {
+describe('BookingTrack Frontend Utilities & Formatters', () => {
   it('resolves South African provider categories with fallback to Other', () => {
     expect(CATEGORIES.length).toBe(7);
     expect(getCategoryMeta('Doctor').label).toBe('Doctors');

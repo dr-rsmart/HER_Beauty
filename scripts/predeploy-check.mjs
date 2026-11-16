@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /**
- * BookIt! Pre-Deployment Verification Pipeline
- * --------------------------------------------
+ * BookingTrack Pre-Deployment Verification Pipeline
+ * -------------------------------------------------
  * Runs environment check, database integrity check, strict TypeScript typecheck,
  * and full Vitest test suite prior to deployment.
  */
 
 import { spawnSync } from 'child_process';
 
-console.log('🚀 Running BookIt! Pre-Deployment Verification Pipeline...\n');
+console.log('🚀 Running BookingTrack Pre-Deployment Verification Pipeline...\n');
 
 const steps = [
   { name: '[1/4] Environment & Cryptographic Check', cmd: 'node', args: ['server/env_check.mjs'] },
@@ -27,4 +27,4 @@ for (const step of steps) {
   }
 }
 
-console.log('\n✨ ALL PRE-DEPLOYMENT CHECKS PASSED. BookIt! is ready for production!');
+console.log('\n✨ ALL PRE-DEPLOYMENT CHECKS PASSED. BookingTrack is ready for production!');

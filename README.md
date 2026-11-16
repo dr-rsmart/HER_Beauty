@@ -1,12 +1,12 @@
-# BookIt!
+# HER Beauty — Studio & Social Enterprise (on BookingTrack Foundation)
 
-**Multi-tenant appointment booking, professional scheduling, and business management platform across South Africa** — reproducing the `witty-book-flow-now.base44.app` experience like-for-like under the **BookIt!** brand, built on top of **TimeTrack**'s enterprise architecture, RBAC, audit trail, real-time SSE, and security infrastructure.
+**Contemporary student-centred hair, nails & beauty studio and social enterprise** — built with **BookingTrack** as the **Foundation** (Express 5 + Prisma PostgreSQL + React 19 + React Router 7 + RBAC + atomic slot transactions + SSE real-time + immutable AuditLog) and **HER Beauty** as **Floor 1** (Director Mrs Monean N Jacobs, Warm Copper / Deep Espresso / Linen design system, **The HER Pathway** `LEARN → PRACTISE → EARN → GROW → EMPOWER`, 21 services across 5 revenue streams, Specials, Stylist Contracts, Cohort 2025 Young Stylist Programme, and POPIA governance).
 
 ---
 
 ## Architecture & Improvements over Base44
 
-| Area | Base44 Prototype | BookIt! (TimeTrack Architecture) |
+| Area | Base44 Prototype | BookingTrack (TimeTrack Architecture) |
 | --- | --- | --- |
 | **Schema & Typing** | Untyped document collections | Native Prisma PostgreSQL schema (`Role`, `ProviderStatus`, `SlotStatus`, `BookingStatus`) + composite indexes |
 | **Slot Reservation** | Separate client-side `Booking.create` + `Slot.update` calls | Atomic Prisma `$transaction` preventing double-booking race conditions and releasing slots automatically on cancellation |
@@ -20,21 +20,21 @@
 
 ## Seeded Accounts
 
-All seeded accounts use password: **`Password123`**
+Standard accounts use password: **`Password123`**. All Master accounts use password: **`ChangeMe123!`**.
 
 | Email | Alias | Role | Password | Business / Persona |
 | --- | --- | --- | --- | --- |
-| `ricardo@smartpatel.tech` | — | `master` | `ChangeMe123!` | Ricardo Smart — Platform Master (Control Center & Simulator) |
-| `raees@smartpatel.tech` | — | `master` | `ChangeMe123!` | Raees Patel — Platform Master (Control Center & Simulator) |
-| `master@smartpatel.co.za` | — | `master` | `Password123` | Platform Master (Cross-tenant Control Center & Simulator) |
-| `admin@bookit.com` | `admin@timetrack.com` | `admin` | `Password123` | Diana Prince — **Sandton Medical & Family Clinic** (Doctor, Sandton) |
-| `thabo@bookit.com` | `thabo@timetrack.com` | `manager` | `Password123` | Thabo Mokoena — **Atelier Hair & Beauty Studio** (Salon, Rosebank) |
-| `ayesha@bookit.com` | `ayesha@timetrack.com` | `manager` | `Password123` | Ayesha Pillay — **Cape Auto Precision Mechanics** (Mechanic, Cape Town) |
-| `pieter@bookit.com` | `pieter@timetrack.com` | `admin` | `Password123` | Pieter van der Merwe — **Waterfront Dental Studio** (Dentist, Cape Town) |
-| `naledi@bookit.com` | `naledi@timetrack.com` | `admin` | `Password123` | Naledi Khumalo — **Fynbos Botanical Spa & Wellness** (Spa & Wellness, Stellenbosch) |
-| `riaan@bookit.com` | `riaan@timetrack.com` | `admin` | `Password123` | Riaan Botha — **Highveld Performance Fitness** (Fitness, Pretoria) |
-| `sipho@bookit.com` | `sipho@timetrack.com` | `customer` | `Password123` | Sipho Ndlovu — Customer with upcoming & completed appointments |
-| `lerato@bookit.com` | `lerato@timetrack.com` | `customer` | `Password123` | Lerato Dlamini — Customer with pending & completed appointments |
+| `founder@herbeauty.co.za` | — | `master` | `ChangeMe123!` | Mrs Monean N Jacobs — Platform Director & Master Governance |
+| `admin@herbeauty.co.za` | `admin@bookingtrack.com` | `admin` | `Password123` | Chloe Laurent — **HER Beauty — Flagship Studio** |
+| `tygervalley@herbeauty.co.za` | `thabo@bookingtrack.com` | `manager` | `Password123` | Thabo Mokoena — **Tygervalley Medical & Campus Hub** |
+| `rondebosch@herbeauty.co.za` | `ayesha@bookingtrack.com` | `manager` | `Password123` | Ayesha Pillay — **Rondebosch Student Sanctuary** |
+| `coetzenburg@herbeauty.co.za` | `pieter@bookingtrack.com` | `admin` | `Password123` | Pieter van der Merwe — **Coetzenburg Wellness & Skin Bar** |
+| `academy@herbeauty.co.za` | `naledi@bookingtrack.com` | `admin` | `Password123` | Naledi Khumalo — **Young Stylist Academy & Training Hub** |
+| `events@herbeauty.co.za` | `riaan@bookingtrack.com` | `admin` | `Password123` | Riaan Botha — **Winelands Bridal & Events Collective** |
+| `nomvula@herbeauty.co.za` | — | `manager` | `Password123` | Nomvula Dlamini — Master Stylist & Senior Mentor (EMPOWER) |
+| `thandiwe@herbeauty.co.za` | — | `customer` | `Password123` | Thandiwe Ndlovu — VIP Customer (HER Circle) |
+| `sipho@herbeauty.co.za` | `sipho@bookingtrack.com` | `customer` | `Password123` | Sipho Khuzwayo — Customer |
+| `anke@herbeauty.co.za` | `lerato@bookingtrack.com` | `customer` | `Password123` | Anke van der Merwe — Customer |
 
 ---
 

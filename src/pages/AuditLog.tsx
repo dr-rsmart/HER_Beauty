@@ -8,7 +8,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ScrollText, Search, Shield } from 'lucide-react';
 import { auditApi, type AuditLogRecord } from '../services/api';
-import { Badge, Input, Select, Spinner } from '../components/ui';
+import { Badge, Input, Spinner } from '../components/ui';
 
 const ENTITIES = ['', 'Provider', 'Service', 'Professional', 'Slot', 'Booking', 'User'];
 
@@ -40,7 +40,7 @@ export default function AuditLog() {
   }, [loadLogs]);
 
   return (
-    <div className="mx-auto w-full max-w-6xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-5 sm:py-10">
+    <div className="mx-auto w-full max-w-6xl space-y-8 px-5 py-10">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-primary">
@@ -49,29 +49,27 @@ export default function AuditLog() {
               Compliance & Governance
             </span>
           </div>
-          <h1 className="mt-2 font-display text-2xl text-foreground sm:text-3xl">
-            Immutable Audit Trail
-          </h1>
-          <p className="mt-1 text-sm text-muted-foreground sm:text-base">
+          <h1 className="mt-2 font-display text-3xl text-foreground">Immutable Audit Trail</h1>
+          <p className="mt-1 text-muted-foreground">
             Every booking, slot, service, and account change is recorded with before/after diffs.
           </p>
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-        <div className="relative min-w-0 flex-1 sm:min-w-[260px]">
-          <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+      <div className="flex flex-wrap items-center gap-3">
+        <div className="relative min-w-[260px] flex-1">
+          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Filter by actor email, action or note…"
-            className="h-11 rounded-full bg-card pl-10 sm:h-10"
+            className="h-10 rounded-full bg-card pl-10"
           />
         </div>
-        <Select
+        <select
           value={entity}
           onChange={(e) => setEntity(e.target.value)}
-          className="h-11 w-full rounded-full border-border bg-card px-4 sm:h-10 sm:w-auto"
+          className="h-10 rounded-full border border-border bg-card px-4 text-sm text-foreground"
         >
           <option value="">All entities</option>
           {ENTITIES.filter(Boolean).map((ent) => (
@@ -79,7 +77,7 @@ export default function AuditLog() {
               {ent}
             </option>
           ))}
-        </Select>
+        </select>
       </div>
 
       {loading ? (
@@ -95,24 +93,22 @@ export default function AuditLog() {
           {logs.map((log) => (
             <div
               key={log.id}
-              className="rounded-2xl border border-border bg-card p-4 transition hover:border-primary/30 sm:p-5"
+              className="rounded-2xl border border-border bg-card p-5 transition hover:border-primary/30"
             >
-              <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3">
-                <div className="flex min-w-0 flex-wrap items-center gap-2">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center gap-2">
                   <Badge variant="default" className="rounded-full">
                     {log.entity}
                   </Badge>
                   <Badge variant="outline" className="rounded-full font-mono text-xs">
                     {log.action}
                   </Badge>
-                  <span className="break-all text-sm font-medium text-foreground">
-                    {log.actorEmail}
-                  </span>
+                  <span className="text-sm font-medium text-foreground">{log.actorEmail}</span>
                   <span className="text-xs uppercase text-muted-foreground">
                     ({log.actorRole})
                   </span>
                 </div>
-                <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+                <div className="flex items-center gap-3 text-xs text-muted-foreground">
                   {log.ipAddress && (
                     <span className="inline-flex items-center gap-1 font-mono">
                       <Shield className="h-3 w-3 text-primary/70" />
@@ -124,15 +120,13 @@ export default function AuditLog() {
               </div>
 
               {log.justification && (
-                <p className="mt-2 break-words text-sm text-muted-foreground">
-                  {log.justification}
-                </p>
+                <p className="mt-2 text-sm text-muted-foreground">{log.justification}</p>
               )}
 
               {log.changes && Object.keys(log.changes).length > 0 && (
                 <div className="mt-3 overflow-x-auto rounded-xl bg-secondary/50 p-3 font-mono text-xs text-muted-foreground">
                   {Object.entries(log.changes).map(([field, diff]) => (
-                    <div key={field} className="flex flex-wrap gap-2 break-all">
+                    <div key={field} className="flex flex-wrap gap-2">
                       <span className="font-semibold text-foreground">{field}:</span>
                       <span className="line-through opacity-70">
                         {JSON.stringify(diff.before)}

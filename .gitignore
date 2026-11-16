@@ -19,6 +19,7 @@ coverage/
 Thumbs.db
 .vscode/
 .idea/
-.railway/
 *.tsbuildinfo
-.vite/
+__pycache__/
+*.pyc
+.railway/

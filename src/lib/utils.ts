@@ -1,7 +1,7 @@
 /**
- * BookIt! Domain Utilities & Formatters
- * -------------------------------------
- * Exact like-for-like helpers matching the Base44 BookIt! UI:
+ * BookingTrack Domain Utilities & Formatters
+ * ------------------------------------------
+ * Exact like-for-like helpers matching the Base44 BookingTrack UI:
  * Categories, South African ZAR formatting, 12h time, human dates,
  * relative upcoming notices, and working hours defaults.
  */

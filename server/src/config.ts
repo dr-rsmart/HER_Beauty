@@ -16,7 +16,7 @@ dotenv.config({ path: path.resolve(__dirname, '../.env') });
 dotenv.config();
 
 const INSECURE_DEFAULTS = [
-  'BookIt-dev-secret-change-in-production',
+  'BookingTrack-dev-secret-change-in-production',
   'TimeTrack-dev-secret-change-in-production',
   'change-me-in-production',
   'tt_perf_bench_2026',
@@ -91,9 +91,7 @@ if (isNaN(PORT) || PORT < 1 || PORT > 65535) {
 }
 
 const rawCorsOrigin = isProduction()
-  ? process.env.CORS_ORIGIN ||
-    (process.env.RAILWAY_PUBLIC_DOMAIN ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}` : '') ||
-    requireEnv('CORS_ORIGIN')
+  ? requireEnv('CORS_ORIGIN')
   : process.env.CORS_ORIGIN || 'http://localhost:5175,http://localhost:5173';
 const CORS_ORIGIN = validateCorsOrigin(rawCorsOrigin);
 

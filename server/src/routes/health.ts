@@ -25,7 +25,7 @@ healthRouter.get('/', async (_req: Request, res: Response): Promise<void> => {
     const mem = process.memoryUsage();
     res.status(200).json({
       status: 'ok',
-      service: 'BookIt!',
+      service: 'BookingTrack',
       version: '1.0.0',
       uptime: Math.floor(process.uptime()),
       timestamp: new Date().toISOString(),

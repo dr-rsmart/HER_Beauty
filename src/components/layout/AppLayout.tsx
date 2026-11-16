@@ -1,12 +1,12 @@
 /**
  * Main Application Layout
  * -----------------------
- * Exact like-for-like BookIt! (Base44) top header & footer,
+ * Exact like-for-like BookingTrack (Base44) top header & footer,
  * fused with TimeTrack's enterprise Master Impersonation / Simulator bar,
  * real-time SSE connection badge, dark/light theme toggle, and governance nav.
  */
 
-import { Outlet, Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { Outlet, Link, NavLink, useNavigate } from 'react-router-dom';
 import {
   CalendarCheck,
   LogOut,
@@ -18,18 +18,14 @@ import {
   ShieldCheck,
   ScrollText,
   User,
-  Compass,
-  LayoutDashboard,
-  Building2,
-  LogIn,
-  UserPlus,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { useSSEConnection, useSSEStatus } from '../../hooks/useSSE';
 import { masterApi } from '../../services/api';
-import { Button, BookItLogo } from '../ui';
+import { Button, BrandLogo } from '../ui';
+import { BRAND, FOUNDER, CONTACT, PATHWAY_STAGES } from '../../lib/brand';
 import { cn } from '../../lib/utils';
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -42,7 +38,6 @@ export default function AppLayout() {
   const { user, isAuthenticated, logout, refresh, isMaster, isAdmin } = useAuth();
   const { resolvedTheme, toggleTheme } = useTheme();
   const navigate = useNavigate();
-  const location = useLocation();
 
   useSSEConnection();
   const sseStatus = useSSEStatus();
@@ -65,48 +60,22 @@ export default function AppLayout() {
     navigate('/');
   };
 
-  const mobileBottomItems = isAuthenticated
-    ? [
-        { to: '/', label: 'Browse', icon: Compass, end: true },
-        { to: '/my-bookings', label: 'Bookings', icon: CalendarCheck },
-        {
-          to: '/dashboard',
-          label: user?.providerId ? 'Dashboard' : 'Business',
-          icon: LayoutDashboard,
-        },
-        ...(isMaster
-          ? [{ to: '/master', label: 'Master', icon: ShieldCheck }]
-          : isAdmin || user?.role === 'manager'
-            ? [{ to: '/audit', label: 'Audit', icon: ScrollText }]
-            : []),
-        { to: '/profile', label: 'Profile', icon: User },
-      ]
-    : [
-        { to: '/', label: 'Browse', icon: Compass, end: true },
-        { to: '/dashboard', label: 'Businesses', icon: Building2 },
-        { to: '/login', label: 'Sign in', icon: LogIn },
-        { to: '/register', label: 'Register', icon: UserPlus },
-      ];
-
-  // Hide bottom nav on /providers/:id/book so step buttons have full space, or keep it everywhere with proper padding
-  const isProviderDetail = /^\/providers\/[^/]+$/.test(location.pathname);
-
   return (
-    <div className="flex min-h-[100dvh] flex-col bg-background">
+    <div className="flex min-h-screen flex-col bg-background">
       {/* ── TimeTrack Master Impersonation / Demo Banner ── */}
       {user?.originalRole === 'master' && (
-        <div className="relative z-50 flex flex-wrap items-center justify-between gap-2 bg-primary px-3 py-2 text-xs font-semibold text-primary-foreground shadow-md sm:px-5">
-          <div className="flex min-w-0 items-center gap-2">
-            <span className="relative flex h-2 w-2 shrink-0">
+        <div className="relative z-50 flex items-center justify-between bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-md">
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-300 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-400" />
             </span>
             {isDemoSession ? (
-              <span className="truncate">
+              <span>
                 Simulator Persona: <span className="font-bold">{user.fullName}</span> ({user.role})
               </span>
             ) : (
-              <span className="truncate">
+              <span>
                 Impersonating:{' '}
                 <span className="font-bold">{user.provider?.name || user.fullName}</span>
               </span>
@@ -115,23 +84,36 @@ export default function AppLayout() {
           <button
             type="button"
             onClick={handleStopImpersonation}
-            className="shrink-0 rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-3 py-1 font-bold text-primary-foreground transition hover:bg-primary-foreground/20"
+            className="rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-3 py-1 font-bold text-primary-foreground transition hover:bg-primary-foreground/20"
           >
             Return to Master Console
           </button>
         </div>
       )}
 
-      {/* ── Sticky Header (like-for-like with Base44 + TimeTrack controls) ── */}
-      <header className="safe-top sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-xl">
-        <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between gap-2 px-4 sm:h-16 sm:gap-3 sm:px-5">
-          <Link to="/" aria-label="BookIt! Home" className="flex shrink-0 items-center transition-opacity hover:opacity-90">
-            <BookItLogo size="md" />
+      {/* ── HER Beauty Campus Privilege Announcement Bar ── */}
+      <div className="luxury-gradient border-b border-brand-copper/30 px-4 py-2 text-center text-xs font-medium text-brand-linen">
+        <span>{BRAND.announcementBar}</span>
+      </div>
+
+      {/* ── Sticky Header (BookingTrack Foundation + HER Beauty Floor 1 Identity) ── */}
+      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-xl">
+        <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-3 px-5">
+          <Link to="/" className="flex items-center gap-3">
+            <BrandLogo className="h-10 w-10" chip />
+            <div>
+              <span className="block font-display text-lg font-semibold tracking-[0.18em] uppercase text-foreground">
+                {BRAND.name}
+              </span>
+              <span className="hidden text-[10px] tracking-widest uppercase text-muted-foreground sm:block">
+                {BRAND.tagline}
+              </span>
+            </div>
           </Link>
 
-          <nav className="hidden items-center gap-6 md:flex lg:gap-7">
+          <nav className="hidden items-center gap-7 md:flex">
             <NavLink to="/" end className={navLinkClass}>
-              Browse
+              Studios & Services
             </NavLink>
             {isAuthenticated && (
               <NavLink to="/my-bookings" className={navLinkClass}>
@@ -139,7 +121,7 @@ export default function AppLayout() {
               </NavLink>
             )}
             <NavLink to="/dashboard" className={navLinkClass}>
-              {user?.providerId ? 'Dashboard' : 'For businesses'}
+              {user?.providerId ? 'Studio Dashboard' : 'Studio Hub'}
             </NavLink>
             {(isAdmin || user?.role === 'manager') && (
               <NavLink to="/audit" className={navLinkClass}>
@@ -167,24 +149,24 @@ export default function AppLayout() {
             )}
           </nav>
 
-          <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="flex items-center gap-2">
             {/* Live SSE Status Indicator (when signed in) */}
             {isAuthenticated && (
               <span
                 title={`Real-time stream: ${sseStatus}`}
                 className={cn(
-                  'inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-[11px] font-medium sm:px-2.5',
+                  'hidden items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium sm:inline-flex',
                   sseStatus === 'live'
                     ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300'
                     : 'border-border bg-secondary text-muted-foreground',
                 )}
               >
                 {sseStatus === 'live' ? (
-                  <Wifi className="h-3 w-3 shrink-0" />
+                  <Wifi className="h-3 w-3" />
                 ) : (
-                  <WifiOff className="h-3 w-3 shrink-0" />
+                  <WifiOff className="h-3 w-3" />
                 )}
-                <span className="hidden sm:inline">{sseStatus === 'live' ? 'Live' : 'Sync'}</span>
+                {sseStatus === 'live' ? 'Live' : 'Sync'}
               </span>
             )}
 
@@ -233,17 +215,17 @@ export default function AppLayout() {
                   className="hidden rounded-full sm:inline-flex"
                   onClick={() => navigate('/register')}
                 >
-                  List your business
+                  Join HER Circle
                 </Button>
               </>
             )}
           </div>
         </div>
 
-        {/* Mobile Secondary Scrollable Nav */}
-        <nav className="no-scrollbar flex items-center gap-5 overflow-x-auto border-t border-border/60 px-4 py-2 md:hidden">
+        {/* Mobile Secondary Nav */}
+        <nav className="no-scrollbar flex items-center gap-6 overflow-x-auto border-t border-border/60 px-5 py-2.5 md:hidden">
           <NavLink to="/" end className={navLinkClass}>
-            Browse
+            Studios
           </NavLink>
           {isAuthenticated && (
             <NavLink to="/my-bookings" className={navLinkClass}>
@@ -251,7 +233,7 @@ export default function AppLayout() {
             </NavLink>
           )}
           <NavLink to="/dashboard" className={navLinkClass}>
-            {user?.providerId ? 'Dashboard' : 'For businesses'}
+            {user?.providerId ? 'Dashboard' : 'Studio Hub'}
           </NavLink>
           {isAuthenticated && (
             <NavLink to="/profile" className={navLinkClass}>
@@ -273,11 +255,6 @@ export default function AppLayout() {
               </NavLink>
             </>
           )}
-          {!isAuthenticated && (
-            <NavLink to="/register" className={navLinkClass}>
-              List your business
-            </NavLink>
-          )}
         </nav>
       </header>
 
@@ -285,63 +262,90 @@ export default function AppLayout() {
         <Outlet />
       </main>
 
-      <footer
-        className={cn(
-          'border-t border-border/60 bg-secondary/40',
-          isProviderDetail ? 'pb-36 md:pb-0' : 'pb-20 md:pb-0',
-        )}
-      >
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-8 sm:flex-row sm:items-end sm:justify-between sm:px-5 sm:py-10">
-          <div>
-            <Link to="/" aria-label="BookIt!" className="inline-block">
-              <BookItLogo size="md" />
-            </Link>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Book doctors, salons, mechanics and more across South Africa.
-            </p>
+      <footer className="luxury-gradient border-t border-brand-copper/30 text-brand-linen">
+        <div className="mx-auto w-full max-w-6xl space-y-8 px-5 py-12">
+          {/* The HER Pathway Spine */}
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-brand-copper/30 bg-brand-dark2/80 px-5 py-3.5">
+            <span className="font-mono text-xs uppercase tracking-widest text-brand-copperPale">
+              The HER Pathway
+            </span>
+            <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
+              {PATHWAY_STAGES.map((item, idx) => (
+                <span key={item.stage} className="inline-flex items-center gap-2">
+                  <span className="rounded-md border border-brand-copper/40 bg-brand-copper/20 px-2.5 py-0.5 font-mono text-[11px] text-brand-copperPale">
+                    {item.stage}
+                  </span>
+                  {idx < PATHWAY_STAGES.length - 1 && (
+                    <span className="text-brand-copperLight">→</span>
+                  )}
+                </span>
+              ))}
+            </div>
           </div>
-          <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
-            <Link to="/privacy" className="hover:text-foreground">
-              Privacy Policy
-            </Link>
-            <Link to="/support" className="hover:text-foreground">
-              Support
-            </Link>
-            <span>© {new Date().getFullYear()} BookIt!</span>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <BrandLogo className="h-11 w-11" chip />
+                <div>
+                  <p className="font-display text-lg font-semibold tracking-wider text-brand-linen">
+                    {BRAND.name}
+                  </p>
+                  <p className="text-xs text-brand-copperPale">{BRAND.identityLine}</p>
+                </div>
+              </div>
+              <p className="text-xs leading-relaxed text-brand-mutedLight">
+                {BRAND.descriptor}
+              </p>
+            </div>
+
+            <div className="space-y-2 text-xs">
+              <p className="font-mono uppercase tracking-widest text-brand-copperPale">
+                Flagship Studio
+              </p>
+              <p className="text-brand-linen">{CONTACT.addressLines[0]}</p>
+              <p className="text-brand-mutedLight">{CONTACT.addressLines[1]}</p>
+              <p className="pt-1 text-brand-copperLight">{CONTACT.phone}</p>
+              <p className="text-brand-copperLight">{CONTACT.email}</p>
+            </div>
+
+            <div className="space-y-2 text-xs">
+              <p className="font-mono uppercase tracking-widest text-brand-copperPale">
+                Studio Hours
+              </p>
+              {CONTACT.hours.map((h) => (
+                <div key={h.days} className="flex justify-between gap-4 text-brand-mutedLight">
+                  <span>{h.days}</span>
+                  <span className="text-brand-linen">{h.time}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="space-y-2 text-xs">
+              <p className="font-mono uppercase tracking-widest text-brand-copperPale">
+                Founder & Governance
+              </p>
+              <p className="font-medium text-brand-linen">{FOUNDER.name}</p>
+              <p className="text-brand-mutedLight">{FOUNDER.title}</p>
+              <p className="text-brand-copperPale">{BRAND.slogan}</p>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-3 border-t border-brand-copper/20 pt-6 text-xs text-brand-mutedLight sm:flex-row sm:items-center sm:justify-between">
+            <span>
+              © {new Date().getFullYear()} {BRAND.enterpriseName}. Built on BookingTrack Enterprise Foundation.
+            </span>
+            <div className="flex flex-wrap items-center gap-5">
+              <Link to="/privacy" className="hover:text-brand-linen">
+                POPIA & Privacy Policy
+              </Link>
+              <Link to="/support" className="hover:text-brand-linen">
+                Concierge Support
+              </Link>
+            </div>
           </div>
         </div>
       </footer>
-
-      {/* ── Fixed Mobile Bottom Navigation Bar (thumb-friendly mobile UX) ── */}
-      <nav
-        aria-label="Mobile navigation"
-        data-testid="mobile-bottom-nav"
-        className="safe-bottom fixed bottom-0 left-0 right-0 z-40 border-t border-border/80 bg-background/95 backdrop-blur-xl md:hidden"
-      >
-        <div className="mx-auto flex h-16 max-w-md items-center justify-around px-2">
-          {mobileBottomItems.map((item) => {
-            const Icon = item.icon;
-            return (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                end={item.end}
-                className={({ isActive }) =>
-                  cn(
-                    'flex min-w-[56px] flex-col items-center justify-center gap-1 rounded-xl px-2.5 py-1.5 text-[11px] font-medium transition-colors',
-                    isActive
-                      ? 'bg-primary/10 font-semibold text-primary'
-                      : 'text-muted-foreground hover:text-foreground',
-                  )
-                }
-              >
-                <Icon className="h-4 w-4 shrink-0" />
-                <span className="truncate">{item.label}</span>
-              </NavLink>
-            );
-          })}
-        </div>
-      </nav>
     </div>
   );
 }

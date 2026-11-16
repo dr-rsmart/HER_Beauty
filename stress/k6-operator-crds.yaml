@@ -4,13 +4,13 @@
 # 1. K6 Custom Resource for Phase A (1 worker, 1,000 VUs)
 # 2. K6 Custom Resource for Phase B (1 worker, 3,000 VUs)
 # 3. K6 Custom Resource for Phase C (2 workers, 2,500 VUs/each = 5,000 VUs)
-# 4. HorizontalPodAutoscaler (HPA) for BookIt API deployment
+# 4. HorizontalPodAutoscaler (HPA) for BookingTrack API deployment
 # ─────────────────────────────────────────────────────────────
 
 apiVersion: k6.io/v1alpha1
 kind: K6
 metadata:
-  name: bookit-stress-phase-a
+  name: bookingtrack-stress-phase-a
   namespace: load-testing
 spec:
   parallelism: 1
@@ -18,7 +18,7 @@ spec:
     configMap:
       name: k6-orchestrator-script
       file: suite-orchestrator.js
-  arguments: "-e TARGET_URL=http://bookit-api.production.svc.cluster.local:4005 -e TEST_PHASE=PHASE_A_BASELINE"
+  arguments: "-e TARGET_URL=http://bookingtrack-api.production.svc.cluster.local:4005 -e TEST_PHASE=PHASE_A_BASELINE"
   runner:
     image: grafana/k6:0.55.0
     resources:
@@ -32,13 +32,13 @@ spec:
       - name: PERF_TEST_SECRET
         valueFrom:
           secretKeyRef:
-            name: bookit-perf-secret
+            name: bookingtrack-perf-secret
             key: secret
 ---
 apiVersion: k6.io/v1alpha1
 kind: K6
 metadata:
-  name: bookit-stress-phase-b
+  name: bookingtrack-stress-phase-b
   namespace: load-testing
 spec:
   parallelism: 1
@@ -46,7 +46,7 @@ spec:
     configMap:
       name: k6-orchestrator-script
       file: suite-orchestrator.js
-  arguments: "-e TARGET_URL=http://bookit-api.production.svc.cluster.local:4005 -e TEST_PHASE=PHASE_B_STRESS"
+  arguments: "-e TARGET_URL=http://bookingtrack-api.production.svc.cluster.local:4005 -e TEST_PHASE=PHASE_B_STRESS"
   runner:
     image: grafana/k6:0.55.0
     resources:
@@ -60,13 +60,13 @@ spec:
       - name: PERF_TEST_SECRET
         valueFrom:
           secretKeyRef:
-            name: bookit-perf-secret
+            name: bookingtrack-perf-secret
             key: secret
 ---
 apiVersion: k6.io/v1alpha1
 kind: K6
 metadata:
-  name: bookit-stress-phase-c
+  name: bookingtrack-stress-phase-c
   namespace: load-testing
 spec:
   parallelism: 2 # Distributed execution: 2 worker pods splitting 5,000 VUs (2,500 VUs each)
@@ -74,7 +74,7 @@ spec:
     configMap:
       name: k6-orchestrator-script
       file: suite-orchestrator.js
-  arguments: "-e TARGET_URL=http://bookit-api.production.svc.cluster.local:4005 -e TEST_PHASE=PHASE_C_EXTREME"
+  arguments: "-e TARGET_URL=http://bookingtrack-api.production.svc.cluster.local:4005 -e TEST_PHASE=PHASE_C_EXTREME"
   separate: true # Ensures pods are scheduled onto distinct physical Kubernetes worker nodes
   runner:
     image: grafana/k6:0.55.0
@@ -98,7 +98,7 @@ spec:
       - name: PERF_TEST_SECRET
         valueFrom:
           secretKeyRef:
-            name: bookit-perf-secret
+            name: bookingtrack-perf-secret
             key: secret
 ---
 # ─────────────────────────────────────────────────────────────
@@ -107,13 +107,13 @@ spec:
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: bookit-api-hpa
+  name: bookingtrack-api-hpa
   namespace: production
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: bookit-api
+    name: bookingtrack-api
   minReplicas: 3
   maxReplicas: 20
   metrics:
@@ -132,7 +132,7 @@ spec:
     - type: Pods
       pods:
         metric:
-          name: bookit_http_requests_per_second
+          name: bookingtrack_http_requests_per_second
         target:
           type: AverageValue
           averageValue: "400"

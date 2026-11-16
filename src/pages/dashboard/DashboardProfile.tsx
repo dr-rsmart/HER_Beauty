@@ -11,7 +11,8 @@ import { providersApi } from '../../services/api';
 import { useMyProvider } from '../../hooks/useMyProvider';
 import DashboardSubNav from '../../components/dashboard/DashboardSubNav';
 import BusinessForm from '../../components/dashboard/BusinessForm';
-import { Button, Switch, Spinner } from '../../components/ui';
+import { Button, Switch, Spinner, BrandLogo } from '../../components/ui';
+import { BRAND, FOUNDER, BRAND_PILLARS, REVENUE_STREAMS, SOCIAL_CHANNELS } from '../../lib/brand';
 
 export default function DashboardProfile() {
   const { provider, setProvider, loading } = useMyProvider();
@@ -32,24 +33,24 @@ export default function DashboardProfile() {
   return (
     <div>
       <DashboardSubNav />
-      <div className="mx-auto w-full max-w-3xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-5 sm:py-10">
+      <div className="mx-auto w-full max-w-3xl space-y-8 px-5 py-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="font-display text-2xl text-foreground sm:text-3xl">Business profile</h1>
-            <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+            <h1 className="font-display text-3xl text-foreground">Business profile</h1>
+            <p className="mt-2 text-muted-foreground">
               This is what customers see — address, contact details and opening hours.
             </p>
           </div>
           <Button
             variant="outline"
-            className="w-full rounded-full sm:w-auto"
+            className="rounded-full"
             onClick={() => navigate(`/providers/${provider.id}`)}
           >
             Preview public page
           </Button>
         </div>
 
-        <div className="flex items-center justify-between gap-4 rounded-3xl border border-border bg-card p-5 sm:p-6">
+        <div className="flex items-center justify-between gap-4 rounded-3xl border border-border bg-card p-6">
           <div>
             <p className="font-medium text-foreground">
               {isPublished ? 'Taking bookings' : 'Hidden from search'}
@@ -76,13 +77,46 @@ export default function DashboardProfile() {
 
         <BusinessForm
           initial={provider}
-          submitLabel="Save profile"
+          submitLabel="Save studio profile"
           onSubmit={async (patch) => {
             const updated = await providersApi.update(provider.id, patch);
             setProvider({ ...provider, ...updated });
-            toast.success('Business profile saved.');
+            toast.success('Studio profile saved.');
           }}
         />
+
+        {/* Floor 1: HER Brand Identity & Founder Governance Reference */}
+        <div className="luxury-gradient rounded-3xl border border-brand-copper/40 p-6 text-brand-linen space-y-5">
+          <div className="flex items-center gap-4">
+            <BrandLogo className="h-14 w-14" chip />
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-brand-copperPale">
+                Brand Governance Single Source of Truth
+              </p>
+              <h2 className="font-display text-xl text-brand-linen">{BRAND.enterpriseName}</h2>
+              <p className="text-xs text-brand-copperLight">
+                {FOUNDER.name} · {FOUNDER.title} ({FOUNDER.email})
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            {BRAND_PILLARS.map((p) => (
+              <div
+                key={p.title}
+                className="rounded-2xl border border-brand-copper/30 bg-brand-dark2/80 p-3.5 text-xs"
+              >
+                <p className="font-semibold text-brand-copperPale">{p.title}</p>
+                <p className="mt-1 text-brand-mutedLight">{p.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap items-center justify-between gap-2 border-t border-brand-copper/25 pt-4 text-xs text-brand-mutedLight">
+            <span>5 Revenue Streams: {REVENUE_STREAMS.map((s) => s.title).join(' · ')}</span>
+            <span>Channels: {SOCIAL_CHANNELS.join(' · ')}</span>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -246,8 +246,23 @@ router.post('/', requireAuth, async (req, res) => {
         }
       }
 
+      const rawDeposit = body.deposit_amount ?? body.depositAmount;
+      const depositAmount =
+        rawDeposit != null && rawDeposit !== ''
+          ? new Prisma.Decimal(Number(rawDeposit))
+          : price != null
+            ? new Prisma.Decimal(Math.round(Number(price) * 0.2 * 100) / 100)
+            : null;
+      const referenceCode =
+        String(body.reference_code || body.referenceCode || '').trim() ||
+        `HER-${Math.floor(10000 + Math.random() * 90000)}`;
+      const promoCode = String(body.promo_code || body.promoCode || '').trim().toUpperCase();
+      const discountPercent = Number(body.discount_percent ?? body.discountPercent ?? 0) || 0;
+      const popiaConsent = body.popia_consent !== false && body.popiaConsent !== false;
+
       const booking = await tx.booking.create({
         data: {
+          referenceCode,
           providerId,
           providerName: String(body.provider_name || body.providerName || provider.name),
           serviceId: serviceId ? String(serviceId) : null,
@@ -266,6 +281,10 @@ router.post('/', requireAuth, async (req, res) => {
           startTime,
           endTime,
           price,
+          depositAmount,
+          promoCode,
+          discountPercent,
+          popiaConsent,
           notes: String(body.notes || ''),
           status:
             body.status && ['pending', 'confirmed', 'completed', 'cancelled'].includes(body.status)
@@ -273,6 +292,20 @@ router.post('/', requireAuth, async (req, res) => {
               : 'confirmed',
         },
       });
+
+      if (popiaConsent) {
+        await tx.consentRecord.create({
+          data: {
+            providerId,
+            customerId: effectiveCustomerId,
+            customerEmail: effectiveCustomerEmail,
+            customerName: effectiveCustomerName,
+            type: 'special_info',
+            granted: true,
+            version: '1.2',
+          },
+        });
+      }
 
       if (slotId) {
         await tx.slot.update({

@@ -42,13 +42,13 @@ function StatCard({
   Icon?: LucideIcon;
 }) {
   return (
-    <div className="rounded-2xl border border-border bg-card p-4 sm:p-5">
-      <div className="flex items-center justify-between gap-2">
-        <p className="text-xs text-muted-foreground sm:text-sm">{label}</p>
-        {Icon && <Icon className="h-4 w-4 shrink-0 text-primary" />}
+    <div className="rounded-2xl border border-border bg-card p-5">
+      <div className="flex items-center justify-between gap-3">
+        <p className="text-sm text-muted-foreground">{label}</p>
+        {Icon && <Icon className="h-4 w-4 text-primary" />}
       </div>
-      <p className="mt-2 font-display text-2xl text-foreground sm:mt-3 sm:text-3xl">{value}</p>
-      {hint && <p className="mt-1 text-[11px] text-muted-foreground sm:text-xs">{hint}</p>}
+      <p className="mt-3 font-display text-3xl text-foreground">{value}</p>
+      {hint && <p className="mt-1 text-xs text-muted-foreground">{hint}</p>}
     </div>
   );
 }
@@ -102,16 +102,16 @@ export default function DashboardOverview() {
 
   if (!provider) {
     return (
-      <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:px-5 sm:py-12">
+      <div className="mx-auto w-full max-w-3xl px-5 py-12">
         <p className="text-xs uppercase tracking-[0.3em] text-primary/80">For businesses</p>
-        <h1 className="mt-3 font-display text-2xl text-foreground sm:text-4xl">
+        <h1 className="mt-3 font-display text-3xl text-foreground sm:text-4xl">
           List your business
         </h1>
-        <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+        <p className="mt-3 text-muted-foreground">
           Publish your services, add the professionals customers can choose from, then open time
           slots. Bookings land straight in this dashboard.
         </p>
-        <div className="mt-6 sm:mt-8">
+        <div className="mt-8">
           <BusinessForm
             submitLabel="Create my business"
             onSubmit={async (data) => {
@@ -121,7 +121,7 @@ export default function DashboardOverview() {
               });
               setProvider(created);
               await refreshAuth();
-              toast.success(`"${created.name}" is now live on BookIt!`);
+              toast.success(`"${created.name}" is now live on BookingTrack!`);
             }}
           />
         </div>
@@ -134,30 +134,28 @@ export default function DashboardOverview() {
   return (
     <div>
       <DashboardSubNav />
-      <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-5 sm:py-10">
+      <div className="mx-auto w-full max-w-6xl px-5 py-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-primary/80">
               Provider dashboard
             </p>
-            <h1 className="mt-2 font-display text-2xl text-foreground sm:mt-3 sm:text-3xl">
-              {provider.name}
-            </h1>
-            <p className="mt-1 text-sm text-muted-foreground">
+            <h1 className="mt-3 font-display text-3xl text-foreground">{provider.name}</h1>
+            <p className="mt-1 text-muted-foreground">
               {categoryLabel}
               {provider.city ? ` · ${provider.city}` : ''}
             </p>
           </div>
-          <div className="flex w-full gap-2 sm:w-auto">
+          <div className="flex gap-2">
             <Button
               variant="outline"
-              className="flex-1 rounded-full sm:flex-none"
+              className="rounded-full"
               onClick={() => navigate(`/providers/${provider.id}`)}
             >
               View public page
             </Button>
             <Button
-              className="flex-1 rounded-full sm:flex-none"
+              className="rounded-full"
               onClick={() => navigate('/dashboard/availability')}
             >
               Add slots
@@ -165,7 +163,7 @@ export default function DashboardOverview() {
           </div>
         </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-4 lg:grid-cols-4">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <StatCard
             label="Today"
             value={stats ? stats.todayCount : '—'}

@@ -47,7 +47,7 @@ const PERF_SECRET = __ENV.PERF_TEST_SECRET || 'tt_perf_bench_2026';
 
 export default function () {
   const vuId = (__VU % 1000) + 1;
-  const email = `perf_user_${vuId}@stress.bookit.internal`;
+  const email = `perf_user_${vuId}@stress.bookingtrack.internal`;
   const password = 'StressPass123!';
 
   const payload = JSON.stringify({ email, password });

@@ -20,7 +20,6 @@ import DashboardSubNav from '../../components/dashboard/DashboardSubNav';
 import {
   Button,
   Input,
-  Select,
   Textarea,
   Label,
   Switch,
@@ -28,8 +27,10 @@ import {
   ConfirmDialog,
   ImageUpload,
   Spinner,
+  PathwayBadge,
 } from '../../components/ui';
 import { cn } from '../../lib/utils';
+import { PATHWAY_STAGES } from '../../lib/brand';
 
 function ProfessionalModal({
   providerId,
@@ -51,6 +52,11 @@ function ProfessionalModal({
     name: member?.name || '',
     email: member?.email || '',
     title: member?.title || '',
+    pathway_stage: member?.pathway_stage || 'GROW',
+    pathway_role: member?.pathway_role || member?.title || 'Senior Stylist',
+    commission_rate: member?.commission_rate ?? 0.45,
+    experience_years: member?.experience_years ?? 3,
+    specialties_text: (member?.specialties || []).join(', '),
     bio: member?.bio || '',
     photo_url: member?.photo_url || '',
     service_ids: member?.service_ids || ([] as string[]),
@@ -65,6 +71,11 @@ function ProfessionalModal({
         name: member?.name || '',
         email: member?.email || '',
         title: member?.title || '',
+        pathway_stage: member?.pathway_stage || 'GROW',
+        pathway_role: member?.pathway_role || member?.title || 'Senior Stylist',
+        commission_rate: member?.commission_rate ?? 0.45,
+        experience_years: member?.experience_years ?? 3,
+        specialties_text: (member?.specialties || []).join(', '),
         bio: member?.bio || '',
         photo_url: member?.photo_url || '',
         service_ids: member?.service_ids || [],
@@ -116,7 +127,15 @@ function ProfessionalModal({
               disabled={saving || !form.name.trim()}
               onClick={async () => {
                 setSaving(true);
-                const payload = { ...form, provider_id: providerId };
+                const specialties = form.specialties_text
+                  .split(',')
+                  .map((s) => s.trim())
+                  .filter(Boolean);
+                const payload = {
+                  ...form,
+                  specialties,
+                  provider_id: providerId,
+                };
                 try {
                   if (member?.id) {
                     await professionalsApi.update(member.id, payload);
@@ -185,15 +204,15 @@ function ProfessionalModal({
           <div className="grid gap-3 sm:grid-cols-2 pt-1">
             <div>
               <Label htmlFor="member-role">Access Role</Label>
-              <Select
+              <select
                 id="member-role"
                 value={form.role}
                 onChange={(e) => setForm({ ...form, role: e.target.value })}
-                className="mt-1.5"
+                className="mt-1.5 flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-ring"
               >
                 <option value="employee">Employee (Practitioner / Staff)</option>
                 <option value="manager">Manager (Practice Manager)</option>
-              </Select>
+              </select>
             </div>
             <div>
               <Label htmlFor="member-password">Password {member?.email ? '(leave blank to keep current)' : ''}</Label>
@@ -223,6 +242,59 @@ function ProfessionalModal({
               </Button>
             </div>
           )}
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-3">
+          <div>
+            <Label htmlFor="member-pathway">HER Pathway Stage</Label>
+            <select
+              id="member-pathway"
+              value={form.pathway_stage}
+              onChange={(e) => setForm({ ...form, pathway_stage: e.target.value })}
+              className="mt-1.5 flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm"
+            >
+              {PATHWAY_STAGES.map((st) => (
+                <option key={st.stage} value={st.stage}>
+                  {st.stage}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <Label htmlFor="member-commission">Commission Rate (0–1)</Label>
+            <Input
+              id="member-commission"
+              type="number"
+              step="0.05"
+              min="0.1"
+              max="0.9"
+              value={form.commission_rate}
+              onChange={(e) => setForm({ ...form, commission_rate: Number(e.target.value) })}
+              className="mt-1.5"
+            />
+          </div>
+          <div>
+            <Label htmlFor="member-exp">Experience (Years)</Label>
+            <Input
+              id="member-exp"
+              type="number"
+              min="0"
+              value={form.experience_years}
+              onChange={(e) => setForm({ ...form, experience_years: Number(e.target.value) })}
+              className="mt-1.5"
+            />
+          </div>
+        </div>
+
+        <div>
+          <Label htmlFor="member-specialties">Specialties (comma-separated)</Label>
+          <Input
+            id="member-specialties"
+            value={form.specialties_text}
+            onChange={(e) => setForm({ ...form, specialties_text: e.target.value })}
+            placeholder="Knotless Braids, Natural Hair Care, Silk Blowouts…"
+            className="mt-1.5"
+          />
         </div>
 
         <div>
@@ -314,11 +386,11 @@ export default function DashboardTeam() {
   return (
     <div>
       <DashboardSubNav />
-      <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-5 sm:py-10">
+      <div className="mx-auto w-full max-w-4xl px-5 py-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="font-display text-2xl text-foreground sm:text-3xl">Your team</h1>
-            <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+            <h1 className="font-display text-3xl text-foreground">Your team</h1>
+            <p className="mt-2 text-muted-foreground">
               Customers choose who they want to see — add everyone who takes appointments.
             </p>
           </div>
@@ -334,7 +406,7 @@ export default function DashboardTeam() {
           />
         </div>
 
-        <div className="mt-6 space-y-4 sm:mt-8">
+        <div className="mt-8 space-y-4">
           {team.length === 0 && (
             <p className="rounded-2xl border border-dashed border-border px-4 py-12 text-center text-sm text-muted-foreground">
               No professionals yet — add them, then open slots for each of them.
@@ -343,54 +415,65 @@ export default function DashboardTeam() {
           {team.map((member) => (
             <div
               key={member.id}
-              className="flex flex-col gap-3 rounded-2xl border border-border bg-card p-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 sm:p-5"
+              className="flex flex-wrap items-center gap-4 rounded-2xl border border-border bg-card p-5"
             >
-              <div className="flex min-w-0 flex-1 items-start gap-3.5 sm:items-center sm:gap-4">
-                <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl bg-secondary">
-                  {member.photo_url ? (
-                    <img
-                      src={member.photo_url}
-                      alt={member.name}
-                      className="h-full w-full object-cover"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center font-display text-lg text-primary">
-                      {member.name?.charAt(0)}
-                    </div>
+              <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl bg-secondary">
+                {member.photo_url ? (
+                  <img
+                    src={member.photo_url}
+                    alt={member.name}
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center font-display text-lg text-primary">
+                    {member.name?.charAt(0)}
+                  </div>
+                )}
+              </div>
+
+              <div className="min-w-[180px] flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <p className="font-medium text-foreground">{member.name}</p>
+                  <PathwayBadge
+                    stage={member.pathway_stage}
+                    role={member.pathway_role || member.title}
+                  />
+                  {member.commission_rate != null && (
+                    <span className="rounded-full bg-secondary px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+                      {Math.round(member.commission_rate * 100)}% commission
+                    </span>
                   )}
                 </div>
-
-                <div className="min-w-0 flex-1">
-                  <p className="font-medium text-foreground">{member.name}</p>
-                  {member.title && <p className="text-sm text-primary/80">{member.title}</p>}
-                  <div className="mt-1 flex flex-wrap items-center gap-2 text-xs">
-                    <span className="text-muted-foreground">
-                      {member.service_ids?.length
-                        ? `${member.service_ids.length} service${member.service_ids.length === 1 ? '' : 's'}`
-                        : 'Any service'}
+                {member.specialties && member.specialties.length > 0 && (
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    {member.specialties.join(' · ')}
+                  </p>
+                )}
+                <div className="mt-1 flex flex-wrap items-center gap-2 text-xs">
+                  <span className="text-muted-foreground">
+                    {member.service_ids?.length
+                      ? `${member.service_ids.length} service${member.service_ids.length === 1 ? '' : 's'}`
+                      : 'Any service'}
+                  </span>
+                  {member.email && (
+                    <span
+                      className={cn(
+                        'inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium',
+                        member.has_login
+                          ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300'
+                          : 'bg-secondary text-muted-foreground',
+                      )}
+                    >
+                      <UserCheck className="h-3 w-3" />
+                      {member.has_login
+                        ? `Staff Login: ${member.email} (${member.login_role || 'employee'})`
+                        : member.email}
                     </span>
-                    {member.email && (
-                      <span
-                        className={cn(
-                          'inline-flex max-w-full items-center gap-1 break-all rounded-full px-2 py-0.5 text-[11px] font-medium',
-                          member.has_login
-                            ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300'
-                            : 'bg-secondary text-muted-foreground',
-                        )}
-                      >
-                        <UserCheck className="h-3 w-3 shrink-0" />
-                        <span className="truncate">
-                          {member.has_login
-                            ? `Staff Login: ${member.email} (${member.login_role || 'employee'})`
-                            : member.email}
-                        </span>
-                      </span>
-                    )}
-                  </div>
+                  )}
                 </div>
               </div>
 
-              <div className="flex w-full items-center justify-between gap-2 border-t border-border/60 pt-3 sm:w-auto sm:justify-end sm:gap-3 sm:border-0 sm:pt-0">
+              <div className="flex items-center gap-3">
                 <label className="flex items-center gap-2 text-xs text-muted-foreground">
                   Available
                   <Switch
@@ -401,59 +484,57 @@ export default function DashboardTeam() {
                     }}
                   />
                 </label>
-                <div className="flex items-center gap-1">
-                  <ProfessionalModal
-                    providerId={provider.id}
-                    services={services}
-                    member={member}
-                    onSaved={refresh}
-                    trigger={
-                      <Button variant="ghost" size="icon" aria-label="Edit professional">
-                        <Pencil className="h-4 w-4" />
-                      </Button>
-                    }
-                  />
-                  {member.email && (
-                    <ConfirmDialog
-                      title={`Reset password for ${member.name}?`}
-                      description={`Their login password will be set to the default "Password123". On their next login they can keep it or choose a new password.`}
-                      confirmLabel="Reset password"
-                      onConfirm={async () => {
-                        try {
-                          const res = await professionalsApi.resetPassword(member.id);
-                          toast.success(res.message);
-                          refresh();
-                        } catch (err: any) {
-                          toast.error(err.message || 'Could not reset password');
-                        }
-                      }}
-                      trigger={
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          aria-label="Reset password"
-                          title="Reset password to Password123 (TimeTrack standard)"
-                        >
-                          <KeyRound className="h-4 w-4 text-primary" />
-                        </Button>
-                      }
-                    />
-                  )}
+                <ProfessionalModal
+                  providerId={provider.id}
+                  services={services}
+                  member={member}
+                  onSaved={refresh}
+                  trigger={
+                    <Button variant="ghost" size="icon" aria-label="Edit professional">
+                      <Pencil className="h-4 w-4" />
+                    </Button>
+                  }
+                />
+                {member.email && (
                   <ConfirmDialog
-                    title={`Remove ${member.name}?`}
-                    description="Their open slots stay, but customers can no longer pick them."
-                    confirmLabel="Remove"
+                    title={`Reset password for ${member.name}?`}
+                    description={`Their login password will be set to the default "Password123". On their next login they can keep it or choose a new password.`}
+                    confirmLabel="Reset password"
                     onConfirm={async () => {
-                      await professionalsApi.delete(member.id);
-                      refresh();
+                      try {
+                        const res = await professionalsApi.resetPassword(member.id);
+                        toast.success(res.message);
+                        refresh();
+                      } catch (err: any) {
+                        toast.error(err.message || 'Could not reset password');
+                      }
                     }}
                     trigger={
-                      <Button variant="ghost" size="icon" aria-label="Remove professional">
-                        <Trash2 className="h-4 w-4 text-muted-foreground" />
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        aria-label="Reset password"
+                        title="Reset password to Password123 (TimeTrack standard)"
+                      >
+                        <KeyRound className="h-4 w-4 text-primary" />
                       </Button>
                     }
                   />
-                </div>
+                )}
+                <ConfirmDialog
+                  title={`Remove ${member.name}?`}
+                  description="Their open slots stay, but customers can no longer pick them."
+                  confirmLabel="Remove"
+                  onConfirm={async () => {
+                    await professionalsApi.delete(member.id);
+                    refresh();
+                  }}
+                  trigger={
+                    <Button variant="ghost" size="icon" aria-label="Remove professional">
+                      <Trash2 className="h-4 w-4 text-muted-foreground" />
+                    </Button>
+                  }
+                />
               </div>
             </div>
           ))}

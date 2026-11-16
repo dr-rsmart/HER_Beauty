@@ -52,10 +52,14 @@ export interface ServiceRecord {
   id: string;
   provider_id: string;
   name: string;
+  category_name?: string;
+  stream?: string;
   description: string;
   duration_minutes: number;
   price: number | null;
   price_note: string;
+  image_url?: string;
+  popular?: boolean;
   professional_ids: string[];
   active: boolean;
   created_date: string;
@@ -70,6 +74,14 @@ export interface ProfessionalRecord {
   title: string;
   bio: string;
   photo_url: string;
+  pathway_stage?: string;
+  pathway_role?: string;
+  specialties?: string[];
+  rating?: number;
+  review_count?: number;
+  experience_years?: number;
+  commission_rate?: number;
+  leaves?: unknown[];
   service_ids: string[];
   active: boolean;
   has_login?: boolean;
@@ -94,6 +106,7 @@ export interface SlotRecord {
 
 export interface BookingRecord {
   id: string;
+  reference_code?: string;
   provider_id: string;
   provider_name: string;
   service_id: string | null;
@@ -109,6 +122,10 @@ export interface BookingRecord {
   start_time: string;
   end_time: string;
   price: number | null;
+  deposit_amount?: number | null;
+  promo_code?: string;
+  discount_percent?: number;
+  popia_consent?: boolean;
   notes: string;
   status: 'pending' | 'confirmed' | 'completed' | 'cancelled';
   reminder_sent_at: string | null;
@@ -158,15 +175,22 @@ export function serializeProvider(p: Provider): ProviderRecord {
   };
 }
 
-export function serializeService(s: Service): ServiceRecord {
+type ServiceInput = Omit<Service, 'categoryName' | 'stream' | 'imageUrl' | 'popular'> &
+  Partial<Pick<Service, 'categoryName' | 'stream' | 'imageUrl' | 'popular'>>;
+
+export function serializeService(s: ServiceInput): ServiceRecord {
   return {
     id: s.id,
     provider_id: s.providerId,
     name: s.name,
+    category_name: s.categoryName || 'Natural Hair & Treatments',
+    stream: s.stream || 'salon',
     description: s.description || '',
     duration_minutes: s.durationMinutes,
     price: s.price != null ? Number(s.price) : null,
     price_note: s.priceNote || '',
+    image_url: s.imageUrl || '',
+    popular: Boolean(s.popular),
     professional_ids: s.professionalIds || [],
     active: s.active,
     created_date: s.createdAt.toISOString(),
@@ -174,8 +198,33 @@ export function serializeService(s: Service): ServiceRecord {
   };
 }
 
+type ProfessionalInput = Omit<
+  Professional,
+  | 'pathwayStage'
+  | 'pathwayRole'
+  | 'specialties'
+  | 'rating'
+  | 'reviewCount'
+  | 'experienceYears'
+  | 'commissionRate'
+  | 'leaves'
+> &
+  Partial<
+    Pick<
+      Professional,
+      | 'pathwayStage'
+      | 'pathwayRole'
+      | 'specialties'
+      | 'rating'
+      | 'reviewCount'
+      | 'experienceYears'
+      | 'commissionRate'
+      | 'leaves'
+    >
+  >;
+
 export function serializeProfessional(
-  p: Professional,
+  p: ProfessionalInput,
   loginMeta?: { has_login?: boolean; login_role?: string | null },
 ): ProfessionalRecord {
   return {
@@ -186,6 +235,14 @@ export function serializeProfessional(
     title: p.title || '',
     bio: p.bio || '',
     photo_url: p.photoUrl || '',
+    pathway_stage: p.pathwayStage || 'GROW',
+    pathway_role: p.pathwayRole || p.title || 'Senior Stylist',
+    specialties: Array.isArray(p.specialties) ? p.specialties : [],
+    rating: p.rating ?? 4.95,
+    review_count: p.reviewCount ?? 48,
+    experience_years: p.experienceYears ?? 4,
+    commission_rate: p.commissionRate ?? 0.45,
+    leaves: Array.isArray(p.leaves) ? (p.leaves as unknown[]) : [],
     service_ids: p.serviceIds || [],
     active: p.active,
     ...(loginMeta?.has_login !== undefined ? { has_login: loginMeta.has_login } : {}),
@@ -211,9 +268,28 @@ export function serializeSlot(s: Slot): SlotRecord {
   };
 }
 
-export function serializeBooking(b: Booking): BookingRecord {
+type BookingInput = Omit<
+  Booking,
+  'referenceCode' | 'depositAmount' | 'promoCode' | 'discountPercent' | 'popiaConsent'
+> &
+  Partial<
+    Pick<
+      Booking,
+      'referenceCode' | 'depositAmount' | 'promoCode' | 'discountPercent' | 'popiaConsent'
+    >
+  >;
+
+export function serializeBooking(b: BookingInput): BookingRecord {
+  const numPrice = b.price != null ? Number(b.price) : null;
+  const numDeposit =
+    b.depositAmount != null
+      ? Number(b.depositAmount)
+      : numPrice != null
+        ? Math.round(numPrice * 0.2 * 100) / 100
+        : null;
   return {
     id: b.id,
+    reference_code: b.referenceCode || `HER-${b.id.slice(-5).toUpperCase()}`,
     provider_id: b.providerId,
     provider_name: b.providerName,
     service_id: b.serviceId ?? null,
@@ -228,7 +304,11 @@ export function serializeBooking(b: Booking): BookingRecord {
     date: b.date,
     start_time: b.startTime,
     end_time: b.endTime,
-    price: b.price != null ? Number(b.price) : null,
+    price: numPrice,
+    deposit_amount: numDeposit,
+    promo_code: b.promoCode || '',
+    discount_percent: b.discountPercent ?? 0,
+    popia_consent: b.popiaConsent !== false,
     notes: b.notes || '',
     status: b.status,
     reminder_sent_at: b.reminderSentAt ? b.reminderSentAt.toISOString() : null,

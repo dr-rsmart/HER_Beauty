@@ -20,7 +20,7 @@ import {
 import { useMyProvider } from '../../hooks/useMyProvider';
 import { useSSE } from '../../hooks/useSSE';
 import DashboardSubNav from '../../components/dashboard/DashboardSubNav';
-import { Button, Input, Select, Label, ConfirmDialog, Spinner } from '../../components/ui';
+import { Button, Input, Label, ConfirmDialog, Spinner } from '../../components/ui';
 import {
   cn,
   todayStr,
@@ -62,7 +62,7 @@ function SlotGenerator({
   }, [team, professionalId]);
 
   return (
-    <div className="rounded-3xl border border-border bg-card p-5 sm:p-6">
+    <div className="rounded-3xl border border-border bg-card p-6">
       <h2 className="font-display text-lg text-foreground">Open up time slots</h2>
       <p className="mt-1 text-sm text-muted-foreground">
         Choose a professional and a time range — we’ll split it into bookable slots.
@@ -71,11 +71,11 @@ function SlotGenerator({
       <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <div>
           <Label htmlFor="slot-pro">Professional</Label>
-          <Select
+          <select
             id="slot-pro"
             value={professionalId}
             onChange={(e) => setProfessionalId(e.target.value)}
-            className="mt-2"
+            className="mt-2 flex h-9 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-ring"
           >
             <option value="">Choose a professional</option>
             {team.map((pro) => (
@@ -83,12 +83,12 @@ function SlotGenerator({
                 {pro.name}
               </option>
             ))}
-          </Select>
+          </select>
         </div>
 
         <div>
           <Label htmlFor="slot-service">Service</Label>
-          <Select
+          <select
             id="slot-service"
             value={serviceId}
             onChange={(e) => {
@@ -99,7 +99,7 @@ function SlotGenerator({
                 setSlotLength(String(svc.duration_minutes));
               }
             }}
-            className="mt-2"
+            className="mt-2 flex h-9 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-ring"
           >
             <option value="any">Any service</option>
             {services.map((svc) => (
@@ -107,7 +107,7 @@ function SlotGenerator({
                 {svc.name}
               </option>
             ))}
-          </Select>
+          </select>
         </div>
 
         <div>
@@ -145,40 +145,40 @@ function SlotGenerator({
 
         <div>
           <Label htmlFor="slot-length">Slot length</Label>
-          <Select
+          <select
             id="slot-length"
             value={slotLength}
             onChange={(e) => setSlotLength(e.target.value)}
-            className="mt-2"
+            className="mt-2 flex h-9 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-ring"
           >
             {SLOT_LENGTHS.map((len) => (
               <option key={len} value={String(len)}>
                 {len} minutes
               </option>
             ))}
-          </Select>
+          </select>
         </div>
 
         <div>
           <Label htmlFor="slot-repeat">Repeat weekly</Label>
-          <Select
+          <select
             id="slot-repeat"
             value={repeatWeeks}
             onChange={(e) => setRepeatWeeks(e.target.value)}
-            className="mt-2"
+            className="mt-2 flex h-9 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-ring"
           >
             {['1', '2', '4', '8'].map((w) => (
               <option key={w} value={w}>
                 {w === '1' ? 'Just this day' : `${w} weeks`}
               </option>
             ))}
-          </Select>
+          </select>
         </div>
       </div>
 
       <div className="mt-5 flex flex-wrap items-center gap-3">
         <Button
-          className="w-full rounded-full sm:w-auto"
+          className="rounded-full"
           disabled={submitting || team.length === 0}
           onClick={async () => {
             if (!professionalId) {
@@ -317,10 +317,10 @@ export default function DashboardAvailability() {
   return (
     <div>
       <DashboardSubNav />
-      <div className="mx-auto w-full max-w-4xl space-y-8 px-4 py-8 sm:px-5 sm:py-10">
+      <div className="mx-auto w-full max-w-4xl space-y-8 px-5 py-10">
         <div>
-          <h1 className="font-display text-2xl text-foreground sm:text-3xl">Availability</h1>
-          <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+          <h1 className="font-display text-3xl text-foreground">Availability</h1>
+          <p className="mt-2 text-muted-foreground">
             Assign your professionals to open slots — customers can only book what’s open here.
           </p>
         </div>

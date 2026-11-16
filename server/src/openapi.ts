@@ -8,7 +8,7 @@ export function buildOpenApiDocument() {
   return {
     openapi: '3.1.0',
     info: {
-      title: 'BookIt! Enterprise API',
+      title: 'BookingTrack Enterprise API',
       version: '1.0.0',
       description:
         'Multi-tenant South African appointment booking, professional scheduling, and business management platform API.',
