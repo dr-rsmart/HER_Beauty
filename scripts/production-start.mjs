@@ -27,6 +27,10 @@ try {
     cwd: SERVER_DIR,
     stdio: 'inherit',
   });
+  if (process.env.AUTO_SEED === 'true') {
+    log('AUTO_SEED=true detected. Seeding database with HER Beauty data...');
+    execSync('node dist/seed.js', { cwd: SERVER_DIR, stdio: 'inherit' });
+  }
 } catch (err) {
   log(`❌ Startup preflight failed: ${err.message}`);
   process.exit(1);
