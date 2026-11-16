@@ -214,7 +214,7 @@ def add_header(slide, number, title, subtitle=None):
     add_text(slide, Inches(11.9), Inches(7.05), Inches(1.1), Inches(0.3),
              number, 11, MUTED, align=PP_ALIGN.RIGHT)
     add_text(slide, Inches(0.55), Inches(7.05), Inches(9.5), Inches(0.3),
-             "HER BEAUTY STUDIO & SOCIAL ENTERPRISE  |  BUSINESS PLAN 2026\u20132030  |  https://her-beauty-production.up.railway.app",
+             "HER BEAUTY STUDIO & SOCIAL ENTERPRISE  |  BUSINESS PLAN 2026\u20132030  |  https://her-beauty-production.up.railway.app/",
              9, MUTED)
 
 
@@ -310,7 +310,7 @@ def build_presentation():
              "Flagship Studio: 4 White Heart, Jamestown 7600  \u00b7  081 047 0327",
              11.5, MUTED_LIGHT)
     add_text(s, Inches(7.2), Inches(6.30), Inches(5.13), Inches(0.75),
-             "Live Platform: https://her-beauty-production.up.railway.app\n6 Western Cape Hubs  \u00b7  21 Services  \u00b7  5 Revenue Streams",
+             "Live Platform: https://her-beauty-production.up.railway.app/\n6 Western Cape Hubs  \u00b7  21 Services  \u00b7  5 Revenue Streams",
              11, COPPER_PALE, align=PP_ALIGN.RIGHT, spacing=1.15)
 
     # =========================================================================
@@ -676,7 +676,7 @@ def build_presentation():
                "Centralised multi-studio control center, role simulator and immutable compliance records")
     add_card(s, Inches(0.55), Inches(1.48), Inches(6.0), Inches(3.25),
              "LIVE PRODUCTION PLATFORM ARCHITECTURE", [
-                 "Cloud-deployed at https://her-beauty-production.up.railway.app",
+                 "Cloud-deployed at https://her-beauty-production.up.railway.app/",
                  "4-Step Client Booking: Service \u2192 Artisan \u2192 Time Slot \u2192 Confirm",
                  "Role-Based Portals: Platform Master, Studio Director, Artisan & Client",
                  "1-Click Studio Impersonation & 5-Persona Platform Simulator (/demo)",
@@ -758,7 +758,7 @@ def build_presentation():
         add_text(s, x + Inches(0.12), Inches(5.98), ew - Inches(0.24), Inches(0.32),
                  ed, 9.2, TEXT_LIGHT)
     add_text(s, Inches(0.55), Inches(6.66), Inches(12.23), Inches(0.32),
-             "Trading Hours:  Mon\u2013Fri 08:30\u201318:00  |  Saturday 09:00\u201316:00  |  Live Platform: https://her-beauty-production.up.railway.app",
+             "Trading Hours:  Mon\u2013Fri 08:30\u201318:00  |  Saturday 09:00\u201316:00  |  Live Platform: https://her-beauty-production.up.railway.app/",
              10.5, MUTED, italic=True, align=PP_ALIGN.CENTER)
 
     # =========================================================================
@@ -821,7 +821,7 @@ def build_presentation():
              "A business built to create beauty, build careers and empower futures.",
              17, COPPER_PALE, bold=True, italic=True, align=PP_ALIGN.CENTER)
     add_text(s, Inches(1.0), Inches(6.62), Inches(11.33), Inches(0.42),
-             "HER Beauty Studio & Social Enterprise  \u00b7  Mrs Monean N Jacobs  \u00b7  4 White Heart, Jamestown 7600  \u00b7  founder@herbeauty.co.za  \u00b7  https://her-beauty-production.up.railway.app",
+             "HER Beauty Studio & Social Enterprise  \u00b7  Mrs Monean N Jacobs  \u00b7  4 White Heart, Jamestown 7600  \u00b7  founder@herbeauty.co.za  \u00b7  https://her-beauty-production.up.railway.app/",
              10, MUTED_LIGHT, align=PP_ALIGN.CENTER)
 
     # Strictly enforce forbidden-terms guardrail

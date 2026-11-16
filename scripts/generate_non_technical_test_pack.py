@@ -137,7 +137,7 @@ def add_test_slide(prs, num_str, kicker, title, screenshot_file, steps, what_you
     # Browser address bar mockup
     add_rect(slide, img_card_x + Inches(0.9), img_card_y + Inches(0.08), img_card_w - Inches(1.1), Inches(0.22), DARK, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
     add_text(slide, img_card_x + Inches(1.0), img_card_y + Inches(0.10), img_card_w - Inches(1.3), Inches(0.20),
-             "https://her-beauty-production.up.railway.app  [Live Production]", 9, COPPER_PALE)
+             "https://her-beauty-production.up.railway.app/  [Live Production]", 9, COPPER_PALE)
 
     # Insert Screenshot inside the card
     screenshot_path = os.path.join(SCREENSHOT_DIR, screenshot_file)
@@ -268,7 +268,7 @@ def build_presentation():
     add_text(s2, Inches(1.3), Inches(5.05), Inches(10.8), Inches(0.30),
              "OPEN THE LIVE SYSTEM IN YOUR BROWSER:", 12, COPPER_LIGHT, bold=True)
     add_text(s2, Inches(1.3), Inches(5.40), Inches(10.8), Inches(0.40),
-             "https://her-beauty-production.up.railway.app", 20, TEXT_LIGHT, bold=True)
+             "https://her-beauty-production.up.railway.app/", 20, TEXT_LIGHT, bold=True)
     add_text(s2, Inches(1.3), Inches(5.90), Inches(10.8), Inches(0.30),
              "Supported Browsers: Microsoft Edge, Google Chrome, Safari, Firefox. No installation required.", 10, MUTED_LIGHT)
 
@@ -279,7 +279,7 @@ def build_presentation():
         prs, "03", "STUDIO DISCOVERY", "Find a HER Beauty Studio",
         "01_home_browse.png",
         [
-            ("Open Homepage", "Type https://her-beauty-production.up.railway.app in your browser."),
+            ("Open Homepage", "Type https://her-beauty-production.up.railway.app/ in your browser."),
             ("Type Search Keyword", "Type 'Flagship' into the main search box."),
             ("Filter by Category", "Click the 'Skin, Facials & Scalp' filter button."),
             ("Inspect Studio Card", "Check the photo, address, and rating shown on the card.")

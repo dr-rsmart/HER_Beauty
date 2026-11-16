@@ -7,7 +7,7 @@
 **Official Logo File:** `C:\Users\Ricardo Smart\Desktop\H E R\presentation\her-logo-deck.png`  
 **Design Reference:** `C:\Users\Ricardo Smart\Desktop\H E R\HER_Business_Plan.pptx`  
 **GitHub Repository:** **https://github.com/dr-rsmart/HER_Beauty**  
-**Live Production Link:** **https://her-beauty-production.up.railway.app**
+**Live Production Link:** **https://her-beauty-production.up.railway.app/**
 
 ---
 
@@ -25,7 +25,7 @@
 | **HER Circle VIP Student Client** | Thandiwe Ndlovu | **thandiwe@herbeauty.co.za** | **Password123** | **https://her-beauty-production.up.railway.app/my-bookings** |
 | **Student Clients** | Sipho Khuzwayo / Anke van der Merwe | **sipho@herbeauty.co.za** / **anke@herbeauty.co.za** | **Password123** | **https://her-beauty-production.up.railway.app/my-bookings** |
 
-> ⚠ **Before You Begin:** Open Microsoft Edge or Google Chrome and visit **https://her-beauty-production.up.railway.app**. Follow the numbered red circles (`1`, `2`, `3`) on each screenshot.
+> ⚠ **Before You Begin:** Open Microsoft Edge or Google Chrome and visit **https://her-beauty-production.up.railway.app/**. Follow the numbered red circles (`1`, `2`, `3`) on each screenshot.
 
 ---
 
@@ -545,7 +545,7 @@
 ### C-01: Browse Studios & Glow-Up Banner
 
 **Step-by-Step Instructions:**
-1. Open your browser and go to **https://her-beauty-production.up.railway.app**.
+1. Open your browser and go to **https://her-beauty-production.up.railway.app/**.
 2. Check the top announcement bar (**1**) featuring promo code **GLOW20**.
 3. Type **Flagship** or **Braids** in the search box (**2**) or click **Salon** (**3**) to filter.
 

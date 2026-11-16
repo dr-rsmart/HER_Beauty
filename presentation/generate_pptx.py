@@ -177,8 +177,8 @@ def add_header(slide, number, title, subtitle=None):
     # footer
     add_text(slide, Inches(11.9), Inches(7.05), Inches(1.1), Inches(0.3),
              number, 11, MUTED, align=PP_ALIGN.RIGHT)
-    add_text(slide, Inches(0.55), Inches(7.05), Inches(8), Inches(0.3),
-             "HER  |  BUSINESS PLAN 2026\u20132030",
+    add_text(slide, Inches(0.55), Inches(7.05), Inches(9.5), Inches(0.3),
+             "HER  |  BUSINESS PLAN 2026\u20132030  |  https://her-beauty-production.up.railway.app/",
              9, MUTED)
 
 

@@ -113,7 +113,7 @@ def main():
         annotated_manifest[snap_id] = {
             "id": snap_id,
             "path": out_path,
-            "url": entry.get("url", "http://localhost:5176"),
+            "url": entry.get("url", "https://her-beauty-production.up.railway.app/"),
             "callouts": normalized,
         }
         count += 1

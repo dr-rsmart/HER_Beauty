@@ -296,7 +296,7 @@ def add_cover_slide(prs, deck_title: str, role_subtitle: str, hero_snap_id: str,
                  border_color=COPPER_LIGHT, border_pt=1.5, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
         add_rect(s, Inches(7.85), Inches(1.88), Inches(5.05), Inches(0.28), DARK2)
         add_text(s, Inches(8.02), Inches(1.88), Inches(4.70), Inches(0.28),
-                 "LIVE SYSTEM PREVIEW  \u00b7  https://her-beauty-production.up.railway.app",
+                 "LIVE SYSTEM PREVIEW  \u00b7  https://her-beauty-production.up.railway.app/",
                  8.5, COPPER_PALE, bold=True, anchor=MSO_ANCHOR.MIDDLE)
         s.shapes.add_picture(hero_path, Inches(7.94), Inches(2.22), width=Inches(4.87), height=Inches(2.91))
 
@@ -350,7 +350,7 @@ def add_how_to_use_slide(prs, deck_footer: str, role_name: str, accounts_list: l
              border_color=COPPER_LIGHT, border_pt=1.2, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
     add_rect(s, Inches(0.38), Inches(4.15), Inches(12.56), Inches(0.44), DARK)
     add_text(s, Inches(0.60), Inches(4.15), Inches(12.10), Inches(0.44),
-             f"\u2713  READY-TO-USE LOGIN DETAILS FOR: {role_name.upper()}   |   Browser Link: https://her-beauty-production.up.railway.app",
+             f"\u2713  READY-TO-USE LOGIN DETAILS FOR: {role_name.upper()}   |   Browser Link: https://her-beauty-production.up.railway.app/",
              11.5, COPPER_PALE, bold=True, anchor=MSO_ANCHOR.MIDDLE)
 
     # List accounts cleanly
@@ -368,7 +368,7 @@ def add_how_to_use_slide(prs, deck_footer: str, role_name: str, accounts_list: l
     add_rect(s, Inches(0.58), Inches(6.30), Inches(12.16), Inches(0.46), WARN_AMBER_BG,
              border_color=WARN_AMBER, border_pt=0.8, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
     add_text(s, Inches(0.74), Inches(6.30), Inches(11.85), Inches(0.46),
-             "\u26a0  Helpful Tip: Use Microsoft Edge or Google Chrome. Open the live HER Beauty production platform at **https://her-beauty-production.up.railway.app** before starting Step 1.",
+             "\u26a0  Helpful Tip: Use Microsoft Edge or Google Chrome. Open the live HER Beauty production platform at **https://her-beauty-production.up.railway.app/** before starting Step 1.",
              10, WARN_AMBER, bold_color=TEXT_DARK, anchor=MSO_ANCHOR.MIDDLE)
 
 
@@ -409,7 +409,7 @@ def add_test_case_slide(prs, slide_num: str, test_id: str, role_kicker: str, tit
                  Inches(0.11), Inches(0.11), dot_col, shape=MSO_SHAPE.OVAL)
 
     meta = MANIFEST.get(snap_id, {})
-    live_url = meta.get("url", "https://her-beauty-production.up.railway.app")
+    live_url = meta.get("url", "https://her-beauty-production.up.railway.app/")
     add_text(s, frame_left + Inches(0.68), frame_top, Inches(5.65), Inches(0.34),
              f"Browser: {live_url}", 8.0, COPPER_PALE, bold=True, anchor=MSO_ANCHOR.MIDDLE)
     add_text(s, frame_left + Inches(6.35), frame_top, Inches(1.72), Inches(0.34),
@@ -1045,7 +1045,7 @@ CLIENT_CASES = [
         "title": "Browse Studios & Glow-Up Banner",
         "snap": "21_home_browse",
         "steps": [
-            "Open your browser and go to **https://her-beauty-production.up.railway.app**.",
+            "Open your browser and go to **https://her-beauty-production.up.railway.app/**.",
             "Check the top announcement bar (**1**) featuring promo code **GLOW20**.",
             "Type **Flagship** or **Braids** in the search box (**2**) or click **Salon** (**3**) to filter.",
         ],
@@ -1274,7 +1274,7 @@ def build_look_and_feel_pptx():
         "HER BEAUTY\nLOOK & FEEL SHOWCASE",
         "Visual Tour of Studios, 4-Step Booking, HER Pathway & Executive Governance",
         "21_home_browse",
-        "Live Platform URL: **https://her-beauty-production.up.railway.app**  \u00b7  6 Western Cape Hubs  \u00b7  21 Services in ZAR",
+        "Live Platform URL: **https://her-beauty-production.up.railway.app/**  \u00b7  6 Western Cape Hubs  \u00b7  21 Services in ZAR",
     )
 
     showcases = [
@@ -1323,7 +1323,7 @@ def build_look_and_feel_pptx():
                  border_color=BORDER, border_pt=1.2, shape=MSO_SHAPE.ROUNDED_RECTANGLE)
         add_rect(s, Inches(0.38), Inches(1.28), Inches(8.42), Inches(0.32), DARK2)
         add_text(s, Inches(0.56), Inches(1.28), Inches(8.0), Inches(0.32),
-                 f"HER Beauty Live Screen  \u00b7  {MANIFEST.get(snap_id, {}).get('url', 'https://her-beauty-production.up.railway.app')}",
+                 f"HER Beauty Live Screen  \u00b7  {MANIFEST.get(snap_id, {}).get('url', 'https://her-beauty-production.up.railway.app/')}",
                  8.5, COPPER_PALE, bold=True, anchor=MSO_ANCHOR.MIDDLE)
         if os.path.exists(raw_img):
             s.shapes.add_picture(raw_img, Inches(0.48), Inches(1.68), width=Inches(8.22), height=Inches(4.91))
@@ -1382,7 +1382,7 @@ def build_markdown_test_pack():
         f"**Official Logo File:** `C:\\Users\\Ricardo Smart\\Desktop\\H E R\\presentation\\her-logo-deck.png`  ",
         f"**Design Reference:** `C:\\Users\\Ricardo Smart\\Desktop\\H E R\\HER_Business_Plan.pptx`  ",
         f"**GitHub Repository:** **https://github.com/dr-rsmart/HER_Beauty**  ",
-        f"**Live Production Link:** **https://her-beauty-production.up.railway.app**",
+        f"**Live Production Link:** **https://her-beauty-production.up.railway.app/**",
         "",
         "---",
         "",
@@ -1400,7 +1400,7 @@ def build_markdown_test_pack():
         "| **HER Circle VIP Student Client** | Thandiwe Ndlovu | **thandiwe@herbeauty.co.za** | **Password123** | **https://her-beauty-production.up.railway.app/my-bookings** |",
         "| **Student Clients** | Sipho Khuzwayo / Anke van der Merwe | **sipho@herbeauty.co.za** / **anke@herbeauty.co.za** | **Password123** | **https://her-beauty-production.up.railway.app/my-bookings** |",
         "",
-        "> ⚠ **Before You Begin:** Open Microsoft Edge or Google Chrome and visit **https://her-beauty-production.up.railway.app**. Follow the numbered red circles (`1`, `2`, `3`) on each screenshot.",
+        "> ⚠ **Before You Begin:** Open Microsoft Edge or Google Chrome and visit **https://her-beauty-production.up.railway.app/**. Follow the numbered red circles (`1`, `2`, `3`) on each screenshot.",
         "",
         "---",
         "",
