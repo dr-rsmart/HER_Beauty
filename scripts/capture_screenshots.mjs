@@ -12,7 +12,7 @@ fs.mkdirSync(RAW_DIR, { recursive: true });
 
 const VIEWPORT = { width: 1440, height: 860 };
 const SCALE = 2;
-const BASE_URL = 'http://localhost:5176';
+const BASE_URL = process.env.BASE_URL || 'https://her-beauty-production.up.railway.app';
 
 const manifest = {};
 

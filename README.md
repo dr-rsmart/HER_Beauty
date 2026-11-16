@@ -1,5 +1,8 @@
 # HER Beauty — Studio & Social Enterprise (on BookingTrack Foundation)
 
+- **Live Production App (Railway):** [https://her-beauty-production.up.railway.app](https://her-beauty-production.up.railway.app)
+- **GitHub Repository:** [https://github.com/dr-rsmart/HER_Beauty](https://github.com/dr-rsmart/HER_Beauty)
+
 **Contemporary student-centred hair, nails & beauty studio and social enterprise** — built with **BookingTrack** as the **Foundation** (Express 5 + Prisma PostgreSQL + React 19 + React Router 7 + RBAC + atomic slot transactions + SSE real-time + immutable AuditLog) and **HER Beauty** as **Floor 1** (Director Mrs Monean N Jacobs, Warm Copper / Deep Espresso / Linen design system, **The HER Pathway** `LEARN → PRACTISE → EARN → GROW → EMPOWER`, 21 services across 5 revenue streams, Specials, Stylist Contracts, Cohort 2025 Young Stylist Programme, and POPIA governance).
 
 ---

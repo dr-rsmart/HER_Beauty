@@ -159,6 +159,7 @@ async function main() {
 
   // ── Helper to create a HER Beauty Studio Branch + Owner + Alias Accounts ──
   async function createStudioBundle(cfg: {
+    id?: string;
     ownerEmail: string;
     aliasEmails: string[];
     ownerName: string;
@@ -218,6 +219,7 @@ async function main() {
 
     const provider = await prisma.provider.create({
       data: {
+        ...(cfg.id ? { id: cfg.id } : {}),
         name: cfg.name,
         category: cfg.category,
         tagline: cfg.tagline,
@@ -378,6 +380,7 @@ async function main() {
 
   // ── Studio 1: HER Beauty — Flagship Studio ──
   const flagship = await createStudioBundle({
+    id: 'cmwj41xzt000cmn3zqag4i0le',
     ownerEmail: 'admin@herbeauty.co.za',
     aliasEmails: ['admin@bookingtrack.com', 'admin@timetrack.com'],
     ownerName: 'Chloe Laurent',

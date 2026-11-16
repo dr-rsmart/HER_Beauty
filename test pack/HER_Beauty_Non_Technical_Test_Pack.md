@@ -6,7 +6,8 @@
 **Flagship Studio:** 4 White Heart, Jamestown 7600 · Tel: `081 047 0327`  
 **Official Logo File:** `C:\Users\Ricardo Smart\Desktop\H E R\presentation\her-logo-deck.png`  
 **Design Reference:** `C:\Users\Ricardo Smart\Desktop\H E R\HER_Business_Plan.pptx`  
-**Live System Link:** **http://localhost:5176**
+**GitHub Repository:** **https://github.com/dr-rsmart/HER_Beauty**  
+**Live Production Link:** **https://her-beauty-production.up.railway.app**
 
 ---
 
@@ -14,17 +15,17 @@
 
 | Role Group | Name | Email Address | Password | Starting Screen |
 | :--- | :--- | :--- | :--- | :--- |
-| **Platform Master & Governance** | Mrs Monean N Jacobs | **founder@herbeauty.co.za** | **ChangeMe123!** | **http://localhost:5176/master** |
-| **Studio Director (Flagship)** | Chloe Laurent | **admin@herbeauty.co.za** | **Password123** | **http://localhost:5176/dashboard** |
-| **Campus Hub Manager** | Thabo Mokoena | **tygervalley@herbeauty.co.za** | **Password123** | **http://localhost:5176/dashboard** |
-| **Campus Hub Manager** | Ayesha Pillay | **rondebosch@herbeauty.co.za** | **Password123** | **http://localhost:5176/dashboard** |
-| **Wellness & Academy Admins** | Pieter / Naledi / Riaan | **coetzenburg@** / **academy@** / **events@herbeauty.co.za** | **Password123** | **http://localhost:5176/dashboard** |
-| **Head Mentor (EMPOWER · 50%)** | Nomvula Dlamini | **nomvula@herbeauty.co.za** | **Password123** | **http://localhost:5176/dashboard** |
-| **Pathway Artisans (30%–45%)** | Zanele / Keisha / Lindiwe / Amahle | **zanele@** / **keisha@** / **lindiwe@** / **amahle@herbeauty.co.za** | **Password123** | **http://localhost:5176/dashboard** |
-| **HER Circle VIP Student Client** | Thandiwe Ndlovu | **thandiwe@herbeauty.co.za** | **Password123** | **http://localhost:5176/my-bookings** |
-| **Student Clients** | Sipho Khuzwayo / Anke van der Merwe | **sipho@herbeauty.co.za** / **anke@herbeauty.co.za** | **Password123** | **http://localhost:5176/my-bookings** |
+| **Platform Master & Governance** | Mrs Monean N Jacobs | **founder@herbeauty.co.za** | **ChangeMe123!** | **https://her-beauty-production.up.railway.app/master** |
+| **Studio Director (Flagship)** | Chloe Laurent | **admin@herbeauty.co.za** | **Password123** | **https://her-beauty-production.up.railway.app/dashboard** |
+| **Campus Hub Manager** | Thabo Mokoena | **tygervalley@herbeauty.co.za** | **Password123** | **https://her-beauty-production.up.railway.app/dashboard** |
+| **Campus Hub Manager** | Ayesha Pillay | **rondebosch@herbeauty.co.za** | **Password123** | **https://her-beauty-production.up.railway.app/dashboard** |
+| **Wellness & Academy Admins** | Pieter / Naledi / Riaan | **coetzenburg@** / **academy@** / **events@herbeauty.co.za** | **Password123** | **https://her-beauty-production.up.railway.app/dashboard** |
+| **Head Mentor (EMPOWER · 50%)** | Nomvula Dlamini | **nomvula@herbeauty.co.za** | **Password123** | **https://her-beauty-production.up.railway.app/dashboard** |
+| **Pathway Artisans (30%–45%)** | Zanele / Keisha / Lindiwe / Amahle | **zanele@** / **keisha@** / **lindiwe@** / **amahle@herbeauty.co.za** | **Password123** | **https://her-beauty-production.up.railway.app/dashboard** |
+| **HER Circle VIP Student Client** | Thandiwe Ndlovu | **thandiwe@herbeauty.co.za** | **Password123** | **https://her-beauty-production.up.railway.app/my-bookings** |
+| **Student Clients** | Sipho Khuzwayo / Anke van der Merwe | **sipho@herbeauty.co.za** / **anke@herbeauty.co.za** | **Password123** | **https://her-beauty-production.up.railway.app/my-bookings** |
 
-> ⚠ **Before You Begin:** Open Microsoft Edge or Google Chrome and visit **http://localhost:5176**. Follow the numbered red circles (`1`, `2`, `3`) on each screenshot.
+> ⚠ **Before You Begin:** Open Microsoft Edge or Google Chrome and visit **https://her-beauty-production.up.railway.app**. Follow the numbered red circles (`1`, `2`, `3`) on each screenshot.
 
 ---
 
@@ -34,7 +35,7 @@
 ### M-01: Login as Platform Master
 
 **Step-by-Step Instructions:**
-1. Open your web browser and go to **http://localhost:5176/login**.
+1. Open your web browser and go to **https://her-beauty-production.up.railway.app/login**.
 2. Click the **Email** box (**1**) and enter **founder@herbeauty.co.za**.
 3. Click the **Password** box (**2**) and enter **ChangeMe123!**.
 4. Click **Log in** (**3**) to sign in.
@@ -55,7 +56,7 @@
 ### M-02: Review Master Console & HER Pathway
 
 **Step-by-Step Instructions:**
-1. Click **Master Console** in the top navigation bar (or go to **http://localhost:5176/master**).
+1. Click **Master Console** in the top navigation bar (or go to **https://her-beauty-production.up.railway.app/master**).
 2. Locate the **+ Onboard Studio Hub** button (**1**) at the top right.
 3. Review **The HER Pathway** dark espresso impact banner (**2**) across all 5 stages.
 4. Check the four summary cards (**3**) showing active studios, team size, bookings, and revenue.
@@ -97,7 +98,7 @@
 ### M-04: Manage Studio Directory & Status
 
 **Step-by-Step Instructions:**
-1. Scroll down to **Business Directory** on **http://localhost:5176/master**.
+1. Scroll down to **Business Directory** on **https://her-beauty-production.up.railway.app/master**.
 2. Locate **HER Beauty — Flagship Studio** (**1**) in Jamestown under owner **Chloe Laurent**.
 3. Check the **Active** switch (**2**) next to the studio.
 4. Click **Impersonate** (**3**) to step directly into that studio's dashboard.
@@ -138,7 +139,7 @@
 ### M-06: Switch Roles in Platform Simulator
 
 **Step-by-Step Instructions:**
-1. Click **Simulator** (**1**) in the top navigation bar (or open **http://localhost:5176/demo**).
+1. Click **Simulator** (**1**) in the top navigation bar (or open **https://her-beauty-production.up.railway.app/demo**).
 2. Browse the five pre-configured HER Beauty role cards, including **Chloe Laurent** (**2**).
 3. Click **Launch Persona** (**3**) on **Chloe Laurent** or **Thandiwe Ndlovu** to preview their exact screen.
 
@@ -158,7 +159,7 @@
 ### M-07: Inspect Activity History & Governance Log
 
 **Step-by-Step Instructions:**
-1. Click **Audit** (**1**) in the top navigation bar (or open **http://localhost:5176/audit**).
+1. Click **Audit** (**1**) in the top navigation bar (or open **https://her-beauty-production.up.railway.app/audit**).
 2. Type an email such as **founder@herbeauty.co.za** or **thandiwe@herbeauty.co.za** in the search bar (**2**).
 3. Review the recorded activity cards (**3**) showing who performed each change and when.
 
@@ -178,9 +179,9 @@
 ### M-08: Verify Platform Master Account & Profile (Mrs Monean N Jacobs)
 
 **Step-by-Step Instructions:**
-1. Click the **Sign out** icon at the top right, then open **http://localhost:5176/login**.
+1. Click the **Sign out** icon at the top right, then open **https://her-beauty-production.up.railway.app/login**.
 2. Enter email **founder@herbeauty.co.za** and password **ChangeMe123!**, then click **Log in**.
-3. Click **Mrs Monean N Jacobs** in the top-right corner to open **Account & security** (**http://localhost:5176/profile**).
+3. Click **Mrs Monean N Jacobs** in the top-right corner to open **Account & security** (**https://her-beauty-production.up.railway.app/profile**).
 4. Check the **MASTER** role badge (**1**), confirmed email (**founder@herbeauty.co.za**) (**2**), and **Save details** button (**3**).
 
 **Annotated Screenshot (60%+ Slide Width Area):**  
@@ -202,7 +203,7 @@
 ### D-01: Login as Flagship Studio Director
 
 **Step-by-Step Instructions:**
-1. Open your browser and go to **http://localhost:5176/login**.
+1. Open your browser and go to **https://her-beauty-production.up.railway.app/login**.
 2. Enter **admin@herbeauty.co.za** in the **Email** field (**1**).
 3. Enter **Password123** in the **Password** field (**2**).
 4. Click **Log in** (**3**).
@@ -223,7 +224,7 @@
 ### D-02: Review Studio Dashboard & Today's Schedule
 
 **Step-by-Step Instructions:**
-1. Click **Studio Dashboard** in the top bar (or go to **http://localhost:5176/dashboard**).
+1. Click **Studio Dashboard** in the top bar (or go to **https://her-beauty-production.up.railway.app/dashboard**).
 2. Confirm the **Overview** tab (**1**) is active across the 8 studio management tabs.
 3. Check the four daily summary cards (**2**): **Today**, **Upcoming**, **Awaiting confirmation**, and **Revenue**.
 4. Inspect **Today's schedule** (**3**) for client bookings such as **HER-84920** and **HER-84922**.
@@ -244,7 +245,7 @@
 ### D-03: Confirm & Manage Client Bookings
 
 **Step-by-Step Instructions:**
-1. Click the **Bookings** tab (**1**) (or open **http://localhost:5176/dashboard/bookings**).
+1. Click the **Bookings** tab (**1**) (or open **https://her-beauty-production.up.railway.app/dashboard/bookings**).
 2. Click status filters (**2**) such as **Upcoming**, **Pending**, **Completed**, or **All**.
 3. Locate a pending booking (**HER-84922**) and click **Confirm** (**3**) to approve the slot.
 
@@ -264,7 +265,7 @@
 ### D-04: Manage Services & 5 Revenue Streams
 
 **Step-by-Step Instructions:**
-1. Click the **Services & Streams** tab (**1**) (**http://localhost:5176/dashboard/services**).
+1. Click the **Services & Streams** tab (**1**) (**https://her-beauty-production.up.railway.app/dashboard/services**).
 2. Filter across the 5 revenue streams (**Salon**, **Packages**, **Retail**, **Training**, **Events**).
 3. Click **+ Add service** (**2**) to inspect the service creation form.
 4. Verify ZAR rates and the **Bookable** switch on service cards (**3**).
@@ -285,7 +286,7 @@
 ### D-05: Manage Artisans & HER Pathway Stages
 
 **Step-by-Step Instructions:**
-1. Click the **Artisans & Pathway** tab (**1**) (**http://localhost:5176/dashboard/team**).
+1. Click the **Artisans & Pathway** tab (**1**) (**https://her-beauty-production.up.railway.app/dashboard/team**).
 2. Review the 5-stage **HER Pathway** team directory.
 3. Click **+ Add professional** (**2**) to see how new stylists or fellows are added.
 4. Verify **Amahle Sithole** (**3**) and team cards for stage badges and commission rates.
@@ -305,7 +306,7 @@
 ### D-06: Open Studio Chair Time Slots
 
 **Step-by-Step Instructions:**
-1. Click the **Availability** tab (**1**) (**http://localhost:5176/dashboard/availability**).
+1. Click the **Availability** tab (**1**) (**https://her-beauty-production.up.railway.app/dashboard/availability**).
 2. Select an artisan such as **Amahle Sithole** under **Professional** (**2**).
 3. Pick a date, start/end time, slot length (**30 minutes**), and click **Add slots** (**3**).
 
@@ -325,7 +326,7 @@
 ### D-07: Publish Specials & Send Broadcasts
 
 **Step-by-Step Instructions:**
-1. Click the **Specials & Comms** tab (**1**) (**http://localhost:5176/dashboard/specials**).
+1. Click the **Specials & Comms** tab (**1**) (**https://her-beauty-production.up.railway.app/dashboard/specials**).
 2. Click **+ New Campus Special** (**2**) to view how promotional codes are published.
 3. Verify active offers (**3**) including **CAMPUS20 (20% OFF)**, **WELCOME15**, and **GLOW25**.
 4. Scroll down to check the **Send Studio Broadcast** panel for client or stylist announcements.
@@ -345,7 +346,7 @@
 ### D-08: Verify Artisan Contracts, Cohort 2025 & POPIA
 
 **Step-by-Step Instructions:**
-1. Click the **Contracts & POPIA** tab (**1**) (**http://localhost:5176/dashboard/contracts**).
+1. Click the **Contracts & POPIA** tab (**1**) (**https://her-beauty-production.up.railway.app/dashboard/contracts**).
 2. Click **+ Issue Artisan Contract** (**2**) to inspect the learnership/stylist agreement form.
 3. Review the **HER Booking & POPIA Policy** card (**3**), **Cohort 2025**, and **Stylist Contracts**.
 
@@ -365,7 +366,7 @@
 ### D-09: Update Studio Profile & Public Visibility
 
 **Step-by-Step Instructions:**
-1. Click the **Studio & Brand** tab (**1**) (**http://localhost:5176/dashboard/profile**).
+1. Click the **Studio & Brand** tab (**1**) (**https://her-beauty-production.up.railway.app/dashboard/profile**).
 2. Verify the **Taking bookings** visibility switch (**2**) is turned on.
 3. Check the Jamestown address (**4 White Heart, Jamestown, 7600**) and opening hours.
 4. Click **Preview public page** (**3**) to view the studio exactly as clients see it.
@@ -388,7 +389,7 @@
 ### A-01: Login as Head Mentor & Master Stylist
 
 **Step-by-Step Instructions:**
-1. Open your browser and go to **http://localhost:5176/login**.
+1. Open your browser and go to **https://her-beauty-production.up.railway.app/login**.
 2. Enter **nomvula@herbeauty.co.za** in the **Email** box (**1**).
 3. Enter **Password123** in the **Password** box (**2**).
 4. Click **Log in** (**3**).
@@ -408,7 +409,7 @@
 ### A-02: Check Daily Chair Schedule & Live Updates
 
 **Step-by-Step Instructions:**
-1. Click **Studio Dashboard** (**http://localhost:5176/dashboard**).
+1. Click **Studio Dashboard** (**https://her-beauty-production.up.railway.app/dashboard**).
 2. Confirm **Nomvula Dlamini** (**1**) and the green **Live** badge (**2**) in the top-right header.
 3. Review **Today's schedule** (**3**) for **HER-84920** (**Thandiwe Ndlovu · Wash, Deep Moisture Treatment & Silk Blowout**).
 
@@ -427,7 +428,7 @@
 ### A-03: Confirm & Complete Chair Appointments
 
 **Step-by-Step Instructions:**
-1. Click the **Bookings** tab (**1**) (**http://localhost:5176/dashboard/bookings**).
+1. Click the **Bookings** tab (**1**) (**https://her-beauty-production.up.railway.app/dashboard/bookings**).
 2. Use **Upcoming** or **Pending** (**2**) to filter appointments waiting for attention.
 3. Click **Confirm** or **Complete** (**3**) once a client's hair, nail, or beauty session finishes.
 
@@ -446,7 +447,7 @@
 ### A-04: Verify Pathway Stage & Commission Tier
 
 **Step-by-Step Instructions:**
-1. Click the **Artisans & Pathway** tab (**1**) (**http://localhost:5176/dashboard/team**).
+1. Click the **Artisans & Pathway** tab (**1**) (**https://her-beauty-production.up.railway.app/dashboard/team**).
 2. Check the 5-stage **HER Pathway** bar from **LEARN** through **EMPOWER**.
 3. Inspect **Nomvula Dlamini** (**3**) and fellow cards (**Keisha**, **Lindiwe**, **Amahle**).
 
@@ -465,7 +466,7 @@
 ### A-05: Publish Open Chair Slots for Clients
 
 **Step-by-Step Instructions:**
-1. Click the **Availability** tab (**1**) (**http://localhost:5176/dashboard/availability**).
+1. Click the **Availability** tab (**1**) (**https://her-beauty-production.up.railway.app/dashboard/availability**).
 2. Select your name under **Professional** (**2**) and pick your working date and hours.
 3. Click **Add slots** (**3**) to open chair times for student and community bookings.
 
@@ -484,7 +485,7 @@
 ### A-06: Review Stylist Notices & Specials
 
 **Step-by-Step Instructions:**
-1. Click the **Specials & Comms** tab (**1**) (**http://localhost:5176/dashboard/specials**).
+1. Click the **Specials & Comms** tab (**1**) (**https://her-beauty-production.up.railway.app/dashboard/specials**).
 2. Check active student promotions (**3**) such as **CAMPUS20** so you can advise walk-in clients.
 3. Read the **Recent Broadcasts** feed on the right for Saturday roster and mentorship updates.
 
@@ -503,7 +504,7 @@
 ### A-07: Check Artisan Contract & Mentorship Hours
 
 **Step-by-Step Instructions:**
-1. Click the **Contracts & POPIA** tab (**1**) (**http://localhost:5176/dashboard/contracts**).
+1. Click the **Contracts & POPIA** tab (**1**) (**https://her-beauty-production.up.railway.app/dashboard/contracts**).
 2. Scroll to **Young Stylist Programme — Cohort 2025** and **Stylist Contracts**.
 3. Verify contract reference (**HER-CON-0001** to **HER-CON-0005**), commission %, and monthly mentorship hours.
 
@@ -544,7 +545,7 @@
 ### C-01: Browse Studios & Glow-Up Banner
 
 **Step-by-Step Instructions:**
-1. Open your browser and go to **http://localhost:5176**.
+1. Open your browser and go to **https://her-beauty-production.up.railway.app**.
 2. Check the top announcement bar (**1**) featuring promo code **GLOW20**.
 3. Type **Flagship** or **Braids** in the search box (**2**) or click **Salon** (**3**) to filter.
 
@@ -583,7 +584,7 @@
 ### C-03: Login as VIP Student Client
 
 **Step-by-Step Instructions:**
-1. Click **Sign in** at the top right (or go to **http://localhost:5176/login**).
+1. Click **Sign in** at the top right (or go to **https://her-beauty-production.up.railway.app/login**).
 2. Enter **thandiwe@herbeauty.co.za** in the **Email** box (**1**).
 3. Enter **Password123** in the **Password** box (**2**) and click **Log in** (**3**).
 
@@ -701,8 +702,8 @@
 ### C-09: Check My Bookings & HER Circle Loyalty
 
 **Step-by-Step Instructions:**
-1. Review your upcoming appointments and reminder banner on **My bookings** (**http://localhost:5176/my-bookings**).
-2. Click **Thandiwe Ndlovu** at the top right to open **http://localhost:5176/profile**.
+1. Review your upcoming appointments and reminder banner on **My bookings** (**https://her-beauty-production.up.railway.app/my-bookings**).
+2. Click **Thandiwe Ndlovu** at the top right to open **https://her-beauty-production.up.railway.app/profile**.
 3. Check your **HER Circle** badge & **4,850 Beauty Pts** (**1**), update **Hair Texture** (**2**), and click **Save Care Preferences** (**3**).
 
 **Annotated Screenshot (60%+ Slide Width Area):**  

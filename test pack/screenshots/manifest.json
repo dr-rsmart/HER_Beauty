@@ -3,7 +3,7 @@
     "id": "21_home_browse",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\21_home_browse.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\21_home_browse.png",
-    "url": "http://localhost:5176/",
+    "url": "https://her-beauty-production.up.railway.app/",
     "callouts": [
       {
         "num": 1,
@@ -38,7 +38,7 @@
     "id": "22_studio_public_page",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\22_studio_public_page.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\22_studio_public_page.png",
-    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae",
+    "url": "https://her-beauty-production.up.railway.app/providers/cmwj41xzt000cmn3zqag4i0le",
     "callouts": [
       {
         "num": 1,
@@ -73,7 +73,7 @@
     "id": "20_artisan_public_showcase",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\20_artisan_public_showcase.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\20_artisan_public_showcase.png",
-    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae",
+    "url": "https://her-beauty-production.up.railway.app/providers/cmwj41xzt000cmn3zqag4i0le",
     "callouts": [
       {
         "num": 1,
@@ -108,7 +108,7 @@
     "id": "23_login_client",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\23_login_client.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\23_login_client.png",
-    "url": "http://localhost:5176/login",
+    "url": "https://her-beauty-production.up.railway.app/login",
     "callouts": [
       {
         "num": 1,
@@ -143,7 +143,7 @@
     "id": "24_book_step1_service",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\24_book_step1_service.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\24_book_step1_service.png",
-    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae/book",
+    "url": "https://her-beauty-production.up.railway.app/providers/cmwj41xzt000cmn3zqag4i0le/book",
     "callouts": [
       {
         "num": 1,
@@ -178,7 +178,7 @@
     "id": "25_book_step2_artisan",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\25_book_step2_artisan.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\25_book_step2_artisan.png",
-    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae/book",
+    "url": "https://her-beauty-production.up.railway.app/providers/cmwj41xzt000cmn3zqag4i0le/book",
     "callouts": [
       {
         "num": 1,
@@ -213,7 +213,7 @@
     "id": "26_book_step3_slot",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\26_book_step3_slot.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\26_book_step3_slot.png",
-    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae/book",
+    "url": "https://her-beauty-production.up.railway.app/providers/cmwj41xzt000cmn3zqag4i0le/book",
     "callouts": [
       {
         "num": 1,
@@ -248,7 +248,7 @@
     "id": "27_book_step4_promo_popia",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\27_book_step4_promo_popia.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\27_book_step4_promo_popia.png",
-    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae/book",
+    "url": "https://her-beauty-production.up.railway.app/providers/cmwj41xzt000cmn3zqag4i0le/book",
     "callouts": [
       {
         "num": 1,
@@ -283,7 +283,7 @@
     "id": "28_book_confirmed_receipt",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\28_book_confirmed_receipt.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\28_book_confirmed_receipt.png",
-    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae/book",
+    "url": "https://her-beauty-production.up.railway.app/providers/cmwj41xzt000cmn3zqag4i0le/book",
     "callouts": [
       {
         "num": 1,
@@ -318,7 +318,7 @@
     "id": "29_client_my_bookings",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\29_client_my_bookings.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\29_client_my_bookings.png",
-    "url": "http://localhost:5176/my-bookings",
+    "url": "https://her-beauty-production.up.railway.app/my-bookings",
     "callouts": [
       {
         "num": 1,
@@ -353,7 +353,7 @@
     "id": "30_client_loyalty_profile",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\30_client_loyalty_profile.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\30_client_loyalty_profile.png",
-    "url": "http://localhost:5176/profile",
+    "url": "https://her-beauty-production.up.railway.app/profile",
     "callouts": [
       {
         "num": 1,
@@ -388,7 +388,7 @@
     "id": "09_login_director",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\09_login_director.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\09_login_director.png",
-    "url": "http://localhost:5176/login",
+    "url": "https://her-beauty-production.up.railway.app/login",
     "callouts": [
       {
         "num": 1,
@@ -423,7 +423,7 @@
     "id": "10_studio_dashboard_overview",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\10_studio_dashboard_overview.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\10_studio_dashboard_overview.png",
-    "url": "http://localhost:5176/dashboard",
+    "url": "https://her-beauty-production.up.railway.app/dashboard",
     "callouts": [
       {
         "num": 1,
@@ -458,7 +458,7 @@
     "id": "11_studio_bookings",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\11_studio_bookings.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\11_studio_bookings.png",
-    "url": "http://localhost:5176/dashboard/bookings",
+    "url": "https://her-beauty-production.up.railway.app/dashboard/bookings",
     "callouts": [
       {
         "num": 1,
@@ -493,7 +493,7 @@
     "id": "12_studio_services",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\12_studio_services.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\12_studio_services.png",
-    "url": "http://localhost:5176/dashboard/services",
+    "url": "https://her-beauty-production.up.railway.app/dashboard/services",
     "callouts": [
       {
         "num": 1,
@@ -528,7 +528,7 @@
     "id": "13_studio_artisans_pathway",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\13_studio_artisans_pathway.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\13_studio_artisans_pathway.png",
-    "url": "http://localhost:5176/dashboard/team",
+    "url": "https://her-beauty-production.up.railway.app/dashboard/team",
     "callouts": [
       {
         "num": 1,
@@ -563,7 +563,7 @@
     "id": "14_studio_availability",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\14_studio_availability.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\14_studio_availability.png",
-    "url": "http://localhost:5176/dashboard/availability",
+    "url": "https://her-beauty-production.up.railway.app/dashboard/availability",
     "callouts": [
       {
         "num": 1,
@@ -598,7 +598,7 @@
     "id": "15_studio_specials_comms",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\15_studio_specials_comms.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\15_studio_specials_comms.png",
-    "url": "http://localhost:5176/dashboard/specials",
+    "url": "https://her-beauty-production.up.railway.app/dashboard/specials",
     "callouts": [
       {
         "num": 1,
@@ -633,7 +633,7 @@
     "id": "16_studio_contracts_popia",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\16_studio_contracts_popia.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\16_studio_contracts_popia.png",
-    "url": "http://localhost:5176/dashboard/contracts",
+    "url": "https://her-beauty-production.up.railway.app/dashboard/contracts",
     "callouts": [
       {
         "num": 1,
@@ -668,7 +668,7 @@
     "id": "17_studio_brand_profile",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\17_studio_brand_profile.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\17_studio_brand_profile.png",
-    "url": "http://localhost:5176/dashboard/profile",
+    "url": "https://her-beauty-production.up.railway.app/dashboard/profile",
     "callouts": [
       {
         "num": 1,
@@ -703,7 +703,7 @@
     "id": "18_login_artisan",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\18_login_artisan.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\18_login_artisan.png",
-    "url": "http://localhost:5176/login",
+    "url": "https://her-beauty-production.up.railway.app/login",
     "callouts": [
       {
         "num": 1,
@@ -738,7 +738,7 @@
     "id": "19_artisan_schedule_view",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\19_artisan_schedule_view.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\19_artisan_schedule_view.png",
-    "url": "http://localhost:5176/dashboard",
+    "url": "https://her-beauty-production.up.railway.app/dashboard",
     "callouts": [
       {
         "num": 1,
@@ -773,7 +773,7 @@
     "id": "01_login_master",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\01_login_master.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\01_login_master.png",
-    "url": "http://localhost:5176/login",
+    "url": "https://her-beauty-production.up.railway.app/login",
     "callouts": [
       {
         "num": 1,
@@ -808,7 +808,7 @@
     "id": "02_master_console",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\02_master_console.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\02_master_console.png",
-    "url": "http://localhost:5176/master",
+    "url": "https://her-beauty-production.up.railway.app/master",
     "callouts": [
       {
         "num": 1,
@@ -843,7 +843,7 @@
     "id": "03_create_studio_modal",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\03_create_studio_modal.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\03_create_studio_modal.png",
-    "url": "http://localhost:5176/master",
+    "url": "https://her-beauty-production.up.railway.app/master",
     "callouts": [
       {
         "num": 1,
@@ -878,7 +878,7 @@
     "id": "04_master_impersonate_list",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\04_master_impersonate_list.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\04_master_impersonate_list.png",
-    "url": "http://localhost:5176/master",
+    "url": "https://her-beauty-production.up.railway.app/master",
     "callouts": [
       {
         "num": 1,
@@ -913,7 +913,7 @@
     "id": "05_impersonation_active",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\05_impersonation_active.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\05_impersonation_active.png",
-    "url": "http://localhost:5176/dashboard",
+    "url": "https://her-beauty-production.up.railway.app/dashboard",
     "callouts": [
       {
         "num": 1,
@@ -948,7 +948,7 @@
     "id": "06_platform_simulator",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\06_platform_simulator.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\06_platform_simulator.png",
-    "url": "http://localhost:5176/demo",
+    "url": "https://her-beauty-production.up.railway.app/demo",
     "callouts": [
       {
         "num": 1,
@@ -983,7 +983,7 @@
     "id": "07_audit_trail",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\07_audit_trail.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\07_audit_trail.png",
-    "url": "http://localhost:5176/audit",
+    "url": "https://her-beauty-production.up.railway.app/audit",
     "callouts": [
       {
         "num": 1,
@@ -1018,7 +1018,7 @@
     "id": "08_ricardo_master_profile",
     "rawFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\raw\\08_ricardo_master_profile.png",
     "annotatedFile": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\08_ricardo_master_profile.png",
-    "url": "http://localhost:5176/profile",
+    "url": "https://her-beauty-production.up.railway.app/profile",
     "callouts": [
       {
         "num": 1,

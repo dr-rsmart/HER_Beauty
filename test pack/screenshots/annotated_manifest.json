@@ -2,7 +2,7 @@
   "01_login_master": {
     "id": "01_login_master",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\01_login_master.png",
-    "url": "http://localhost:5176/login",
+    "url": "https://her-beauty-production.up.railway.app/login",
     "callouts": [
       {
         "num": 1,
@@ -36,7 +36,7 @@
   "02_master_console": {
     "id": "02_master_console",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\02_master_console.png",
-    "url": "http://localhost:5176/master",
+    "url": "https://her-beauty-production.up.railway.app/master",
     "callouts": [
       {
         "num": 1,
@@ -70,7 +70,7 @@
   "03_create_studio_modal": {
     "id": "03_create_studio_modal",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\03_create_studio_modal.png",
-    "url": "http://localhost:5176/master",
+    "url": "https://her-beauty-production.up.railway.app/master",
     "callouts": [
       {
         "num": 1,
@@ -104,7 +104,7 @@
   "04_master_impersonate_list": {
     "id": "04_master_impersonate_list",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\04_master_impersonate_list.png",
-    "url": "http://localhost:5176/master",
+    "url": "https://her-beauty-production.up.railway.app/master",
     "callouts": [
       {
         "num": 1,
@@ -138,7 +138,7 @@
   "05_impersonation_active": {
     "id": "05_impersonation_active",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\05_impersonation_active.png",
-    "url": "http://localhost:5176/dashboard",
+    "url": "https://her-beauty-production.up.railway.app/dashboard",
     "callouts": [
       {
         "num": 1,
@@ -172,7 +172,7 @@
   "06_platform_simulator": {
     "id": "06_platform_simulator",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\06_platform_simulator.png",
-    "url": "http://localhost:5176/demo",
+    "url": "https://her-beauty-production.up.railway.app/demo",
     "callouts": [
       {
         "num": 1,
@@ -206,7 +206,7 @@
   "07_audit_trail": {
     "id": "07_audit_trail",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\07_audit_trail.png",
-    "url": "http://localhost:5176/audit",
+    "url": "https://her-beauty-production.up.railway.app/audit",
     "callouts": [
       {
         "num": 1,
@@ -240,7 +240,7 @@
   "08_ricardo_master_profile": {
     "id": "08_ricardo_master_profile",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\08_ricardo_master_profile.png",
-    "url": "http://localhost:5176/profile",
+    "url": "https://her-beauty-production.up.railway.app/profile",
     "callouts": [
       {
         "num": 1,
@@ -274,7 +274,7 @@
   "09_login_director": {
     "id": "09_login_director",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\09_login_director.png",
-    "url": "http://localhost:5176/login",
+    "url": "https://her-beauty-production.up.railway.app/login",
     "callouts": [
       {
         "num": 1,
@@ -308,7 +308,7 @@
   "10_studio_dashboard_overview": {
     "id": "10_studio_dashboard_overview",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\10_studio_dashboard_overview.png",
-    "url": "http://localhost:5176/dashboard",
+    "url": "https://her-beauty-production.up.railway.app/dashboard",
     "callouts": [
       {
         "num": 1,
@@ -342,7 +342,7 @@
   "11_studio_bookings": {
     "id": "11_studio_bookings",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\11_studio_bookings.png",
-    "url": "http://localhost:5176/dashboard/bookings",
+    "url": "https://her-beauty-production.up.railway.app/dashboard/bookings",
     "callouts": [
       {
         "num": 1,
@@ -376,7 +376,7 @@
   "12_studio_services": {
     "id": "12_studio_services",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\12_studio_services.png",
-    "url": "http://localhost:5176/dashboard/services",
+    "url": "https://her-beauty-production.up.railway.app/dashboard/services",
     "callouts": [
       {
         "num": 1,
@@ -410,7 +410,7 @@
   "13_studio_artisans_pathway": {
     "id": "13_studio_artisans_pathway",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\13_studio_artisans_pathway.png",
-    "url": "http://localhost:5176/dashboard/team",
+    "url": "https://her-beauty-production.up.railway.app/dashboard/team",
     "callouts": [
       {
         "num": 1,
@@ -444,7 +444,7 @@
   "14_studio_availability": {
     "id": "14_studio_availability",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\14_studio_availability.png",
-    "url": "http://localhost:5176/dashboard/availability",
+    "url": "https://her-beauty-production.up.railway.app/dashboard/availability",
     "callouts": [
       {
         "num": 1,
@@ -478,7 +478,7 @@
   "15_studio_specials_comms": {
     "id": "15_studio_specials_comms",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\15_studio_specials_comms.png",
-    "url": "http://localhost:5176/dashboard/specials",
+    "url": "https://her-beauty-production.up.railway.app/dashboard/specials",
     "callouts": [
       {
         "num": 1,
@@ -512,7 +512,7 @@
   "16_studio_contracts_popia": {
     "id": "16_studio_contracts_popia",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\16_studio_contracts_popia.png",
-    "url": "http://localhost:5176/dashboard/contracts",
+    "url": "https://her-beauty-production.up.railway.app/dashboard/contracts",
     "callouts": [
       {
         "num": 1,
@@ -546,7 +546,7 @@
   "17_studio_brand_profile": {
     "id": "17_studio_brand_profile",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\17_studio_brand_profile.png",
-    "url": "http://localhost:5176/dashboard/profile",
+    "url": "https://her-beauty-production.up.railway.app/dashboard/profile",
     "callouts": [
       {
         "num": 1,
@@ -580,7 +580,7 @@
   "18_login_artisan": {
     "id": "18_login_artisan",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\18_login_artisan.png",
-    "url": "http://localhost:5176/login",
+    "url": "https://her-beauty-production.up.railway.app/login",
     "callouts": [
       {
         "num": 1,
@@ -614,7 +614,7 @@
   "19_artisan_schedule_view": {
     "id": "19_artisan_schedule_view",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\19_artisan_schedule_view.png",
-    "url": "http://localhost:5176/dashboard",
+    "url": "https://her-beauty-production.up.railway.app/dashboard",
     "callouts": [
       {
         "num": 1,
@@ -648,7 +648,7 @@
   "20_artisan_public_showcase": {
     "id": "20_artisan_public_showcase",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\20_artisan_public_showcase.png",
-    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae",
+    "url": "https://her-beauty-production.up.railway.app/providers/cmwj41xzt000cmn3zqag4i0le",
     "callouts": [
       {
         "num": 1,
@@ -682,7 +682,7 @@
   "21_home_browse": {
     "id": "21_home_browse",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\21_home_browse.png",
-    "url": "http://localhost:5176/",
+    "url": "https://her-beauty-production.up.railway.app/",
     "callouts": [
       {
         "num": 1,
@@ -716,7 +716,7 @@
   "22_studio_public_page": {
     "id": "22_studio_public_page",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\22_studio_public_page.png",
-    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae",
+    "url": "https://her-beauty-production.up.railway.app/providers/cmwj41xzt000cmn3zqag4i0le",
     "callouts": [
       {
         "num": 1,
@@ -750,7 +750,7 @@
   "23_login_client": {
     "id": "23_login_client",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\23_login_client.png",
-    "url": "http://localhost:5176/login",
+    "url": "https://her-beauty-production.up.railway.app/login",
     "callouts": [
       {
         "num": 1,
@@ -784,7 +784,7 @@
   "24_book_step1_service": {
     "id": "24_book_step1_service",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\24_book_step1_service.png",
-    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae/book",
+    "url": "https://her-beauty-production.up.railway.app/providers/cmwj41xzt000cmn3zqag4i0le/book",
     "callouts": [
       {
         "num": 1,
@@ -818,7 +818,7 @@
   "25_book_step2_artisan": {
     "id": "25_book_step2_artisan",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\25_book_step2_artisan.png",
-    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae/book",
+    "url": "https://her-beauty-production.up.railway.app/providers/cmwj41xzt000cmn3zqag4i0le/book",
     "callouts": [
       {
         "num": 1,
@@ -852,7 +852,7 @@
   "26_book_step3_slot": {
     "id": "26_book_step3_slot",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\26_book_step3_slot.png",
-    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae/book",
+    "url": "https://her-beauty-production.up.railway.app/providers/cmwj41xzt000cmn3zqag4i0le/book",
     "callouts": [
       {
         "num": 1,
@@ -886,7 +886,7 @@
   "27_book_step4_promo_popia": {
     "id": "27_book_step4_promo_popia",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\27_book_step4_promo_popia.png",
-    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae/book",
+    "url": "https://her-beauty-production.up.railway.app/providers/cmwj41xzt000cmn3zqag4i0le/book",
     "callouts": [
       {
         "num": 1,
@@ -920,7 +920,7 @@
   "28_book_confirmed_receipt": {
     "id": "28_book_confirmed_receipt",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\28_book_confirmed_receipt.png",
-    "url": "http://localhost:5176/providers/cmwdmm8p8000cuhgo3yuscxae/book",
+    "url": "https://her-beauty-production.up.railway.app/providers/cmwj41xzt000cmn3zqag4i0le/book",
     "callouts": [
       {
         "num": 1,
@@ -954,7 +954,7 @@
   "29_client_my_bookings": {
     "id": "29_client_my_bookings",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\29_client_my_bookings.png",
-    "url": "http://localhost:5176/my-bookings",
+    "url": "https://her-beauty-production.up.railway.app/my-bookings",
     "callouts": [
       {
         "num": 1,
@@ -988,7 +988,7 @@
   "30_client_loyalty_profile": {
     "id": "30_client_loyalty_profile",
     "path": "C:\\Users\\Ricardo Smart\\Desktop\\H E R\\test pack\\screenshots\\30_client_loyalty_profile.png",
-    "url": "http://localhost:5176/profile",
+    "url": "https://her-beauty-production.up.railway.app/profile",
     "callouts": [
       {
         "num": 1,

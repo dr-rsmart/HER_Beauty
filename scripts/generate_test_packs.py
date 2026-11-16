@@ -157,7 +157,7 @@ def add_case_slide(prs, num_str, test_id, title, purpose, precondition, steps, e
     add_rect(slide, Inches(0.8), Inches(5.1), Inches(4.1), Inches(1.4), LINEN, border_color=BORDER)
     add_text(slide, Inches(1.0), Inches(5.25), Inches(3.7), Inches(0.25), "Execution Details:", 11, MUTED, bold=True)
     add_text(slide, Inches(1.0), Inches(5.55), Inches(3.7), Inches(0.8),
-             f"Role: {persona_tag}\nEnv: http://localhost:5176\nStandard: POPIA & TimeTrack Multi-Tenant", 10, MUTED)
+             f"Role: {persona_tag}\nEnv: https://her-beauty-production.up.railway.app\nStandard: POPIA & TimeTrack Multi-Tenant", 10, MUTED)
 
     # Right Column: Execution Steps & Verification (Inches(7.3) wide)
     add_rect(slide, Inches(5.4), Inches(1.4), Inches(7.3), Inches(5.4), CARD, border_color=BORDER)
@@ -221,7 +221,7 @@ def generate_pack_1():
     cred = {
         "Director Account": "founder@herbeauty.co.za  (Mrs Monean N Jacobs)",
         "Master Password": "ChangeMe123!  (Strict high-entropy credential for all Master accounts)",
-        "Platform URL": "http://localhost:5176/login?returnTo=/master",
+        "Platform URL": "https://her-beauty-production.up.railway.app/login?returnTo=/master",
         "Key Governance Tools": "Master Console, Platform Simulator (/demo), Immutable Audit Trail (/audit)"
     }
     add_title_slide(prs, "Platform Master & Executive Governance",
@@ -231,8 +231,8 @@ def generate_pack_1():
     cases = [
         ("02", "MST-01", "Master Authentication & Forced Policy",
          "Verify secure login using 'ChangeMe123!' and ensure default password rejection.",
-         "Browser at /login with server running on :4006.",
-         [("Navigate to Login", "Go to http://localhost:5176/login and input founder@herbeauty.co.za."),
+         "Browser at /login with live production server at https://her-beauty-production.up.railway.app.",
+         [("Navigate to Login", "Go to https://her-beauty-production.up.railway.app/login and input founder@herbeauty.co.za."),
           ("Enter Password", "Input master password 'ChangeMe123!' into the password field."),
           ("Submit Login", "Click 'Sign in' and verify httpOnly bt_token is issued."),
           ("Check Route Redirect", "Verify immediate transition to /master or user menu display.")],
@@ -271,8 +271,8 @@ def generate_pack_1():
 
         ("06", "MST-05", "Platform Simulator 1-Click Persona Launch",
          "Validate operator impersonation via the /demo simulator interface.",
-         "Authenticated as Master operator on http://localhost:5176/demo.",
-         [("Access /demo", "Navigate to http://localhost:5176/demo."),
+         "Authenticated as Master operator on https://her-beauty-production.up.railway.app/demo.",
+         [("Access /demo", "Navigate to https://her-beauty-production.up.railway.app/demo."),
           ("Select Studio Persona", "Click 'Launch Simulator' for Chloe Laurent (Flagship Admin)."),
           ("Verify Session Switch", "Confirm prompt toast and immediate redirection to /dashboard."),
           ("Test Stop Impersonation", "Click 'Stop Impersonating' banner and verify return to Master session.")],
@@ -281,7 +281,7 @@ def generate_pack_1():
 
         ("07", "MST-06", "Immutable Audit Trail & Search Filtering",
          "Verify system-wide audit logging for all mutations and sensitive actions.",
-         "Authenticated as Master on http://localhost:5176/audit.",
+         "Authenticated as Master on https://her-beauty-production.up.railway.app/audit.",
          [("Navigate to Audit Log", "Access /audit directly or via Master Console link."),
           ("Inspect Log Entries", "Verify events (User, Provider, Booking, Contract) appear with timestamps."),
           ("Test Entity Filtering", "Filter by entity 'Booking' and verify table instantly filters."),
@@ -632,8 +632,8 @@ def generate_pack_4():
     cases = [
         ("02", "CLI-01", "Public Studio Directory Search & Filtering",
          "Search and filter HER Beauty studios by location, campus hub, and service category.",
-         "Unauthenticated browser on homepage http://localhost:5176.",
-         [("Open Homepage", "Navigate to http://localhost:5176/."),
+         "Unauthenticated browser on homepage https://her-beauty-production.up.railway.app.",
+         [("Open Homepage", "Navigate to https://her-beauty-production.up.railway.app/."),
           ("Search by Studio Name", "Type 'Flagship' into search bar; verify Flagship Studio card appears."),
           ("Filter by Category", "Click 'Skin, Facials & Scalp Wellness' filter pill."),
           ("Inspect Filtered Results", "Verify Coetzenburg Wellness & Skin Bar is displayed.")],
